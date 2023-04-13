@@ -1,0 +1,17 @@
+button {
+    width: 100px;
+    height: 50px;
+    font-family: Roboto, sans-serif;
+    font-weight: bold;
+    font-size: 100%;
+    color: white;
+    border: 2px solid white;
+    border-radius: 15px;
+    background-color: #00FADC;
+    margin: 5px;
+    cursor: pointer; /*cuando el cursor se ubique en el boton, se muestra una manita*/
+  }
+  
+  button:hover { /*Cuando el cursor se encuentre sobre el boton sin presionarlo*/
+    background-color: #00471b; 
+  }

@@ -1,0 +1,15 @@
+.contenedor-principal{
+  flex-direction: row;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.contenedor-principal > div {
+  width: 20%;
+  margin-top: 50px;
+}
+
+table {
+  align-items: center;
+  justify-content: center;
+}
