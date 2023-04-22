@@ -4,7 +4,6 @@ import Select from 'react-select';
 import Input from '../Input';
 import Boton from '../Boton';
 
-
 function CcDisTemp(){
 
   const A = 2.94;
@@ -216,6 +215,7 @@ function CcDisTemp(){
   }
 
   function calculoPMnominal(){
+    calculoB();
     setPMnom( A * Math.pow(Ksloc,B) );
     console.log('A: ' + A);
     console.log('Ksloc: ' + Ksloc);
@@ -224,7 +224,7 @@ function CcDisTemp(){
   }
 
   const calcularEstimacion = () => {
-    calculoB();
+    
     calculoPMnominal();
     setPMest( pmNom * ( Arcpx * Aruse * Apdif * Apers * Aprex * Afcil * Asced ) );
     console.log('pmEst: ' + pmEst);
@@ -232,6 +232,8 @@ function CcDisTemp(){
   }
 
   return(
+    <>
+    <hr/>
     <div className='contenedor-principal'>
       <div>
         Multiplicadores de esfuerzo <br/>{Arcpx}<br/>
@@ -313,9 +315,13 @@ function CcDisTemp(){
               </td>
             </tr>
             <tr>
+              <td>P estimado:</td>
+              <td>{pmEst}</td>
+            </tr>
+            <tr>
               <td><Boton
                     name='boton'
-                    calcularEstimacion={calcularEstimacion}
+                    funcion={calcularEstimacion}
                     texto='Calcular' />
               </td>
             </tr>
@@ -323,6 +329,7 @@ function CcDisTemp(){
         </table>
       </div>
     </div>
+    </>
   );
 }
 

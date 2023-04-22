@@ -8,6 +8,7 @@ import CcCompAp from './Modelos/CcCompAp';
 import CcDisTem from './Modelos/CcDisTem';
 import CcPostArq from './Modelos/CcPostArq';
 import PuntosCosmic from './Modelos/PuntosCosmic';
+import PuntosFuncion from './Modelos/PuntosFuncion';
 
 function Barra(){
   return(
@@ -21,6 +22,7 @@ function Barra(){
         <Link to="/cocomoii/diseñoTemprano">Diseño Temprano</Link>
         <Link to="/cocomoii/postArquitectura">Post Arquitectura</Link>
         <Link to="/cosmic/puntosdeFuncion">Puntos de función Cosmic</Link>
+        <Link to="/cocomoii/UPF">Puntos de función</Link>
         <Routes>
           <Route exact path="/registro" Component={Registro} />
           <Route exact path="/inicioSesion" Component={InicioSesion} />
@@ -29,6 +31,7 @@ function Barra(){
           <Route exact path="/cocomoii/diseñoTemprano" Component={CcDisTem} />
           <Route exact path="/cocomoii/postArquitectura" Component={CcPostArq} />
           <Route exact path="/cosmic/puntosdeFuncion" Component={PuntosCosmic} />
+          <Route exact path="/cocomoii/UPF" Component={PuntosFuncion} />
         </Routes>
       </Router>
     </div>

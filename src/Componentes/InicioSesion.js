@@ -28,6 +28,7 @@ function InicioSesion(){
   }
   
   return(
+    <><hr/>
     <div className='inicio-sesion-principal'>
       <form className='contenedor-formulario' onSubmit={validarRegistro}>
       <label>Correo electrónico: </label>
@@ -57,6 +58,7 @@ function InicioSesion(){
         </button>
       </form>
     </div>
+    </>
   );
   }
   

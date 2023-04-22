@@ -4,7 +4,9 @@ import Barra from './Componentes/Barra';
 function App() {
   return (
     <div className="App">
-      <Barra/>
+      <div className='barra'>
+        <Barra/>
+      </div>
     </div>
   );
 }

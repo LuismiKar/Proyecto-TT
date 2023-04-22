@@ -385,9 +385,11 @@ function CcPostArq(){
   }
 
   return(
+    <>
+    <hr/>
     <div className='contenedor-principal'>
       <div>
-      Multiplicadores de esfuerzo<br/><br/>
+      Multiplicadores de esfuerzo
         <table>
           <tbody>
             <tr>Producto</tr>
@@ -411,7 +413,7 @@ function CcPostArq(){
               <td>RUSE:</td>
               <td><Select options={ ruse } defaultValue={ ruse[1] } onChange={ handleSelectChangeRuse }/></td>
             </tr>
-            <br/>Producto<br/>
+            <br/>Plataforma<br/>
             <tr>
               <td>TIME:</td>
               <td><Select options={ time } defaultValue={ time[0] } onChange={ handleSelectChangeTime } /></td>
@@ -423,10 +425,6 @@ function CcPostArq(){
             <tr>
               <td>PVOL:</td>
               <td><Select options={ pvol } defaultValue={ pvol[1] } onChange={ handleSelectChangePvol } /></td>
-            </tr>
-            <tr>
-              <td>SCED:</td>
-              <td><Select options={ sced } defaultValue={ sced[2] } onChange={ handleSelectChangeSced }/></td>
             </tr>
           </tbody>
         </table>
@@ -522,7 +520,7 @@ function CcPostArq(){
             <tr>
               <td><Boton
                     name='boton'
-                    calcularEstimacion={calcularEstimacion}
+                    funcion={calcularEstimacion}
                     texto='Calcular' />
               </td>
             </tr>
@@ -530,6 +528,7 @@ function CcPostArq(){
         </table>
       </div>
     </div>
+    </>
   );
 }
 

@@ -1,12 +1,12 @@
 import React from 'react';
 import '../Hojas-de-estilo/Boton.css';
 
-function Boton({ name, calcularEstimacion, texto }) {
+function Boton({ name, funcion, texto }) {
 
   return (
     <button
       className={name}
-      onClick={calcularEstimacion} >
+      onClick={funcion} >
       {texto}
     </button>
   );
