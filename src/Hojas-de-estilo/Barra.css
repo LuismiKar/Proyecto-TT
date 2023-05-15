@@ -1,7 +1,169 @@
-.barra-principal {
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
   
 }
 
-a {
-    margin-right: 0.5rem;
+.header{
+  width: 100%;
+  height: 70px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  
+}
+
+.contenedor{
+  text-align: right;
+  width: 100%;
+  max-width: 100%;
+  margin: auto;
+  box-shadow: 0 0 20px 0;
+  
+  background-color: #85F4FF;
+}
+
+.contenedor .menu{
+  
+  line-height: 70px;
+}
+
+.contenedor .menu a{
+  display: inline-block;
+  padding: 15px 10px;
+  line-height: normal;
+  text-decoration: none;
+  color: #000;
+  transition: all 0.3s ease;
+  border-bottom: 2px solid transparent;
+  font-size: 15px;
+}
+
+.contenedor .menu a:hover{
+  border-bottom: 2px solid #42C2FF;
+  padding: 5px 10px;
+}
+
+.contenedor .btn-menu{
+  float: left;
+  line-height: 70px;
+  width: 10%;
+}
+
+.contenedor .btn-menu label{
+  color: #000;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+#btn-menu{
+  display: none;
+}
+
+
+.contenedor-menu{
+  position: absolute;
+  background: rgba(0,0,0,0.5);
+  width: 100%;
+  height: 100vh;
+  top: 0; left: 0;
+  transition: all 500ms ease;
+  opacity: 0;
+  visibility: hidden;
+}
+
+#btn-menu:checked ~ .contenedor-menu{
+  opacity: 1;
+  visibility: visible;
+}
+
+.cont-menu{
+  width: 100%;
+  max-width: 250px;
+  background: #42C2FF;
+  height: 100vh;
+  position: relative;
+  transition: all 500ms ease;
+  transform: translateX(-100%);
+}
+
+#btn-menu:checked ~ .contenedor-menu .cont-menu{
+  transform: translateX(0%);
+}
+
+.nav-link{
+  transform: translateY(50%);
+  border-top: 50px;
+  display: block;
+  text-decoration: none;
+  padding: 20px;
+  color: #000;
+  border-left: 5px solid transparent;
+  transition: all 400ms ease;
+}
+
+.cont-menu .nav-link:hover{
+  border-left: 5px solid #c7c7c7;
+  background: #85F4FF;
+  border-radius: 5%;
+  cursor: pointer;
+}
+
+.cont-menu label{
+  position: absolute;
+  right: 5px;
+  top: 10px;
+  color: #000;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+
+.cont-menu{
+  width: 300px;
+}
+
+
+.nav-link--inside{
+  border-radius: 6px;
+  padding-left: 20px;
+}
+
+.list{
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  border-radius: 0 16px 16px 0;
+}
+
+.list-item{
+  list-style: none;
+  width: 100%;
+}
+
+.list-item--click{
+  cursor: pointer;
+}
+
+.list-button{
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  width: 70%;
+  margin: 0 auto;
+}
+
+
+.list-arrow{
+  margin-left: auto;
+}
+
+.list-show{
+  width: 80%;
+  margin-left: auto;
+  border-left: 2px solid #303440;
+  list-style: none;
+  
 }

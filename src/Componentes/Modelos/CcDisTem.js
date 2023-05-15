@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
+import { useModal } from '../Hooks/useModal';
 import '../../Hojas-de-estilo/CocomoII.css';
 import Select from 'react-select';
 import Input from '../Input';
 import Boton from '../Boton';
+import Modal from '../Modal';
+import PuntosFuncion from './PuntosFuncion';
 
 function CcDisTemp(){
 
@@ -23,7 +26,9 @@ function CcDisTemp(){
   const [ Aresl , setResl ] = useState(4.24);
   const [ Ateam , setTeam ] = useState(3.29);
   const [ Apmat , setPmat ] = useState(4.68);
-  const [ Ksloc , setKsloc ] = useState('');
+  const [ Ksloc , setKsloc ] = useState(0);
+
+  const [isOpenModal,openModal,closeModal] = useModal(false);
 
   //Multiplicadores de esfuerzo
 
@@ -138,6 +143,8 @@ function CcDisTemp(){
     { label:"xhi", value:0 } 
   ]
 
+  var enviarSloc = function(numActual){ setKsloc(numActual/1000); }
+
   const handleSelectChangeRcpx = ( { value } ) => {
     console.log("Rcpx: " + value);
     setRcpx(value);
@@ -202,7 +209,7 @@ function CcDisTemp(){
     switch(name){
       case 'ksloc':
         setKsloc(value);
-        //console.log('Ksloc: ' + Ksloc);
+        console.log('Ksloc: ' + Ksloc);
         break;
       default:
         break;
@@ -232,104 +239,110 @@ function CcDisTemp(){
   }
 
   return(
-    <>
-    <hr/>
     <div className='contenedor-principal'>
-      <div>
-        Multiplicadores de esfuerzo <br/>{Arcpx}<br/>
-        <table>
-          <tbody>
-            <tr>
-              <td>RCPX:</td>
-              <td><Select options={ rcpx } defaultValue={ rcpx[3] } onChange={ handleSelectChangeRcpx } /></td>
-            </tr>
-            <tr>
-              <td>RUSE:</td>
-              <td><Select options={ ruse } defaultValue={ ruse[1] } onChange={ handleSelectChangeRuse }/></td>
-            </tr>
-            <tr>
-              <td>PDIF:</td>
-              <td><Select options={ pdif } defaultValue={ pdif[1] } onChange={ handleSelectChangePdif } /></td>
-            </tr>
-            <tr>
-              <td>PERS:</td>
-              <td><Select options={ pers } defaultValue={ pers[3] } onChange={ handleSelectChangePers } /></td>
-            </tr>
-            <tr>
-              <td>PREX:</td>
-              <td><Select options={ prex } defaultValue={ prex[3] } onChange={ handleSelectChangePrex } /></td>
-            </tr>
-            <tr>
-              <td>FCIL:</td>
-              <td><Select options={ fcil } defaultValue={ fcil[3] } onChange={ handleSelectChangeFcil } /></td>
-            </tr>
-            <tr>
-              <td>SCED:</td>
-              <td><Select options={ sced } defaultValue={ sced[2] } onChange={ handleSelectChangeSced }/></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div>
-        Factor exponencial de escala <br/><br/>
-        <table>
-          <tbody>
-            <tr>
-              <td>PREC:</td>
-              <td><Select options={ prec } defaultValue={ prec[2] } onChange={ handleSelectChangePrec } /></td>
-            </tr>
-            <tr>
-              <td>FLEX:</td>
-              <td><Select options={ flex } defaultValue={ flex[2] } onChange={ handleSelectChangeFlex } /></td>
-            </tr>
-            <tr>
-              <td>RESL:</td>
-              <td><Select options={ resl } defaultValue={ resl[2] } onChange={ handleSelectChangeResl } /></td>
-            </tr>
-            <tr>
-              <td>TEAM:</td>
-              <td><Select options={ team } defaultValue={ team[2] } onChange={ handleSelectChangeTeam } /></td>
-            </tr>
-            <tr>
-              <td>PMAT:</td>
-              <td><Select options={ pmat } defaultValue={ pmat[2] } onChange={ handleSelectChangePmat } /></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div>
-        <table>
-          <tbody>
-            <tr>
-              <td>KSLOC: {Ksloc}</td>
-              <td>
-              <Input
-                attribute={{
-                  id: 'ksloc',
-                  name: 'ksloc',
-                  type: 'number',
-                  placeholder: '0'
-                }}
-                handleChange={handleChange}
-              />
-              </td>
-            </tr>
-            <tr>
-              <td>P estimado:</td>
-              <td>{pmEst}</td>
-            </tr>
-            <tr>
-              <td><Boton
+      <div className='contenedor-diseñotemprano'>
+        <div>
+          Multiplicadores de esfuerzo <br/>
+          <table>
+            <tbody>
+              <tr>
+                <td>RCPX:</td>
+                <td><Select options={ rcpx } defaultValue={ rcpx[3] } onChange={ handleSelectChangeRcpx } /></td>
+              </tr>
+              <tr>
+                <td>RUSE:</td>
+                <td><Select options={ ruse } defaultValue={ ruse[1] } onChange={ handleSelectChangeRuse }/></td>
+              </tr>
+              <tr>
+                <td>PDIF:</td>
+                <td><Select options={ pdif } defaultValue={ pdif[1] } onChange={ handleSelectChangePdif } /></td>
+              </tr>
+              <tr>
+                <td>PERS:</td>
+                <td><Select options={ pers } defaultValue={ pers[3] } onChange={ handleSelectChangePers } /></td>
+              </tr>
+              <tr>
+                <td>PREX:</td>
+                <td><Select options={ prex } defaultValue={ prex[3] } onChange={ handleSelectChangePrex } /></td>
+              </tr>
+              <tr>
+                <td>FCIL:</td>
+                <td><Select options={ fcil } defaultValue={ fcil[3] } onChange={ handleSelectChangeFcil } /></td>
+              </tr>
+              <tr>
+                <td>SCED:</td>
+                <td><Select options={ sced } defaultValue={ sced[2] } onChange={ handleSelectChangeSced }/></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div>
+          Factor exponencial de escala <br/><br/>
+          <table>
+            <tbody>
+              <tr>
+                <td>PREC:</td>
+                <td><Select options={ prec } defaultValue={ prec[2] } onChange={ handleSelectChangePrec } /></td>
+              </tr>
+              <tr>
+                <td>FLEX:</td>
+                <td><Select options={ flex } defaultValue={ flex[2] } onChange={ handleSelectChangeFlex } /></td>
+              </tr>
+              <tr>
+                <td>RESL:</td>
+                <td><Select options={ resl } defaultValue={ resl[2] } onChange={ handleSelectChangeResl } /></td>
+              </tr>
+              <tr>
+                <td>TEAM:</td>
+                <td><Select options={ team } defaultValue={ team[2] } onChange={ handleSelectChangeTeam } /></td>
+              </tr>
+              <tr>
+                <td>PMAT:</td>
+                <td><Select options={ pmat } defaultValue={ pmat[2] } onChange={ handleSelectChangePmat } /></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div>
+          <table>
+            <tbody>
+              <tr>
+                <td>KSLOC: {Ksloc}</td>
+                <td>
+                  <Input
+                    attribute={{
+                      id: 'ksloc',
+                      name: 'ksloc',
+                      type: 'number'
+                    }}
+                    handleChange={handleChange}
+                />
+                </td>
+                <td>
+                  <Boton 
+                    name='boton-Modal'
+                    funcion={openModal}
+                    texto='Puntos de funcion'/>
+                  <Modal isOpen={isOpenModal} closeModal={closeModal}>
+                    <PuntosFuncion enviarSloc={enviarSloc} />
+                  </Modal>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <Boton
                     name='boton'
                     funcion={calcularEstimacion}
                     texto='Calcular' />
-              </td>
-            </tr>
-          </tbody>
-        </table>
+                </td>
+                <td>P estimado:</td>
+                <td>{pmEst}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
-    </>
   );
 }
 

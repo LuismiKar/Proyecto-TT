@@ -102,7 +102,6 @@ var FactorComplejidad = function({ cambiarFactorComplejidad }){
 
   function calcularFactorComplejidad(){
     setTotalFC( f1 + f2 + f3 + f4 + f5 + f6 + f7 + f8 + f9 + f10 + f11 + f12 + f13 + f14 );
-    cambiarFactorComplejidad(totalFC);
   }
 
   return(
@@ -169,11 +168,8 @@ var FactorComplejidad = function({ cambiarFactorComplejidad }){
           <Boton 
             name='BotonFC'
             funcion={calcularFactorComplejidad}
+            onMouseOver={cambiarFactorComplejidad(totalFC)}
             texto='Calcular FC' />
-        </tr>
-        <tr>
-          <td>Total de factor complejidad: </td>
-          <td>{ totalFC }</td>
         </tr>
       </table>
     </div>

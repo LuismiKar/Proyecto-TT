@@ -3,15 +3,15 @@ button {
     height: 50px;
     font-family: Roboto, sans-serif;
     font-weight: bold;
-    font-size: 100%;
-    color: white;
-    border: 2px solid white;
+    font-size: 75%;
+    color: #565656;
+    border: 2px solid #85F4FF;
     border-radius: 15px;
-    background-color: #00FADC;
+    background-color: #85F4FF;
     margin: 5px;
     cursor: pointer; /*cuando el cursor se ubique en el boton, se muestra una manita*/
   }
   
   button:hover { /*Cuando el cursor se encuentre sobre el boton sin presionarlo*/
-    background-color: #00471b; 
+    background-color: #B8FFF9; 
   }

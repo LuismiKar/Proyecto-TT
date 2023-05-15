@@ -7,6 +7,9 @@ function App() {
       <div className='barra'>
         <Barra/>
       </div>
+      <div className=''>
+
+      </div>
     </div>
   );
 }

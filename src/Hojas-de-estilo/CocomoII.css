@@ -1,23 +1,70 @@
 .contenedor-principal{
+  margin-right: 10%;
+  margin-left: 20%;
+  text-align: center;
+}
+
+.contenedor-postarquitectura{
   flex-direction: row;
   display: flex;
   flex-wrap: wrap;
 }
 
-.contenedor-principal > div {
-  width: 40%;
-  margin-top: 50px;
+.contenedor-postarquitectura > div {
+  width: 50%;
 }
 
-.contenedor-principal2{
+.contenedor-composicionaplicacion{
   flex-direction: row;
   display: flex;
   flex-wrap: wrap;
 }
 
-.contenedor-principal2 > div {
-  width: 20%;
-  margin-top: 50px;
+.contenedor-composicionaplicacion > div {
+  width: 50%;
+}
+
+.contenedor-puntoobjeto{
+  flex-direction: row;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.contenedor-puntoobjeto > div {
+  width: 33.3%;
+}
+
+.contenedor-diseñotemprano{
+  flex-direction: row;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.contenedor-diseñotemprano > div {
+  width: 50%;
+  margin-top: 10px;
+}
+
+.contenedor-puntosfuncion{
+  flex-direction: row;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.contenedor-puntosfuncion > div {
+  width: 50%;
+  margin-top: 10px;
+}
+
+.contenedor-cosmic{
+  flex-direction: row;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.contenedor-cosmic > div {
+  width: 50%;
+  margin-top: 100px;
 }
 
 table {

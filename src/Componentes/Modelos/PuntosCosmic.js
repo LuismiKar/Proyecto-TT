@@ -46,9 +46,8 @@ function PuntosCosmic(){
   }
 
   return(
-    <>
-    <hr/>
-      <div className='contenedor-principal'>
+    <div className='contenedor-principal'>
+      <div className='contenedor-cosmic'>
         <div>
           <FormularioCosmic onSubmit={ agregarPfc } enviarTotalPf={ enviarTotalPf } />
         </div>
@@ -87,7 +86,7 @@ function PuntosCosmic(){
       Puntos de funcion Cosmic: { totalPfC }<br/>
       Tasa de entrega: { tasaEntrega }<br/>
       Esfuerzo: { esfuerzo }<br/>
-    </>
+    </div>
   );
 }
 

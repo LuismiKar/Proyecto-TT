@@ -14,6 +14,8 @@ function CcCompAp(){
   const [ prod , setProd ] = useState(0);
   const [ ecDes , setEcDes ] = useState(0);
   const [ mcIcase , setMcIcase ] = useState(0);
+  const [ nombreProyecto , setNombreProyecto ] = useState('');
+
 
   const Tablaprod = [
     { label:"vlo", value:4 },
@@ -27,42 +29,65 @@ function CcCompAp(){
     setPtsobj(numActual);
   }
 
-  const handleSelectChangeReuso = ( name , value ) => {
-    if(name==='reuso'){
-      console.log("Reuso: " + value);
-      setReuso(value);
+  const handleSelectChange = ( name , value ) => {
+    switch (name) {
+      case 'reuso':
+        console.log("Reuso: " + value);
+        setReuso(value);
+        setNptsobj( ptsObj * ( 100 - reuso ) / 100 ); 
+        break;
+      case 'nombre-proyecto':
+        console.log("Nombre: " + value);
+        setNombreProyecto(value);
+        break;
+      default:
+        break;
     }
   }
 
   const handleSelectChangeEcDes = ( { value } ) => {
-    console.log("EcDes: " + value);
     setEcDes(value);
+    console.log("EcDes: " + value);
   }
 
   const handleSelectChangeMcIcase = ( { value } ) => {
-    console.log("McIcase: " + value);
     setMcIcase(value);
+    console.log("McIcase: " + value);
+  }
+
+  function calcularProd(){
+    setProd( (ecDes + mcIcase) / 2 );
+    
   }
 
   function calcularPm(){
-    setNptsobj( ptsObj * ( 100 - reuso ) / 100 ); 
-    console.log(NptsObj);
-    setProd( (ecDes + mcIcase) / 2 );
-    console.log(prod);
+    //setNptsobj( ptsObj * ( 100 - reuso ) / 100 ); 
+    console.log('Nuevos Puntos objetos: '+NptsObj);
+    console.log('Prod: ' + prod);
     setPm( NptsObj / prod );
-    console.log( pm );
+    console.log('Esfuerzo: ' + pm );
   }
 
   return(
-    <div>
-      <hr/>
+    <div className='contenedor-principal' >
       <h3>Puntos objeto</h3> 
       <PuntosObjeto cambiarPtsObj={ cambiarPtsObj }/>
       Puntos objeto: { ptsObj }
       <hr/>
-      <div className='contenedor-principal2'>
+      <div className='contenedor-composicionaplicacion'>
       <table>
         <tbody>
+          <tr>
+            <td><h4>Nombre del proyecto: {nombreProyecto}</h4></td>
+            <td><Input 
+              attribute={{
+                id: 'nombre-proyecto',
+                name: 'nombre-proyecto',
+                type: 'text',
+                placeholder: 'Ingrese nombre'
+              }}
+              handleChange={ handleSelectChange }/></td>
+          </tr>
           <tr>Porcentaje de reuso: 
           <td><Input 
             attribute={{
@@ -71,7 +96,7 @@ function CcCompAp(){
               type: 'number',
               placeholder: ''
             }}
-            handleChange={ handleSelectChangeReuso }/></td>
+            handleChange={ handleSelectChange }/></td>
           </tr>
           <tr>Productividad</tr>
           <tr>
@@ -94,7 +119,8 @@ function CcCompAp(){
             <Boton
               name='boton-'
               funcion={ calcularPm }
-              texto='Calcular PM' />
+              texto='Calcular PM' 
+              onMouseOver={calcularProd}/>
           </tr>
         </tbody>
       </table>

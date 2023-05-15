@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
+import '../Hojas-de-estilo/InicioSesion.css'
 import Input from './Input';
 
 function Registro(){
@@ -39,7 +40,7 @@ function Registro(){
   }
   
   return(
-    <><hr/>
+    <>
     <div className='inicio-sesion-principal'>
       <form className='contenedor-formulario' onSubmit={validarRegistro}>
         <label>Nombre usuario: </label>

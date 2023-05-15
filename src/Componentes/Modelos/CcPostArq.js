@@ -385,150 +385,149 @@ function CcPostArq(){
   }
 
   return(
-    <>
-    <hr/>
     <div className='contenedor-principal'>
-      <div>
-      Multiplicadores de esfuerzo
-        <table>
-          <tbody>
-            <tr>Producto</tr>
-            <tr>
-              <td>RELY:</td>
-              <td><Select options={ rely } defaultValue={ rely[2] } onChange={ handleSelectChangeRely } /></td>
-            </tr>
-            <tr>
-              <td>DATA:</td>
-              <td><Select options={ data } defaultValue={ data[1] } onChange={ handleSelectChangeData } /></td>
-            </tr>
-            <tr>
-              <td>DOCU:</td>
-              <td><Select options={ docu } defaultValue={ docu[2] } onChange={ handleSelectChangeDocu } /></td>
-            </tr>
-            <tr>
-              <td>CPLX:</td>
-              <td><Select options={ cplx } defaultValue={ cplx[2] } onChange={ handleSelectChangeCplx } /></td>
-            </tr>
-            <tr>
-              <td>RUSE:</td>
-              <td><Select options={ ruse } defaultValue={ ruse[1] } onChange={ handleSelectChangeRuse }/></td>
-            </tr>
-            <br/>Plataforma<br/>
-            <tr>
-              <td>TIME:</td>
-              <td><Select options={ time } defaultValue={ time[0] } onChange={ handleSelectChangeTime } /></td>
-            </tr>
-            <tr>
-              <td>STOR:</td>
-              <td><Select options={ stor } defaultValue={ stor[0] } onChange={ handleSelectChangeStor } /></td>
-            </tr>
-            <tr>
-              <td>PVOL:</td>
-              <td><Select options={ pvol } defaultValue={ pvol[1] } onChange={ handleSelectChangePvol } /></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div>
-        <table>
-          <tbody>
-            <tr/>Personal<tr/>
-            <tr>
-              <td>ACAP:</td>
-              <td><Select options={ acap } defaultValue={ acap[2] } onChange={ handleSelectChangeAcap }/></td>
-            </tr>
-            <tr>
-              <td>AEXP:</td>
-              <td><Select options={ aexp } defaultValue={ aexp[2] } onChange={ handleSelectChangeAexp }/></td>
-            </tr>
-            <tr>
-              <td>PCAP:</td>
-              <td><Select options={ pcap } defaultValue={ pcap[2] } onChange={ handleSelectChangePcap }/></td>
-            </tr>
-            <tr>
-              <td>PEXP:</td>
-              <td><Select options={ pexp } defaultValue={ pexp[2] } onChange={ handleSelectChangePexp }/></td>
-            </tr>
-            <tr>
-              <td>LTEX:</td>
-              <td><Select options={ ltex } defaultValue={ ltex[2] } onChange={ handleSelectChangeLtex }/></td>
-            </tr>
-            <tr>
-              <td>PCON:</td>
-              <td><Select options={ pcon } defaultValue={ pcon[2] } onChange={ handleSelectChangePcon }/></td>
-            </tr>
-            <tr/>Proyecto<tr/>
-            <tr>
-              <td>TOOL:</td>
-              <td><Select options={ tool } defaultValue={ tool[2] } onChange={ handleSelectChangeTool }/></td>
-            </tr>
-            <tr>
-              <td>SCED:</td>
-              <td><Select options={ sced } defaultValue={ sced[2] } onChange={ handleSelectChangeSced }/></td>
-            </tr>
-            <tr>
-              <td>SITE:</td>
-              <td><Select options={ site } defaultValue={ site[2] } onChange={ handleSelectChangeSite }/></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div>
-        Factor exponencial de escala <br/><br/>
-        <table>
-          <tbody>
-            <tr>
-              <td>PREC:</td>
-              <td><Select options={ prec } defaultValue={ prec[2] } onChange={ handleSelectChangePrec } /></td>
-            </tr>
-            <tr>
-              <td>FLEX:</td>
-              <td><Select options={ flex } defaultValue={ flex[2] } onChange={ handleSelectChangeFlex } /></td>
-            </tr>
-            <tr>
-              <td>RESL:</td>
-              <td><Select options={ resl } defaultValue={ resl[2] } onChange={ handleSelectChangeResl } /></td>
-            </tr>
-            <tr>
-              <td>TEAM:</td>
-              <td><Select options={ team } defaultValue={ team[2] } onChange={ handleSelectChangeTeam } /></td>
-            </tr>
-            <tr>
-              <td>PMAT:</td>
-              <td><Select options={ pmat } defaultValue={ pmat[2] } onChange={ handleSelectChangePmat } /></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div>
-        <table>
-          <tbody>
-            <tr>
-              <td>KSLOC: {Ksloc}</td>
-              <td>
-              <Input
-                attribute={{
-                  id: 'ksloc',
-                  name: 'ksloc',
-                  type: 'number',
-                  placeholder: '0'
-                }}
-                handleChange={handleChange}
-              />
-              </td>
-            </tr>
-            <tr>
-              <td><Boton
-                    name='boton'
-                    funcion={calcularEstimacion}
-                    texto='Calcular' />
-              </td>
-            </tr>
-          </tbody>
-        </table>
+      <div className='contenedor-postarquitectura'>
+        <div>
+        Multiplicadores de esfuerzo
+          <table>
+            <tbody>
+              <tr>Producto</tr>
+              <tr>
+                <td>RELY:</td>
+                <td><Select options={ rely } defaultValue={ rely[2] } onChange={ handleSelectChangeRely } /></td>
+              </tr>
+              <tr>
+                <td>DATA:</td>
+                <td><Select options={ data } defaultValue={ data[1] } onChange={ handleSelectChangeData } /></td>
+              </tr>
+              <tr>
+                <td>DOCU:</td>
+                <td><Select options={ docu } defaultValue={ docu[2] } onChange={ handleSelectChangeDocu } /></td>
+              </tr>
+              <tr>
+                <td>CPLX:</td>
+                <td><Select options={ cplx } defaultValue={ cplx[2] } onChange={ handleSelectChangeCplx } /></td>
+              </tr>
+              <tr>
+                <td>RUSE:</td>
+                <td><Select options={ ruse } defaultValue={ ruse[1] } onChange={ handleSelectChangeRuse }/></td>
+              </tr>
+              <br/>Plataforma<br/>
+              <tr>
+                <td>TIME:</td>
+                <td><Select options={ time } defaultValue={ time[0] } onChange={ handleSelectChangeTime } /></td>
+              </tr>
+              <tr>
+                <td>STOR:</td>
+                <td><Select options={ stor } defaultValue={ stor[0] } onChange={ handleSelectChangeStor } /></td>
+              </tr>
+              <tr>
+                <td>PVOL:</td>
+                <td><Select options={ pvol } defaultValue={ pvol[1] } onChange={ handleSelectChangePvol } /></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div>
+          <table>
+            <tbody>
+              <tr/>Personal<tr/>
+              <tr>
+                <td>ACAP:</td>
+                <td><Select options={ acap } defaultValue={ acap[2] } onChange={ handleSelectChangeAcap }/></td>
+              </tr>
+              <tr>
+                <td>AEXP:</td>
+                <td><Select options={ aexp } defaultValue={ aexp[2] } onChange={ handleSelectChangeAexp }/></td>
+              </tr>
+              <tr>
+                <td>PCAP:</td>
+                <td><Select options={ pcap } defaultValue={ pcap[2] } onChange={ handleSelectChangePcap }/></td>
+              </tr>
+              <tr>
+                <td>PEXP:</td>
+                <td><Select options={ pexp } defaultValue={ pexp[2] } onChange={ handleSelectChangePexp }/></td>
+              </tr>
+              <tr>
+                <td>LTEX:</td>
+                <td><Select options={ ltex } defaultValue={ ltex[2] } onChange={ handleSelectChangeLtex }/></td>
+              </tr>
+              <tr>
+                <td>PCON:</td>
+                <td><Select options={ pcon } defaultValue={ pcon[2] } onChange={ handleSelectChangePcon }/></td>
+              </tr>
+              <tr/>Proyecto<tr/>
+              <tr>
+                <td>TOOL:</td>
+                <td><Select options={ tool } defaultValue={ tool[2] } onChange={ handleSelectChangeTool }/></td>
+              </tr>
+              <tr>
+                <td>SCED:</td>
+                <td><Select options={ sced } defaultValue={ sced[2] } onChange={ handleSelectChangeSced }/></td>
+              </tr>
+              <tr>
+                <td>SITE:</td>
+                <td><Select options={ site } defaultValue={ site[2] } onChange={ handleSelectChangeSite }/></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div>
+          Factor exponencial de escala <br/><br/>
+          <table>
+            <tbody>
+              <tr>
+                <td>PREC:</td>
+                <td><Select options={ prec } defaultValue={ prec[2] } onChange={ handleSelectChangePrec } /></td>
+              </tr>
+              <tr>
+                <td>FLEX:</td>
+                <td><Select options={ flex } defaultValue={ flex[2] } onChange={ handleSelectChangeFlex } /></td>
+              </tr>
+              <tr>
+                <td>RESL:</td>
+                <td><Select options={ resl } defaultValue={ resl[2] } onChange={ handleSelectChangeResl } /></td>
+              </tr>
+              <tr>
+                <td>TEAM:</td>
+                <td><Select options={ team } defaultValue={ team[2] } onChange={ handleSelectChangeTeam } /></td>
+              </tr>
+              <tr>
+                <td>PMAT:</td>
+                <td><Select options={ pmat } defaultValue={ pmat[2] } onChange={ handleSelectChangePmat } /></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div>
+          <table>
+            <tbody>
+              <tr>
+                <td>KSLOC: {Ksloc}</td>
+                <td>
+                <Input
+                  attribute={{
+                    id: 'ksloc',
+                    name: 'ksloc',
+                    type: 'number',
+                    placeholder: '0'
+                  }}
+                  handleChange={handleChange}
+                />
+                </td>
+              </tr>
+              <tr>
+                <td><Boton
+                      name='boton'
+                      funcion={calcularEstimacion}
+                      texto='Calcular' />
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
-    </>
   );
 }
 

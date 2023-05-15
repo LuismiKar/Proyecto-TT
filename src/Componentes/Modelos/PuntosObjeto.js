@@ -39,6 +39,7 @@ var PuntosObjeto = function({ cambiarPtsObj }){
         break;
       case 'servidores':
         setServidores(value);
+        
         break;
       default:
         break;
@@ -91,13 +92,12 @@ var PuntosObjeto = function({ cambiarPtsObj }){
     asignarPesoPantallas();
     asignarPesoReportes();
     setTotalPtsObj( complejidadPant + complejidadRep + complejidad3gl );
-    enviarDatos(totalPtsObj);
   }
 
   return(
-    <div className='contenedor-principal2'><br />
+    <div className='contenedor-puntoobjeto'><br />
       <div>
-        Ingresa el numero de pantallas: 
+        Ingresa el número de pantallas: 
         <Input 
           attribute={{
             id: 'pantallas',
@@ -106,7 +106,7 @@ var PuntosObjeto = function({ cambiarPtsObj }){
             placeholder: ''
           }}
           handleChange={handleChange}/>
-        Ingresa el numero de reportes: 
+        Ingresa el número de reportes: 
         <Input 
           attribute={{
             id: 'reportes',
@@ -115,7 +115,7 @@ var PuntosObjeto = function({ cambiarPtsObj }){
             placeholder: ''
           }}
           handleChange={handleChange}/> 
-        Ingresa el numero de servidores: 
+        Ingresa el número de servidores: 
         <Input 
           attribute={{
             id: 'servidores',
@@ -136,7 +136,8 @@ var PuntosObjeto = function({ cambiarPtsObj }){
         <Boton
           name='boton-ptsobj'
           funcion={calcularPtsObj}
-          texto='Calcular' />
+          texto='Calcular'
+          onMouseOver={enviarDatos(totalPtsObj)} />
         <br />Puntos objeto: {totalPtsObj}
       </div>
     </div>

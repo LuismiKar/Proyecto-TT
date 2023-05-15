@@ -1,0 +1,17 @@
+.contenedor-principal{
+    margin-right: 10%;
+    margin-left: 20%;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .contenedor-listaproyecto{
+    flex-direction: row;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .contenedor-listaproyecto > div {
+    width: 50%;
+  }

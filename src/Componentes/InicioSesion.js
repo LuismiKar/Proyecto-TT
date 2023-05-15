@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import Input from './Input';
+import '../Hojas-de-estilo/InicioSesion.css'
 
 function InicioSesion(){
   const [email,setEmail] = useState('');
@@ -28,10 +29,10 @@ function InicioSesion(){
   }
   
   return(
-    <><hr/>
+    <>
     <div className='inicio-sesion-principal'>
       <form className='contenedor-formulario' onSubmit={validarRegistro}>
-      <label>Correo electrónico: </label>
+      Correo electrónico:
         <Input
           attribute={{
             id: 'email',
@@ -42,7 +43,7 @@ function InicioSesion(){
           handleChange={handleChange}
         />
         <br/>
-        <label>Contraseña: </label>
+        Contraseña: 
         <Input
           attribute={{
             id: 'password',

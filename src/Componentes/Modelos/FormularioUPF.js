@@ -55,6 +55,7 @@ var FormularioUPF = function( props ) {
         setPeso(ComplejidadPeso['AIprom']);
       else
         setPeso(ComplejidadPeso['AEprom']);
+        
     }else{
       if(tipo==='ALI')  
         setPeso(ComplejidadPeso['AIalto']);
@@ -119,7 +120,6 @@ var FormularioUPF = function( props ) {
       peso: peso
     }
     props.onSubmit(NuevoUFP);
-    asignarFuncionPeso();
     props.enviarPeso(peso);
   };
 
@@ -222,7 +222,8 @@ var FormularioUPF = function( props ) {
       </table>   
         <Boton 
           name='formulario-boton' 
-          texto='Agregar Upf' /> 
+          texto='Agregar Upf'
+          onMouseOver={asignarFuncionPeso} /> 
     </form>
     </>
   );

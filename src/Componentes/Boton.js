@@ -1,12 +1,13 @@
 import React from 'react';
 import '../Hojas-de-estilo/Boton.css';
 
-function Boton({ name, funcion, texto }) {
+function Boton({ name, funcion, texto, onMouseOver }) {
 
   return (
     <button
       className={name}
-      onClick={funcion} >
+      onClick={funcion}
+      onMouseOver={onMouseOver} >
       {texto}
     </button>
   );
