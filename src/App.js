@@ -1,3 +1,4 @@
+import React from 'react';
 import './App.css';
 import Barra from './Componentes/Barra';
 
