@@ -2,6 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import Input from './Input';
 import '../Hojas-de-estilo/InicioSesion.css'
+import { BrowserRouter as Router, Link} from 'react-router-dom';
 
 function InicioSesion(){
   const [email,setEmail] = useState('');
@@ -57,6 +58,8 @@ function InicioSesion(){
         <button className='boton-registro'>
           Iniciar Sesión
         </button>
+        <br/>
+        <Link>Olvidé mi contraseña</Link>
       </form>
     </div>
     </>

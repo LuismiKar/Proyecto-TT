@@ -2,6 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import '../Hojas-de-estilo/InicioSesion.css'
 import Input from './Input';
+import { BrowserRouter as Router, Link} from 'react-router-dom';
 
 function Registro(){
 
@@ -79,6 +80,8 @@ function Registro(){
         <button className='boton-registro'>
           Registrarse
         </button>
+        <br/>
+        <Link>Ya tengo una cuenta</Link>
       </form>
     </div>
     </>

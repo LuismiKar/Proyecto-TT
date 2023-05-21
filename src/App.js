@@ -1,15 +1,17 @@
+import React, { useEffect } from 'react';
 import './App.css';
-import Barra from './Componentes/Barra';
+import PaginaPrincipal from './Componentes/PaginaPrincipal';
+
 
 function App() {
+
+  useEffect(() => {
+    document.title = 'Trabajo terminal A-089';
+  }, []);
+
   return (
     <div className="App">
-      <div className='barra'>
-        <Barra/>
-      </div>
-      <div className=''>
-
-      </div>
+      <PaginaPrincipal/>
     </div>
   );
 }

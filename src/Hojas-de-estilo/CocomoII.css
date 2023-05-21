@@ -1,7 +1,6 @@
 .contenedor-principal{
-  margin-right: 10%;
-  margin-left: 20%;
   text-align: center;
+  width: auto;
 }
 
 .contenedor-postarquitectura{
@@ -42,7 +41,6 @@
 
 .contenedor-diseñotemprano > div {
   width: 50%;
-  margin-top: 10px;
 }
 
 .contenedor-puntosfuncion{
