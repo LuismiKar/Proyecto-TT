@@ -1,8 +1,9 @@
 import React from 'react';
 import '../Hojas-de-estilo/Input.css'
-import { FiCheck } from "react-icons/fi";
+import { FiCheck, FiX } from "react-icons/fi";
+import { Label , GrupoInput, Input , LeyendaError, IconoValidacion} from '../Elementos/InicioSesionElementos';
 
-function ComponenteInput({ name,  estado, attribute, handleChange, expresionRegular, leyendaerror }) {
+function ComponenteInput({ name,  estado, attribute, handleChange, expresionRegular, leyendaerror , funcion }) {
 
     const onChange = (e) => {
         handleChange({...estado, campo: e.target.value});
@@ -11,34 +12,42 @@ function ComponenteInput({ name,  estado, attribute, handleChange, expresionRegu
 	const validacion = () => {
 		if(expresionRegular){
 			if(expresionRegular.test(estado.campo)){
-				handleChange({...estado, valido: 'true'})
+				handleChange({...estado, valido: 'true'});
+                console.log(estado.valido);
 			} else {
-				handleChange({...estado, valido: 'false'})
+				handleChange({...estado, valido: 'false'});
+                console.log(estado.valido);
 			}
 		}
+        if(funcion){
+            funcion();
+        }
+
 	}
 
 	return(
 		<div className='contenedor-input'>
-            <label>{name} </label>
-            <div className='grupo-input'>
-                <input
-                    id={attribute.id}
+            <Label>{name} </Label>
+            <GrupoInput>
+                <Input
+                    id={attribute.id }
                     name={attribute.name}
                     value={estado.campo}
                     placeholder={attribute.placeholder}
                     type={attribute.type}
                     onChange={ onChange }
-                    className='input'
                     onKeyUp={validacion}
                     onBlur={validacion}
                     valido={estado.valido}
                 />
-                <FiCheck className='icono-validacion'/>
-            </div>
-            <div className='leyenda-error'> 
+                <IconoValidacion 
+                    icon={estado.valido === 'true' ? FiCheck : FiX} 
+                    valido={estado.valido}
+                />
+            </GrupoInput>
+            <LeyendaError valido={estado.valido}> 
               {leyendaerror}
-            </div>
+            </LeyendaError>
 		</div>
 	)
 };
