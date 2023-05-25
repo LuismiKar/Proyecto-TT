@@ -97,48 +97,64 @@ var PuntosObjeto = function({ cambiarPtsObj }){
   return(
     <div className='contenedor-puntoobjeto'><br />
       <div>
-        Ingresa el número de pantallas: 
-        <Input 
-          attribute={{
-            id: 'pantallas',
-            name: 'pantallas',
-            type: 'number',
-            placeholder: ''
-          }}
-          handleChange={handleChange}/>
-        Ingresa el número de reportes: 
-        <Input 
-          attribute={{
-            id: 'reportes',
-            name: 'reportes',
-            type: 'number',
-            placeholder: ''
-          }}
-          handleChange={handleChange}/> 
-        Ingresa el número de servidores: 
-        <Input 
-          attribute={{
-            id: 'servidores',
-            name: 'servidores',
-            type: 'servidores',
-            placeholder: ''
-          }}
-          handleChange={handleChange}/> <br />{complejidadPant}<br />{complejidadRep}<br />
+        <table>
+          <tr>
+            <td>Ingresa el número de pantallas: </td>
+            <td>
+              <Input 
+                attribute={{
+                  id: 'pantallas',
+                  name: 'pantallas',
+                  type: 'number',
+                  placeholder: ''
+                }}
+                handleChange={handleChange}/>
+            </td>
+          </tr>
+          <tr>
+            <td>Ingresa el número de reportes:</td>
+            <td>
+              <Input 
+                attribute={{
+                  id: 'reportes',
+                  name: 'reportes',
+                  type: 'number',
+                  placeholder: ''
+                }}
+                handleChange={handleChange}/> 
+            </td>
+          </tr>   
+          <tr>
+            <td>Ingresa el número de servidores:</td>
+            <td>
+              <Input 
+                attribute={{
+                  id: 'servidores',
+                  name: 'servidores',
+                  type: 'servidores',
+                  placeholder: ''
+                }}
+                handleChange={handleChange}/> 
+            </td>
+          </tr>
+        </table>
       </div>
       <div>
         Complejidad 3GL
         <Select 
           options={ comp3gl } 
           defaultValue={ comp3gl[1] }
-          onChange={ handleSelectChangeCom3gl } />{complejidad3gl}
-      </div>
-      <div>
+          onChange={ handleSelectChangeCom3gl } />
         <Boton
           name='boton-ptsobj'
           funcion={calcularPtsObj}
           texto='Calcular'
           onMouseOver={enviarDatos(totalPtsObj)} />
-        <br />Puntos objeto: {totalPtsObj}
+
+      </div>
+      <div>
+        
+        <br />
       </div>
     </div>
   );

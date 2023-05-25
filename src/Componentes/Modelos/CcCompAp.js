@@ -70,24 +70,31 @@ function CcCompAp(){
 
   return(
     <div className='contenedor-principal' >
-      <h3>Puntos objeto</h3> 
-      <PuntosObjeto cambiarPtsObj={ cambiarPtsObj }/>
-      Puntos objeto: { ptsObj }
-      <hr/>
+      <div className='titulo'>
+        <h2>Composición de Aplicación</h2>
+      </div>
+      <div className='contenedor-nombreProyecto'>
+        <h4>Nombre del proyecto:</h4>
+          <Input 
+            attribute={{
+              id: 'nombre-proyecto',
+              name: 'nombre-proyecto',
+              type: 'text',
+              placeholder: 'Ingrese nombre'
+            }}
+            handleChange={ handleSelectChange }/>
+      </div>
+
+      <div className='contenedor-puntosobjeto'>
+        <div className='titulo'>
+          <h3>Puntos objeto</h3> 
+        </div>
+        <PuntosObjeto cambiarPtsObj={ cambiarPtsObj }/>
+      </div>
       <div className='contenedor-composicionaplicacion'>
       <table>
         <tbody>
-          <tr>
-            <td><h4>Nombre del proyecto: {nombreProyecto}</h4></td>
-            <td><Input 
-              attribute={{
-                id: 'nombre-proyecto',
-                name: 'nombre-proyecto',
-                type: 'text',
-                placeholder: 'Ingrese nombre'
-              }}
-              handleChange={ handleSelectChange }/></td>
-          </tr>
+          
           <tr>Porcentaje de reuso: 
           <td><Input 
             attribute={{
@@ -98,7 +105,7 @@ function CcCompAp(){
             }}
             handleChange={ handleSelectChange }/></td>
           </tr>
-          <tr>Productividad</tr>
+          <tr><h3>Productividad</h3></tr>
           <tr>
             <td>Experiencia y capacidad de los desarrolladores: </td>
             <td>

@@ -22,7 +22,7 @@ function PuntosCosmic(){
   var enviarTotalPf = function(numActual){ setTotalPfC( Number(totalPfC) + numActual); }
 
   const agregarPfc = pfc => {
-    if(pfc.nombre.trim()) { //Se verifica que la cadena no esta vacia
+    if(pfc.nombre.trim() && pfc.totalPF!==0 ) { //Se verifica que la cadena no esta vacia
       pfc.nombre = pfc.nombre.trim(); //Se le quitan los espacios del principio y del final a la cadena
       const pfcsActualizados = [pfc, ...pfcs];//El operador ... convierte los upfs de un arreglo a upfs individuales
       setPfcs(pfcsActualizados);
@@ -47,12 +47,26 @@ function PuntosCosmic(){
 
   return(
     <div className='contenedor-principal'>
+      <div className='titulo'>
+        <h2>COSMIC</h2>
+      </div>
+      <div className='contenedor-nombreProyecto'>
+        <h4>Nombre del proyecto: </h4>
+        <Input 
+            attribute={{
+              id: 'nombre-proyecto',
+              name: 'nombre-proyecto',
+              type: 'text',
+              placeholder: 'Ingrese nombre'
+            }}
+            handleChange={ handleChange }/>
+      </div>
       <div className='contenedor-cosmic'>
         <div>
           <FormularioCosmic onSubmit={ agregarPfc } enviarTotalPf={ enviarTotalPf } />
         </div>
         <div>
-        Tasa de entrega: 
+        <h4>Tasa de entrega: </h4>
           <Input 
             attribute={{
               id: 'tasaEntrega',
@@ -61,10 +75,7 @@ function PuntosCosmic(){
               placeholder: ''
             }}
             handleChange={handleChange}/>
-          <Boton 
-            name='calcularUFP-boton' 
-            funcion={calcularEsfuerzo}
-            texto='Calcular UFP' />
+          
         </div>
         <div>
           {
@@ -81,7 +92,12 @@ function PuntosCosmic(){
             )
           }
         </div>
+        
       </div>
+      <Boton 
+            name='calcularUFP-boton' 
+            funcion={calcularEsfuerzo}
+            texto='Calcular UFP' />
       <hr/>
       Puntos de funcion Cosmic: { totalPfC }<br/>
       Tasa de entrega: { tasaEntrega }<br/>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Link, Route, Routes} from 'react-router-dom';
+import { BrowserRouter , Link, Route, Routes} from 'react-router-dom';
 import '../Hojas-de-estilo/Barra.css';
 import InicioSesion from './InicioSesion';
 import Registro from './Registro';
@@ -11,10 +11,10 @@ import GuiaUsuario from './GuiaUsuario'
 import ListaProyectos from './ListaProyectos';
 import Logo from '../Imagenes/logo4.png';
 import { SlMenu , SlArrowLeft , SlArrowRight} from "react-icons/sl";
-import { FiPlusCircle, FiList, FiHelpCircle } from "react-icons/fi";
+import { FiPlusCircle, FiList, FiHelpCircle , FiEdit } from "react-icons/fi";
 import { Sidebar, Menu, MenuItem, SubMenu, useProSidebar } from "react-pro-sidebar";
 
-function Barra(){
+function BarraAdmin(){
 
   const { collapseSidebar } = useProSidebar();
 
@@ -45,12 +45,15 @@ function Barra(){
                       </SubMenu>
                       <MenuItem component={<Link to="/cosmic/puntosdeFuncionCosmic" className='link'/>}>Puntos de función COSMIC</MenuItem>
                     </SubMenu>
-                  <MenuItem icon={<FiList/>} component={<Link to="/listaProyectos" className='link'/>} >Proyectos creados</MenuItem>
+                  <MenuItem icon={<FiList/>} component={<Link to="/listaProyectos" className='link'/>} >Lista de usuarios</MenuItem>
                   <MenuItem icon={<FiHelpCircle/>}>Guía de usuario</MenuItem>
+                  <MenuItem icon={<FiEdit/>}>Modificar tablas</MenuItem>
                 </Menu>
               </Sidebar>
               <section>
                 <Routes>
+                  <Route exact path="/registro" Component={Registro} />
+                  <Route exact path="/inicioSesion" Component={InicioSesion} />
                   <Route exact path="/cocomoii/composicionAplicacion" Component={CcCompAp} />
                   <Route exact path="/cocomoii/diseñoTemprano" Component={CcDisTem} />
                   <Route exact path="/cocomoii/postArquitectura" Component={CcPostArq} />
@@ -65,4 +68,4 @@ function Barra(){
   );
 }
 
-export default Barra;
+export default BarraAdmin;

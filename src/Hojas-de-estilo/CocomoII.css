@@ -1,6 +1,7 @@
 .contenedor-principal{
   text-align: center;
   width: auto;
+  
 }
 
 .contenedor-postarquitectura{
@@ -30,17 +31,20 @@
 }
 
 .contenedor-puntoobjeto > div {
-  width: 33.3%;
+  width: 50%;
 }
 
 .contenedor-diseñotemprano{
   flex-direction: row;
   display: flex;
   flex-wrap: wrap;
+  position: relative;
+  
 }
 
 .contenedor-diseñotemprano > div {
   width: 50%;
+  
 }
 
 .contenedor-puntosfuncion{
@@ -62,7 +66,6 @@
 
 .contenedor-cosmic > div {
   width: 50%;
-  margin-top: 100px;
 }
 
 table {
@@ -70,8 +73,39 @@ table {
   justify-content: center;
 }
 
-.select{
-  align-items: center;
-  justify-content: center;
+#select{
+  &__menu{
+    position: relative;
+  }
+  
 }
 
+.contenedor-nombreProyecto{
+  display: flex;
+  margin-bottom: 30px;
+}
+
+.contenedor-nombreProyecto h4{
+  margin-right: 20px;
+}
+
+.titulo{
+  margin-bottom: 40px;
+}
+
+.contenedor-puntosobjeto{
+  border: 1px solid #19A7CE;
+  border-radius: 7px;
+  margin-bottom: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+h3{
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.contenedor-ksloc{
+  margin-top: 50px;
+}

@@ -1,4 +1,5 @@
 import '../Hojas-de-estilo/Modal.css';
+import { FiX } from "react-icons/fi";
 
 const Modal = ({ children, isOpen, closeModal }) => {
 
@@ -7,7 +8,7 @@ const Modal = ({ children, isOpen, closeModal }) => {
   return(
     <article className={`modal ${isOpen && "abrir"}`} onClick={closeModal}>
       <div className="modal-contenedor" onClick={handleModalContainerClick}>
-        <button className="modal-cerrar" onClick={closeModal}>x</button>
+        <FiX className="modal-cerrar" onClick={closeModal} ></FiX>
         {children}
       </div>
     </article>

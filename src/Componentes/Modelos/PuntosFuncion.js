@@ -6,6 +6,7 @@ import FactorComplejidad from './FactorComplejidad';
 import Boton from '../Boton';
 import Select from 'react-select';
 
+
 //DET: Campos leidos 
 //FTR: Archivos referenciados por la transaccion
 //RET: Cantidad de tablas que componen el archivo logico
@@ -99,7 +100,9 @@ function PuntosFuncion( props ){
 
   return(
     <>
-      <h2>Puntos de función</h2>
+      <div className='titulo'>
+        <h2>Puntos de función</h2>
+      </div>
       <div className='contenedor-puntosfuncion'>
         <div>
           <FormularioUPF onSubmit={agregarUpf} enviarPeso={ enviarPeso } />

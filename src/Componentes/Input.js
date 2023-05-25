@@ -1,9 +1,11 @@
-import { type } from '@testing-library/user-event/dist/type';
 import React from 'react';
+import '../Hojas-de-estilo/Input.css'
 
-function Input({ attribute, handleChange, param }) {
+function Input({ attribute, handleChange }) {
+
+
 	return(
-		<div>
+		<div className='contenedor-input'>
 			<input
 				id={attribute.id}
 				name={attribute.name}
@@ -12,6 +14,7 @@ function Input({ attribute, handleChange, param }) {
 				type={attribute.type}
 				onChange={ (e) => handleChange(e.target.name, e.target.value) }
 				className='input'
+
 			/>
 		</div>
 	)

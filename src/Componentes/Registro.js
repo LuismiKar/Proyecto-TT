@@ -1,16 +1,25 @@
 import React from 'react';
 import { useState } from 'react';
-import '../Hojas-de-estilo/InicioSesion.css'
-import Input from './Input';
-import { BrowserRouter as Router, Link} from 'react-router-dom';
+import ComponenteInput from './ComponenteInput';
+import { Link } from 'react-router-dom';
+import '../Hojas-de-estilo/Registro.css'
+import { FiXCircle , FiCheck , FiAlertCircle } from "react-icons/fi";
 
 function Registro(){
 
-  const [username,setUsername] = useState('');
-  const [password,setPassword] = useState('');
-  const [email,setEmail] = useState('');
+  const [username,setUsername] = useState({campo:'', valido: null});
+  const [password,setPassword] = useState({campo:'', valido: null});
+  const [password2,setPassword2] = useState({campo:'', valido: null});
+  const [email,setEmail] = useState({campo:'', valido: null});
 
-  let erEmail = /^\w+([.-_+]?\w+)@\w+([.-]?\w+)(\.\w{2,10})+$/;
+
+
+  const expresiones = {
+    usuario: /^[a-zA-Z0-9\_\-]{4,16}$/, // Letras, numeros, guion y guion_bajo
+    nombre: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
+    password: /^.{4,12}$/, // 4 a 12 digitos.
+    correo: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
+  }
 
   function handleChange(name,value) {
     switch(name){
@@ -19,6 +28,9 @@ function Registro(){
         break;
       case 'password':
         setPassword(value);
+        break;
+      case 'password2':
+        setPassword2(value);
         break;
       case 'email':
         setEmail(value);
@@ -30,61 +42,92 @@ function Registro(){
 
   const validarRegistro = e =>{
     e.preventDefault();
-    if(erEmail.test(email)){
-      console.log('username: ',username);
-      console.log('password: ',password);
-      console.log('email: ',email);
-    }
-    else
-      alert("Email invalido");
+    
     
   }
   
   return(
-    <>
-    <div className='inicio-sesion-principal'>
-      <form className='contenedor-formulario' onSubmit={validarRegistro}>
-        <label>Nombre usuario: </label>
-        <Input
-          attribute={{
-            id: 'username',
-            name: 'username',
-            type: 'text',
-            placeholder: 'Ingresa tu usuario'
-          }}
-          handleChange={handleChange}
-        />
-        <br/>
-        <label>Contraseña: </label>
-        <Input
-          attribute={{
-            id: 'password',
-            name: 'password',
-            type: 'text',
-            placeholder: 'Ingresa tu contraseña'
-          }}
-          handleChange={handleChange}
-        />
-        <br/>
-        <label>Correo electrónico: </label>
-        <Input
-          attribute={{
-            id: 'email',
-            name: 'email',
-            type: 'email',
-            placeholder: 'Ingresa tu email'
-          }}
-          handleChange={handleChange}
-        />
-        <br/>
-        <button className='boton-registro'>
-          Registrarse
-        </button>
-        <br/>
-        <Link>Ya tengo una cuenta</Link>
-      </form>
-    </div>
-    </>
+    <main>
+      <div className='inicio-sesion-principal'>
+        <h2>Crear Cuenta</h2>
+        <form className='contenedor-formulario' onSubmit={validarRegistro}>
+          <div>
+              <ComponenteInput
+                attribute={{
+                  id: 'username',
+                  name: 'username',
+                  type: 'text',
+                  placeholder: 'Ingresa tu usuario'
+                }}
+                name='Nombre de usuario:'
+                estado={username}
+                handleChange={setUsername}
+                expresionRegular={expresiones.usuario}
+                leyendaerror='tas mal, pa'
+            />
+          </div>
+          <div>
+            <ComponenteInput
+                attribute={{
+                  id: 'email',
+                  name: 'email',
+                  type: 'email',
+                  placeholder: 'Ingresa tu email'
+                }}
+                name='Correo electronico:'
+                estado={email}
+                handleChange={setEmail}
+                expresionRegular={expresiones.correo}
+                leyendaerror='tas mal, pa'
+            />
+          </div>
+          <div>
+            <ComponenteInput
+                attribute={{
+                  id: 'password',
+                  name: 'password',
+                  type: 'text',
+                  placeholder: 'Ingresa tu contraseña'
+                }}
+                name='Contraseña:'
+                estado={password}
+                handleChange={setPassword}
+                expresionRegular={expresiones.password}
+                leyendaerror='tas mal, pa'
+            />
+          </div>
+          <div>
+            <ComponenteInput
+                attribute={{
+                  id: 'password2',
+                  name: 'password2',
+                  type: 'text',
+                  placeholder: 'Ingresa tu contraseña'
+                }}
+                name='Confirma contraseña:'
+                estado={password2}
+                handleChange={setPassword2}
+                expresionRegular={expresiones.password}
+                leyendaerror='tas mal, pa'
+            />
+          </div>
+          {false && <div className='mensaje-error'>
+            <p>
+              <FiAlertCircle/>
+              <b>Error: </b>Por favor rellena el formulario correctamente.
+            </p>
+          </div>}
+          <div className='contenedor-boton'>
+            <button className='boton-registro'>
+              Registrarse
+            </button>
+            ¿Ya tienes una cuenta? <Link>Iniciar Sesión</Link>
+            <p className='mensaje-exito'>Formulario enviado exitosamente</p>
+          </div>
+        </form>
+        
+      </div>
+    </main>
   );
 }
 

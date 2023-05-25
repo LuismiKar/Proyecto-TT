@@ -74,7 +74,7 @@ var FormularioCosmic = function( props ){
       <form 
         className='Cosmic-formulario'
         onSubmit={manejarEnvio}>
-        <h3>Puntos de funcion Cosmic</h3>
+        <h4>Puntos de funcion Cosmic</h4>
           <table>
             <tr>
               <td>Nombre: </td>

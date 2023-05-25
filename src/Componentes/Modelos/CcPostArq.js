@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
+import { useModal } from '../Hooks/useModal';
 import '../../Hojas-de-estilo/CocomoII.css';
 import Select from 'react-select';
 import Input from '../Input';
 import Boton from '../Boton';
-
+import Modal from '../Modal';
+import PuntosFuncion from './PuntosFuncion';
 
 function CcPostArq(){
 
@@ -12,6 +14,8 @@ function CcPostArq(){
   const [ B , setB ] = useState(1.1997);
   const [ pmNom , setPMnom ] = useState(0);
   const [ pmEst , setPMest ] = useState(0);
+  const [ nombreProyecto , setNombreProyecto ] = useState('');
+  const [isOpenModal,openModal,closeModal] = useModal(false);
 
   const [ Arely , setRely ] = useState(1);
   const [ Adata , setData ] = useState(1);
@@ -230,6 +234,8 @@ function CcPostArq(){
     { label:"xhi", value:0 } 
   ]
 
+  var enviarSloc = function(numActual){ setKsloc(numActual/1000); }
+
 //Asignacion de valores cada que cambia el input de seleccion
 
   //Producto
@@ -358,6 +364,10 @@ function CcPostArq(){
         setKsloc(value);
         //console.log('Ksloc: ' + Ksloc);
         break;
+      case 'nombre-proyecto':
+        console.log("Nombre: " + value);
+        setNombreProyecto(value);
+        break;
       default:
         break;
     }
@@ -386,9 +396,24 @@ function CcPostArq(){
 
   return(
     <div className='contenedor-principal'>
+      <div className='titulo'>
+        <h2>Post Arquitectura</h2>
+      </div>
+      <div className='contenedor-nombreProyecto'>
+        <h4>Nombre del proyecto: </h4>
+        <Input 
+            attribute={{
+              id: 'nombre-proyecto',
+              name: 'nombre-proyecto',
+              type: 'text',
+              placeholder: 'Ingrese nombre'
+            }}
+            handleChange={ handleChange }/>
+      </div>
+      <h3>Multiplicadores de esfuerzo</h3>
       <div className='contenedor-postarquitectura'>
         <div>
-        Multiplicadores de esfuerzo
+        
           <table>
             <tbody>
               <tr>Producto</tr>
@@ -473,7 +498,7 @@ function CcPostArq(){
           </table>
         </div>
         <div>
-          Factor exponencial de escala <br/><br/>
+          <h3>Factor exponencial de escala</h3> 
           <table>
             <tbody>
               <tr>
@@ -499,7 +524,7 @@ function CcPostArq(){
             </tbody>
           </table>
         </div>
-        <div>
+        <div className='contenedor-ksloc'>
           <table>
             <tbody>
               <tr>
@@ -517,16 +542,25 @@ function CcPostArq(){
                 </td>
               </tr>
               <tr>
-                <td><Boton
-                      name='boton'
-                      funcion={calcularEstimacion}
-                      texto='Calcular' />
+                <td>
+                  <Boton 
+                    name='boton-Modal'
+                    funcion={openModal}
+                    texto='Puntos de funcion'/>
+                  <Modal isOpen={isOpenModal} closeModal={closeModal}>
+                    <PuntosFuncion enviarSloc={enviarSloc} />
+                  </Modal>
                 </td>
               </tr>
             </tbody>
           </table>
         </div>
       </div>
+      <Boton
+        name='boton'
+        funcion={calcularEstimacion}
+        texto='Calcular' />
+      P estimado: {pmEst}
     </div>
   );
 }

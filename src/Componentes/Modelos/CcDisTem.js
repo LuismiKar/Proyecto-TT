@@ -6,6 +6,8 @@ import Input from '../Input';
 import Boton from '../Boton';
 import Modal from '../Modal';
 import PuntosFuncion from './PuntosFuncion';
+import { FiHelpCircle } from "react-icons/fi";
+import CuadroInfo from '../CuadroInfo';
 
 function CcDisTemp(){
 
@@ -27,8 +29,23 @@ function CcDisTemp(){
   const [ Ateam , setTeam ] = useState(3.29);
   const [ Apmat , setPmat ] = useState(4.68);
   const [ Ksloc , setKsloc ] = useState(0);
+  const [ nombreProyecto , setNombreProyecto ] = useState('');
 
   const [isOpenModal,openModal,closeModal] = useModal(false);
+  const [isHovering, setIsHovering] = useState(false);
+  const [isHovering2, setIsHovering2] = useState(false);
+  const [isHovering3, setIsHovering3] = useState(false);
+  const [isHovering4, setIsHovering4] = useState(false);
+  const [isHovering5, setIsHovering5] = useState(false);
+  const [isHovering6, setIsHovering6] = useState(false);
+  const [isHovering7, setIsHovering7] = useState(false);
+  const [isHovering8, setIsHovering8] = useState(false);
+  const [isHovering9, setIsHovering9] = useState(false);
+  const [isHovering10, setIsHovering10] = useState(false);
+  const [isHovering11, setIsHovering11] = useState(false);
+  const [isHovering12, setIsHovering12] = useState(false);
+  const [isHovering13, setIsHovering13] = useState(false);
+
 
   //Multiplicadores de esfuerzo
 
@@ -211,9 +228,117 @@ function CcDisTemp(){
         setKsloc(value);
         console.log('Ksloc: ' + Ksloc);
         break;
+      case 'nombre-proyecto':
+        console.log("Nombre: " + value);
+        setNombreProyecto(value);
+        break;
       default:
         break;
     }
+  };
+
+  const handleMouseOver = () => {
+    setIsHovering(true);
+  };
+
+  const handleMouseOut = () => {
+    setIsHovering(false);
+  };
+
+  const handleMouseOver2 = () => {
+    setIsHovering2(true);
+  };
+
+  const handleMouseOut2 = () => {
+    setIsHovering2(false);
+  };
+  
+  const handleMouseOver3 = () => {
+    setIsHovering3(true);
+  };
+
+  const handleMouseOut3 = () => {
+    setIsHovering3(false);
+  };
+
+  const handleMouseOver4 = () => {
+    setIsHovering4(true);
+  };
+
+  const handleMouseOut4 = () => {
+    setIsHovering4(false);
+  };
+
+  const handleMouseOver5 = () => {
+    setIsHovering5(true);
+  };
+
+  const handleMouseOut5 = () => {
+    setIsHovering5(false);
+  };
+
+  const handleMouseOver6 = () => {
+    setIsHovering6(true);
+  };
+
+  const handleMouseOut6 = () => {
+    setIsHovering6(false);
+  };
+
+  const handleMouseOver7 = () => {
+    setIsHovering7(true);
+  };
+
+  const handleMouseOut7 = () => {
+    setIsHovering7(false);
+  };
+
+  const handleMouseOver8 = () => {
+    setIsHovering8(true);
+  };
+
+  const handleMouseOut8 = () => {
+    setIsHovering8(false);
+  };
+
+  const handleMouseOver9 = () => {
+    setIsHovering9(true);
+  };
+
+  const handleMouseOut9 = () => {
+    setIsHovering9(false);
+  };
+
+  const handleMouseOver10 = () => {
+    setIsHovering10(true);
+  };
+
+  const handleMouseOut10 = () => {
+    setIsHovering10(false);
+  };
+
+  const handleMouseOver11 = () => {
+    setIsHovering11(true);
+  };
+
+  const handleMouseOut11 = () => {
+    setIsHovering11(false);
+  };
+
+  const handleMouseOver12 = () => {
+    setIsHovering12(true);
+  };
+
+  const handleMouseOut12 = () => {
+    setIsHovering12(false);
+  };
+
+  const handleMouseOver13 = () => {
+    setIsHovering13(true);
+  };
+
+  const handleMouseOut13 = () => {
+    setIsHovering13(false);
   };
 
   function calculoB(){
@@ -235,79 +360,157 @@ function CcDisTemp(){
     calculoPMnominal();
     setPMest( pmNom * ( Arcpx * Aruse * Apdif * Apers * Aprex * Afcil * Asced ) );
     console.log('pmEst: ' + pmEst);
-    //console.log('Entra a calcularEstimacion');
   }
 
   return(
     <div className='contenedor-principal'>
+      <div className='titulo'>
+        <h2>Diseño Temprano</h2>
+      </div>
+      <div className='contenedor-nombreProyecto'>
+        <h4>Nombre del proyecto: </h4>
+        <Input 
+            attribute={{
+              id: 'nombre-proyecto',
+              name: 'nombre-proyecto',
+              type: 'text',
+              placeholder: 'Ingrese nombre'
+            }}
+            handleChange={ handleChange }/>
+      </div>
       <div className='contenedor-diseñotemprano'>
         <div>
-          Multiplicadores de esfuerzo <br/>
+          <h3>Multiplicadores de esfuerzo</h3>
           <table>
             <tbody>
               <tr>
-                <td>RCPX:</td>
-                <td><Select options={ rcpx } defaultValue={ rcpx[3] } onChange={ handleSelectChangeRcpx } /></td>
+                <td>
+                  <FiHelpCircle onMouseOver={handleMouseOver} onMouseOut={handleMouseOut} color='#146C94'/> RCPX:
+                  {isHovering && (
+                    <CuadroInfo texto={'Confiabilidad y complejidad del producto'}/>
+                  )}
+                </td>
+                <td><Select classNamePrefix='select' options={ rcpx } defaultValue={ rcpx[3] } onChange={ handleSelectChangeRcpx } /></td>
               </tr>
               <tr>
-                <td>RUSE:</td>
+                <td>
+                  <FiHelpCircle onMouseOver={handleMouseOver2} onMouseOut={handleMouseOut2} color='#146C94'/> RUSE:
+                  {isHovering2 && (
+                    <CuadroInfo texto={'Reusabilidad requerida'}/>
+                  )}
+                </td>
                 <td><Select options={ ruse } defaultValue={ ruse[1] } onChange={ handleSelectChangeRuse }/></td>
               </tr>
               <tr>
-                <td>PDIF:</td>
+                <td>
+                  <FiHelpCircle onMouseOver={handleMouseOver3} onMouseOut={handleMouseOut3} color='#146C94'/> PDIF:
+                  {isHovering3 && (
+                    <CuadroInfo texto={'Dificultad de la plataforma'}/>
+                  )}
+                </td>
                 <td><Select options={ pdif } defaultValue={ pdif[1] } onChange={ handleSelectChangePdif } /></td>
               </tr>
               <tr>
-                <td>PERS:</td>
+                <td>
+                  <FiHelpCircle onMouseOver={handleMouseOver4} onMouseOut={handleMouseOut4} color='#146C94'/> PERS:
+                  {isHovering4 && (
+                    <CuadroInfo texto={'Aptitud del personal'}/>
+                  )}
+                </td>
                 <td><Select options={ pers } defaultValue={ pers[3] } onChange={ handleSelectChangePers } /></td>
               </tr>
               <tr>
-                <td>PREX:</td>
+                <td>
+                  <FiHelpCircle onMouseOver={handleMouseOver5} onMouseOut={handleMouseOut5} color='#146C94'/> PREX:
+                  {isHovering5 && (
+                    <CuadroInfo texto={'Experiencia del personal'}/>
+                  )}
+                </td>
                 <td><Select options={ prex } defaultValue={ prex[3] } onChange={ handleSelectChangePrex } /></td>
               </tr>
               <tr>
-                <td>FCIL:</td>
+                <td>
+                  <FiHelpCircle onMouseOver={handleMouseOver6} onMouseOut={handleMouseOut6} color='#146C94'/> FCIL:
+                  {isHovering6 && (
+                    <CuadroInfo texto={'Facilidades'}/>
+                  )}
+                </td>
                 <td><Select options={ fcil } defaultValue={ fcil[3] } onChange={ handleSelectChangeFcil } /></td>
               </tr>
               <tr>
-                <td>SCED:</td>
+                <td>
+                  <FiHelpCircle onMouseOver={handleMouseOver7} onMouseOut={handleMouseOut7} color='#146C94'/> SCED:
+                  {isHovering7 && (
+                    <CuadroInfo texto={'Cronograma de desarrollo requerido'}/>
+                  )}
+                </td>
                 <td><Select options={ sced } defaultValue={ sced[2] } onChange={ handleSelectChangeSced }/></td>
               </tr>
             </tbody>
           </table>
         </div>
         <div>
-          Factor exponencial de escala <br/><br/>
+          <h3>Factor exponencial de escala</h3> 
           <table>
             <tbody>
               <tr>
-                <td>PREC:</td>
+                <td>
+                  <FiHelpCircle onMouseOver={handleMouseOver8} onMouseOut={handleMouseOut8} color='#146C94'/> PREC:
+                  {isHovering8 && (
+                    <CuadroInfo texto={'Precedencia'}/>
+                  )}
+                </td>
                 <td><Select options={ prec } defaultValue={ prec[2] } onChange={ handleSelectChangePrec } /></td>
               </tr>
               <tr>
-                <td>FLEX:</td>
+                <td>
+                  <FiHelpCircle onMouseOver={handleMouseOver9} onMouseOut={handleMouseOut9} color='#146C94'/> FLEX:
+                  {isHovering9 && (
+                    <CuadroInfo texto={'Flexibilidad en el desarrollo'}/>
+                  )}
+                </td>
                 <td><Select options={ flex } defaultValue={ flex[2] } onChange={ handleSelectChangeFlex } /></td>
               </tr>
               <tr>
-                <td>RESL:</td>
+                <td>
+                  <FiHelpCircle onMouseOver={handleMouseOver10} onMouseOut={handleMouseOut10} color='#146C94'/> RESL:
+                  {isHovering10 && (
+                    <CuadroInfo texto={'Arquitectura/Resolución de riesgo'}/>
+                  )}
+                </td>
                 <td><Select options={ resl } defaultValue={ resl[2] } onChange={ handleSelectChangeResl } /></td>
               </tr>
               <tr>
-                <td>TEAM:</td>
+                <td>
+                  <FiHelpCircle onMouseOver={handleMouseOver11} onMouseOut={handleMouseOut11} color='#146C94'/> TEAM:
+                  {isHovering11 && (
+                    <CuadroInfo texto={'Cohesión de equipo'}/>
+                  )}
+                </td>
                 <td><Select options={ team } defaultValue={ team[2] } onChange={ handleSelectChangeTeam } /></td>
               </tr>
               <tr>
-                <td>PMAT:</td>
+                <td>
+                  <FiHelpCircle onMouseOver={handleMouseOver12} onMouseOut={handleMouseOut12} color='#146C94'/> PMAT:
+                  {isHovering12 && (
+                    <CuadroInfo texto={'Madurez del proceso'}/>
+                  )}
+                </td>
                 <td><Select options={ pmat } defaultValue={ pmat[2] } onChange={ handleSelectChangePmat } /></td>
               </tr>
             </tbody>
           </table>
         </div>
-        <div>
+        <div className='contenedor-ksloc'>
           <table>
             <tbody>
               <tr>
-                <td>KSLOC: {Ksloc}</td>
+                <td>
+                  <FiHelpCircle onMouseOver={handleMouseOver13} onMouseOut={handleMouseOut13} color='#146C94'/> KSLOC: {Ksloc}
+                  {isHovering13 && (
+                    <CuadroInfo texto={'Miles de líneas de código'}/>
+                  )}
+                </td>
                 <td>
                   <Input
                     attribute={{
@@ -328,20 +531,15 @@ function CcDisTemp(){
                   </Modal>
                 </td>
               </tr>
-              <tr>
-                <td>
-                  <Boton
-                    name='boton'
-                    funcion={calcularEstimacion}
-                    texto='Calcular' />
-                </td>
-                <td>P estimado:</td>
-                <td>{pmEst}</td>
-              </tr>
             </tbody>
           </table>
         </div>
       </div>
+      <Boton
+        name='boton'
+        funcion={calcularEstimacion}
+        texto='Calcular' />
+      P estimado: {pmEst}
     </div>
   );
 }
