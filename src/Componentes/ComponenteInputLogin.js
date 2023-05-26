@@ -1,15 +1,14 @@
 import React from 'react';
 import '../Hojas-de-estilo/Input.css'
-import { FiCheck, FiX } from "react-icons/fi";
 import { Label , GrupoInput, Input , LeyendaError, IconoValidacion} from '../Elementos/UsuarioElementos';
 
-function ComponenteInput({ name,  estado, attribute, handleChange, expresionRegular, leyendaerror , funcion }) {
+function ComponenteInputLogin({ name,  estado, attribute, handleChange, expresionRegular, leyendaerror }) {
 
     const onChange = (e) => {
         handleChange({...estado, campo: e.target.value});
-    }
+    } 
 
-	const validacion = () => {
+    const validacion = () => {
 		if(expresionRegular){
 			if(expresionRegular.test(estado.campo)){
 				handleChange({...estado, valido: 'true'});
@@ -19,15 +18,12 @@ function ComponenteInput({ name,  estado, attribute, handleChange, expresionRegu
                 console.log(estado.valido);
 			}
 		}
-        if(funcion){
-            funcion();
-        }
 
 	}
 
 	return(
 		<div className='contenedor-input'>
-            <Label>{name} </Label>
+            <Label> {name} </Label>
             <GrupoInput>
                 <Input
                     id={attribute.id}
@@ -40,16 +36,12 @@ function ComponenteInput({ name,  estado, attribute, handleChange, expresionRegu
                     onBlur={validacion}
                     valido={estado.valido}
                 />
-                <IconoValidacion 
-                    icon={estado.valido === 'true' ? FiCheck : FiX} 
-                    valido={estado.valido}
-                />
             </GrupoInput>
-            <LeyendaError valido={estado.valido}> 
+            <LeyendaError valido={estado.valido}>
               {leyendaerror}
             </LeyendaError>
 		</div>
 	)
 };
 
-export default ComponenteInput;
+export default ComponenteInputLogin;

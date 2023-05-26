@@ -75,8 +75,8 @@ const LeyendaError = styled.p`
 
 const IconoValidacion = styled(FiCheck)`
     position: absolute;
-    right: 20px;
-    bottom: 25px;
+    right: 10px;
+    bottom: 1px;
     z-index: 100;
     font-size: 16px;
     opacity: 0;

@@ -19,6 +19,9 @@ function Barra(){
   const { collapseSidebar } = useProSidebar();
 
   return(
+    <body id='body-barra'>
+
+   
     <div className='barra-principal'>
         <header>
           <div className='contenedor'>
@@ -62,6 +65,7 @@ function Barra(){
             
           </div>
     </div>
+    </body>
   );
 }
 
