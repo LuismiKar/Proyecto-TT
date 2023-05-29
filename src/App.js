@@ -11,6 +11,7 @@ import CcPostArq from './Componentes//Modelos/CcPostArq';
 import PuntosCosmic from './Componentes//Modelos/PuntosCosmic';
 import GuiaUsuario from './Componentes//GuiaUsuario'
 import ListaProyectos from './Componentes//ListaProyectos';
+import {UserGetById} from './Componentes/Endpoints/User';
 
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
           <Route exact path="/registro" Component={Registro} />
           <Route exact path="/inicioSesion" Component={InicioSesion} />
         </Routes>
+        <UserGetById/>
     </div>
   );
 }
