@@ -54,9 +54,7 @@ function Registro(){
 
   
   return(
-    <body id='body-registro-login'>
-      <main>
-        <div className='contenedor-datosusuario'>
+        <div>
           <h2>Crear Cuenta</h2>
           <Formulario onSubmit={onSubmit}>
             <div>
@@ -136,10 +134,7 @@ function Registro(){
               }
             </ContenedorBotonCentrado>
           </Formulario>
-          
-        </div>
-      </main>
-    </body>
+      </div> 
   );
 }
 

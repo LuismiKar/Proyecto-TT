@@ -1,5 +1,5 @@
 import React from 'react';
-import { ProSidebarProvider } from 'react-pro-sidebar';
+
 import Barra from './Barra';
 import '../Hojas-de-estilo/PaginaPrincipal.css'
 
@@ -8,9 +8,8 @@ function PaginaPrincipal() {
 
   return(
     <div className='contenedor-pagina-principal'>
-      <ProSidebarProvider>
+      
         <Barra/>
-      </ProSidebarProvider>
     </div>
   );
 }

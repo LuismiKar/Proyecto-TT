@@ -47,7 +47,7 @@ function BarraAdmin(){
                     </SubMenu>
                   <MenuItem icon={<FiList/>} component={<Link to="/listaProyectos" className='link'/>} >Lista de usuarios</MenuItem>
                   <MenuItem icon={<FiHelpCircle/>}>Guía de usuario</MenuItem>
-                  <MenuItem icon={<FiEdit/>}>Modificar tablas</MenuItem>
+                  <MenuItem icon={<FiEdit/>}>Lista de usuarios</MenuItem>
                 </Menu>
               </Sidebar>
               <section>

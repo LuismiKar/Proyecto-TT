@@ -1,11 +1,19 @@
 import React from 'react';
+import { FiXSquare , FiEdit , FiPlusSquare } from "react-icons/fi";
 
-function Usuario({ texto , onMouseOver , onMouseOut}) {
+function Usuario({ el }) {
   return(
-    <div className='contenedor-usuario' onMouseOver={onMouseOver} onMouseOut={onMouseOut}>
-      {texto}
-    </div>
+      <tr>
+        <td>{el.username}</td>
+        <td>{el.email}</td>
+        <td>{el.tipo}</td>
+        <td>
+          <FiEdit/>
+          <FiXSquare/>
+          <FiPlusSquare/>
+        </td>
+      </tr>
   );
 }
 
-export default CuadroInfo;
+export default Usuario;

@@ -1,12 +1,11 @@
 button {
     width: 100px;
     height: 50px;
-    font-family: Roboto, sans-serif;
     font-weight: bold;
     font-size: 75%;
     color: #565656;
     border: 2px solid #85F4FF;
-    border-radius: 15px;
+    border-radius: 5px;
     background-color: #85F4FF;
     margin: 5px;
     cursor: pointer; /*cuando el cursor se ubique en el boton, se muestra una manita*/

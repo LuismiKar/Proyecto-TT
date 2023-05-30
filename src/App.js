@@ -1,16 +1,18 @@
 import React, { useEffect } from 'react';
+import { Route, Routes } from 'react-router-dom';
 import './App.css';
+import { ProSidebarProvider } from 'react-pro-sidebar';
 import PaginaPrincipal from './Componentes/PaginaPrincipal';
-import { BrowserRouter , Routes , Route } from 'react-router-dom';
-import PaginaPrincipalAdmin from './Componentes/PaginaPrincipalAdmin';
-import Registro from './Componentes/Registro';
 import InicioSesion from './Componentes/InicioSesion';
+import Registro from './Componentes/Registro';
+import PaginaPrincipalAdmin from './Componentes/PaginaPrincipalAdmin';
 import CcCompAp from './Componentes//Modelos/CcCompAp';
 import CcDisTem from './Componentes//Modelos/CcDisTem';
 import CcPostArq from './Componentes//Modelos/CcPostArq';
 import PuntosCosmic from './Componentes//Modelos/PuntosCosmic';
 import GuiaUsuario from './Componentes//GuiaUsuario'
 import ListaProyectos from './Componentes//ListaProyectos';
+import ContenedorModelos from './Componentes/ContenedorModelos';
 
 
 function App() {
@@ -21,14 +23,15 @@ function App() {
 
   return (
     <div className="App">
-      
-      
+      <ProSidebarProvider>
+        <PaginaPrincipal/>
         <Routes>
           <Route exact path="/paginaprincipal" Component={PaginaPrincipal} />
           <Route exact path="/paginaprincipalAdmin" Component={PaginaPrincipalAdmin} />
           <Route exact path="/registro" Component={Registro} />
           <Route exact path="/inicioSesion" Component={InicioSesion} />
         </Routes>
+      </ProSidebarProvider>
     </div>
   );
 }

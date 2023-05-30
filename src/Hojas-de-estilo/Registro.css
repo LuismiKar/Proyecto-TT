@@ -9,7 +9,7 @@
   background: #B2FEFA;  /* fallback for old browsers */
   background: -webkit-linear-gradient(to right, #0ED2F7, #B2FEFA);  /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to right, #0ED2F7, #B2FEFA); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  height: 100vh;
+  height: auto;
 }
 
 main{
@@ -27,10 +27,27 @@ main{
   padding: 20px;
   background-color: white;
   box-shadow: 0 0 30px 5px rgba(0, 0, 0, 0.5);
-
+  align-items: center;
+  justify-content: center;
 }
 
 .contenedor-datosusuario h2{
   margin-bottom: 30px;
   text-align: center;
+}
+
+.contenedor-datosusuario a{
+  display: inline-block;
+  padding: 15px 10px;
+  line-height: normal;
+  text-decoration: none;
+  color: #000;
+  transition: all 0.3s ease;
+  border-bottom: 2px solid transparent;
+  font-size: 15px;
+}
+
+.contenedor-datosusuario a:hover{
+  border-bottom: 2px solid #42C2FF;
+  padding: 5px 10px;
 }

@@ -2,7 +2,7 @@ import React from 'react';
 import PaginaPrincipal from './PaginaPrincipal';
 
 //Selector para elegir el metodo con el cual se va a trabajar
-function ContenedorModelos() {
+function ContenedorCuenta() {
   return(
     <div>
       <PaginaPrincipal/>
@@ -10,4 +10,4 @@ function ContenedorModelos() {
   );
 }
 
-export default ContenedorModelos;
+export default ContenedorCuenta;
