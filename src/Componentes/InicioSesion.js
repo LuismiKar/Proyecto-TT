@@ -22,11 +22,6 @@ function InicioSesion( props ){
     correo: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
   }
 
-  {/*const usuarios = {
-    usuario1: {email: 'bcnerick@gmail.com',password:'123456'},
-    usuario2: {email: 'karenbaeza@gmail.com',password:'12345'}
-  }*/}
-
   const usuarios = [
     {id: 1, username: 'karen baeza', email: 'bcnerick@gmail.com', password: '123456'},
     {id: 2, username: 'karen baeza', email: 'karenbaeza@gmail.com', password: '12345'}
