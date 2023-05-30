@@ -105,7 +105,7 @@ var FactorComplejidad = function({ cambiarFactorComplejidad }){
   }
 
   return(
-    <div>
+    <div className='UPF-formulario'>
       <h3>Factor complejidad</h3>
       <table>
         <tr>

@@ -1,7 +1,6 @@
 .contenedor-principal{
-  text-align: center;
+  margin: 5%;
   width: auto;
-  
 }
 
 .contenedor-postarquitectura{
@@ -68,16 +67,9 @@
   width: 50%;
 }
 
-table {
-  align-items: center;
-  justify-content: center;
-}
 
-#select{
-  &__menu{
-    position: relative;
-  }
-  
+.select{
+  position: relative;
 }
 
 .contenedor-nombreProyecto{
@@ -90,6 +82,7 @@ table {
 }
 
 .titulo{
+  text-align: center;
   margin-bottom: 40px;
 }
 
@@ -108,4 +101,16 @@ h3{
 
 .contenedor-ksloc{
   margin-top: 50px;
+}
+
+tr{
+  text-align: left;
+}
+
+.UPF-formulario h3{
+  text-align: center;
+}
+
+.center{
+  text-align: center;
 }

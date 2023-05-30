@@ -99,7 +99,7 @@ function PuntosFuncion( props ){
   }
 
   return(
-    <>
+    <div>
       <div className='titulo'>
         <h2>Puntos de función</h2>
       </div>
@@ -150,7 +150,7 @@ function PuntosFuncion( props ){
         </div>
       </div>
       
-    </>  
+    </div>  
   );
 }
 

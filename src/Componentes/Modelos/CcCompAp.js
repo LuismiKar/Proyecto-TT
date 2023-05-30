@@ -4,6 +4,8 @@ import Select from 'react-select';
 import Input from '../Input';
 import Boton from '../Boton';
 import PuntosObjeto from './PuntosObjeto';
+import { FiHelpCircle } from "react-icons/fi";
+import CuadroInfo from '../CuadroInfo';
 
 function CcCompAp(){
 
@@ -16,6 +18,10 @@ function CcCompAp(){
   const [ mcIcase , setMcIcase ] = useState(0);
   const [ nombreProyecto , setNombreProyecto ] = useState('');
 
+  const [isHoveringTitulo, setIsHoveringTitulo] = useState(false);
+  const [isHovering, setIsHovering] = useState(false);
+  const [isHovering2, setIsHovering2] = useState(false);
+  const [isHovering3, setIsHovering3] = useState(false);
 
   const Tablaprod = [
     { label:"vlo", value:4 },
@@ -57,9 +63,40 @@ function CcCompAp(){
 
   function calcularProd(){
     setProd( (ecDes + mcIcase) / 2 );
-    
   }
 
+  const handleMouseOverTitulo = () => {
+    setIsHoveringTitulo(true);
+  };
+
+  const handleMouseOutTitulo = () => {
+    setIsHoveringTitulo(false);
+  };
+
+  const handleMouseOver = () => {
+    setIsHovering(true);
+  };
+
+  const handleMouseOut = () => {
+    setIsHovering(false);
+  };
+
+  const handleMouseOver2 = () => {
+    setIsHovering2(true);
+  };
+
+  const handleMouseOut2 = () => {
+    setIsHovering2(false);
+  };
+  
+  const handleMouseOver3 = () => {
+    setIsHovering3(true);
+  };
+
+  const handleMouseOut3 = () => {
+    setIsHovering3(false);
+  };
+  
   function calcularPm(){
     //setNptsobj( ptsObj * ( 100 - reuso ) / 100 ); 
     console.log('Nuevos Puntos objetos: '+NptsObj);
@@ -71,7 +108,12 @@ function CcCompAp(){
   return(
     <div className='contenedor-principal' >
       <div className='titulo'>
-        <h2>Composición de Aplicación</h2>
+        <h2>
+          <FiHelpCircle onMouseOver={handleMouseOverTitulo} onMouseOut={handleMouseOutTitulo} color='#000'/>
+          Composición de Aplicación
+        </h2>{isHoveringTitulo && (
+            <CuadroInfo texto={'Desarrollos de software durante la etapa de prototipación'}/>
+          )}
       </div>
       <div className='contenedor-nombreProyecto'>
         <h4>Nombre del proyecto:</h4>
@@ -87,7 +129,13 @@ function CcCompAp(){
 
       <div className='contenedor-puntosobjeto'>
         <div className='titulo'>
-          <h3>Puntos objeto</h3> 
+          {isHovering && (
+            <CuadroInfo className='center' texto={'Enfoque de medición de tamaño de software'}/>
+          )}
+          <h3>
+            <FiHelpCircle onMouseOver={handleMouseOver} onMouseOut={handleMouseOut} color='#000'/>
+            Puntos objeto
+          </h3> 
         </div>
         <PuntosObjeto cambiarPtsObj={ cambiarPtsObj }/>
       </div>
@@ -95,17 +143,26 @@ function CcCompAp(){
       <table>
         <tbody>
           
-          <tr>Porcentaje de reuso: 
-          <td><Input 
-            attribute={{
-              id: 'reuso',
-              name: 'reuso',
-              type: 'number',
-              placeholder: ''
-            }}
-            handleChange={ handleSelectChange }/></td>
+          <tr>
+            <td>
+              <FiHelpCircle onMouseOver={handleMouseOver2} onMouseOut={handleMouseOut2} color='#146C94'/>
+              Porcentaje de reuso:
+              {isHovering2 && (
+                <CuadroInfo texto={'Porcentaje de reuso que se espera lograr en el proyecto'}/>
+              )} 
+            </td>
+            <td>
+              <Input 
+              attribute={{
+                id: 'reuso',
+                name: 'reuso',
+                type: 'number',
+                placeholder: ''
+              }}
+              handleChange={ handleSelectChange }/>
+            </td>
           </tr>
-          <tr><h3>Productividad</h3></tr>
+          <tr><td colSpan='2'><center><h3>Productividad</h3></center></td></tr>
           <tr>
             <td>Experiencia y capacidad de los desarrolladores: </td>
             <td>
@@ -115,7 +172,13 @@ function CcCompAp(){
                 onChange={ handleSelectChangeEcDes } /></td>
           </tr>
           <tr>
-            <td>Madurez y capacidad del ICASE: </td>
+            <td>
+              <FiHelpCircle onMouseOver={handleMouseOver3} onMouseOut={handleMouseOut3} color='#146C94'/>
+              Madurez y capacidad del ICASE: 
+              {isHovering3 && (
+                <CuadroInfo texto={'ICASE: Herramientas integradas'}/>
+              )} 
+            </td>
             <td>
               <Select 
                 options={ Tablaprod } 

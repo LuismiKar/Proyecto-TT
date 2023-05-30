@@ -3,6 +3,8 @@ import '../../Hojas-de-estilo/CocomoII.css';
 import Input from '../Input';
 import Boton from '../Boton';
 import Select from 'react-select';
+import { FiHelpCircle } from "react-icons/fi";
+import CuadroInfo from '../CuadroInfo';
 
 var PuntosObjeto = function({ cambiarPtsObj }){
 
@@ -13,6 +15,8 @@ var PuntosObjeto = function({ cambiarPtsObj }){
   const [ complejidadRep , setComplejidadRep ] = useState('');
   const [ complejidad3gl , setComplejidad3gl ] = useState(0);
   const [ totalPtsObj , setTotalPtsObj ] = useState(0);
+
+  const [isHovering, setIsHovering] = useState(false);
 
   const comp3gl = [
     { label:"si", value:10 },
@@ -47,6 +51,14 @@ var PuntosObjeto = function({ cambiarPtsObj }){
   };
 
   const handleSelectChangeCom3gl = ( { value } ) => setComplejidad3gl(value);
+
+  const handleMouseOver = () => {
+    setIsHovering(true);
+  };
+
+  const handleMouseOut = () => {
+    setIsHovering(false);
+  };
   
   function asignarPesoPantallas(){
     if( nPantallas<0 || nServidores<0 ){
@@ -140,11 +152,25 @@ var PuntosObjeto = function({ cambiarPtsObj }){
         </table>
       </div>
       <div>
-        Complejidad 3GL
-        <Select 
-          options={ comp3gl } 
-          defaultValue={ comp3gl[1] }
-          onChange={ handleSelectChangeCom3gl } />
+        <table>
+          <tbody>
+            <tr>
+              <td>
+                <FiHelpCircle onMouseOver={handleMouseOver} onMouseOut={handleMouseOut} color='#146C94'/>
+                Complejidad 3GL
+                {isHovering && (
+                  <CuadroInfo texto={'Lenguaje de tercera generación'}/>
+                )}
+              </td>
+              <td>
+              <Select 
+                options={ comp3gl } 
+                defaultValue={ comp3gl[1] }
+                onChange={ handleSelectChangeCom3gl } />
+              </td>
+            </tr>
+          </tbody>
+        </table>
         <Boton
           name='boton-ptsobj'
           funcion={calcularPtsObj}
