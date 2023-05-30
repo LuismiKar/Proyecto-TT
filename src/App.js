@@ -6,13 +6,13 @@ import PaginaPrincipal from './Componentes/PaginaPrincipal';
 import InicioSesion from './Componentes/InicioSesion';
 import Registro from './Componentes/Registro';
 import PaginaPrincipalAdmin from './Componentes/PaginaPrincipalAdmin';
-import CcCompAp from './Componentes//Modelos/CcCompAp';
-import CcDisTem from './Componentes//Modelos/CcDisTem';
-import CcPostArq from './Componentes//Modelos/CcPostArq';
-import PuntosCosmic from './Componentes//Modelos/PuntosCosmic';
-import GuiaUsuario from './Componentes//GuiaUsuario'
-import ListaProyectos from './Componentes//ListaProyectos';
-import ContenedorModelos from './Componentes/ContenedorModelos';
+import CcCompAp from './Componentes/Modelos/CcCompAp';
+import CcDisTem from './Componentes/Modelos/CcDisTem';
+import CcPostArq from './Componentes/Modelos/CcPostArq';
+import PuntosCosmic from './Componentes/Modelos/PuntosCosmic';
+import GuiaUsuario from './Componentes/GuiaUsuario'
+import ListaProyectos from './Componentes/ListaProyectos';
+import {UserGetById} from './Componentes/Endpoints/User';
 
 
 function App() {
@@ -31,7 +31,9 @@ function App() {
           <Route exact path="/registro" Component={Registro} />
           <Route exact path="/inicioSesion" Component={InicioSesion} />
         </Routes>
+      <UserGetById/>
       </ProSidebarProvider>
+        
     </div>
   );
 }
