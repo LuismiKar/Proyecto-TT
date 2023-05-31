@@ -9,7 +9,7 @@ import CuadroInfo from '../CuadroInfo';
 
 function CcCompAp(){
 
-  const [ pm , setPm ] = useState(0);
+  const [ pmEst , setPmEst ] = useState(0);
   const [ NptsObj , setNptsobj ] = useState(0);
   const [ ptsObj , setPtsobj ] = useState(0);
   const [ reuso , setReuso ] = useState(0);
@@ -23,6 +23,7 @@ function CcCompAp(){
   const [isHovering, setIsHovering] = useState(false);
   const [isHovering2, setIsHovering2] = useState(false);
   const [isHovering3, setIsHovering3] = useState(false);
+  const [isHovering4, setIsHovering4] = useState(false);
 
   const Tablaprod = [
     { label:"vlo", value:4 },
@@ -97,13 +98,21 @@ function CcCompAp(){
   const handleMouseOut3 = () => {
     setIsHovering3(false);
   };
+
+  const handleMouseOver4 = () => {
+    setIsHovering4(true);
+  };
+
+  const handleMouseOut4 = () => {
+    setIsHovering4(false);
+  };
   
   function calcularPm(){
     //setNptsobj( ptsObj * ( 100 - reuso ) / 100 ); 
     console.log('Nuevos Puntos objetos: '+NptsObj);
     console.log('Prod: ' + prod);
-    setPm( NptsObj / prod );
-    console.log('Esfuerzo: ' + pm );
+    setPmEst( NptsObj / prod );
+    console.log('Esfuerzo: ' + pmEst );
   }
 
   return(
@@ -187,34 +196,25 @@ function CcCompAp(){
                 onChange={ handleSelectChangeMcIcase } /></td>
           </tr>
           <tr>
+            <center>
             <Boton
               name='boton-'
               funcion={ calcularPm }
               texto='Calcular PM' 
               onMouseOver={calcularProd}/>
+            </center>
           </tr>
         </tbody>
       </table>
       </div>
+      <hr/>
+      <FiHelpCircle onMouseOver={handleMouseOver4} onMouseOut={handleMouseOut4} color='#146C94'/>          
+      Esfuerzo: {pmEst}
+      {isHovering4 && (
+        <CuadroInfo texto={'Representa los meses de trabajo de una persona fulltime, requeridos para desarrollar el proyecto'}/>
+      )}
     </div>
   );
 }
 
-/*
-function CcCompAp(){
-
-  const [ variable , setVariable ] = useState(0);
-
-  var cambiarEstado = function(numActual){
-    setVariable(numActual);
-  }
-
-  return(
-    <div>
-      <div>{variable}</div>
-      <Prueba cambiarEstado = { cambiarEstado } />
-    </div>
-  );
-}
-*/
 export default CcCompAp;

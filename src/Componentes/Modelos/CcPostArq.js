@@ -14,6 +14,7 @@ function CcPostArq(){
   const A = 2.94;
 
   const [ B , setB ] = useState(1.1997);
+  const [ metrica , setMetrica ] = useState('');
   const [ pmNom , setPMnom ] = useState(0);
   const [ pmEst , setPMest ] = useState(0);
   const [ nombreProyecto , setNombreProyecto ] = useState('');
@@ -581,6 +582,11 @@ function CcPostArq(){
     setPmat(value);
   }
 
+  const handleSelectChangeMetrica = ( { value } ) => {
+    console.log("Metrica: " + value);
+    setMetrica(value);
+  }
+
   function handleChange(name,value) {
     switch(name){
       case 'ksloc':
@@ -624,7 +630,7 @@ function CcPostArq(){
           <FiHelpCircle onMouseOver={handleMouseOverTitulo} onMouseOut={handleMouseOutTitulo} color='#000'/>
           Post Arquitectura
         </h2>{isHoveringTitulo && (
-            <CuadroInfo texto={'Proyectos de software después de la arquitectura'}/>
+            <CuadroInfo texto={'Proyectos de software durante la etapa del desarrollo'}/>
           )}
       </div>
       <div className='contenedor-nombreProyecto'>
@@ -863,47 +869,62 @@ function CcPostArq(){
           </table>
         </div>
         <div className='contenedor-ksloc'>
+          <div className='descripcion2'>
+              Si no cuentas con la cantidad de líneas de código, selecciona <b>Puntos de función</b>
+              <Select options={ [ { label:"Puntos de función", value:'PF' },
+                                  { label:"Líneas de código", value:'KSLOC' }] } 
+                      placeholder= 'Selecciona la métrica'
+                      onChange={ handleSelectChangeMetrica } />
+            </div>
           <table>
-            <tbody>
-              <tr>
-                <td>
-                <FiHelpCircle onMouseOver={handleMouseOver23} onMouseOut={handleMouseOut23} color='#146C94'/> KSLOC: {Ksloc}
-                  {isHovering23 && (
-                    <CuadroInfo texto={'Miles de líneas de código del software a desarrollar'}/>
-                  )}
-                </td>
-                <td>
-                <Input
-                  attribute={{
-                    id: 'ksloc',
-                    name: 'ksloc',
-                    type: 'number',
-                    placeholder: '0'
-                  }}
-                  handleChange={handleChange}
-                />
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <Boton 
-                    name='boton-Modal'
-                    funcion={openModal}
-                    texto='Puntos de funcion'/>
-                  <Modal isOpen={isOpenModal} closeModal={closeModal}>
-                    <PuntosFuncion enviarSloc={enviarSloc} />
-                  </Modal>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+              <tbody>
+                <tr>
+                  {metrica==='KSLOC' && <><td>
+                    Ingresa la cantidad de <b>miles</b> de líneas de código: 
+                  </td>
+                  <td>
+                    <Input
+                      attribute={{
+                        id: 'ksloc',
+                        name: 'ksloc',
+                        type: 'number'
+                      }}
+                      handleChange={handleChange}
+                  />
+                  </td></>}
+                  {metrica==='PF' && <><td>
+                    <center><Boton 
+                      name='boton-Modal'
+                      funcion={openModal}
+                      texto='Puntos de funcion'/>
+                    </center>
+                    <Modal isOpen={isOpenModal} closeModal={closeModal}>
+                      <PuntosFuncion enviarSloc={enviarSloc} />
+                    </Modal>
+                  </td>
+                  </>}
+                </tr>
+              </tbody>
+            </table>
+            <div className='contenedor-ksloc'>
+              <FiHelpCircle onMouseOver={handleMouseOver13} onMouseOut={handleMouseOut13} color='#146C94'/> KSLOC: {Ksloc}
+              {isHovering13 && (
+                <CuadroInfo texto={'Miles de líneas de código del software a desarrollar'}/>
+              )}
+            </div>
+          </div>
       </div>
       <Boton
         name='boton'
         funcion={calcularEstimacion}
         texto='Calcular' />
-      P estimado: {pmEst}
+      <hr/>
+      <FiHelpCircle onMouseOver={handleMouseOver23} onMouseOut={handleMouseOut23} color='#146C94'/>          
+      Esfuerzo: {pmEst}
+      
+      {isHovering23 && (
+        <CuadroInfo texto={'Representa los meses de trabajo de una persona fulltime, requeridos para desarrollar el proyecto'}/>
+      )}
     </div>
   );
 }

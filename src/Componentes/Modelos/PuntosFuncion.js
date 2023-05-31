@@ -25,12 +25,10 @@ function PuntosFuncion( props ){
 
   //Variables de los cuadros de información
 
-  const [isHoveringTitulo, setIsHoveringTitulo] = useState(false);
   const [isHovering, setIsHovering] = useState(false);
   const [isHovering2, setIsHovering2] = useState(false);
   const [isHovering3, setIsHovering3] = useState(false);
   const [isHovering4, setIsHovering4] = useState(false);
-  const [isHovering5, setIsHovering5] = useState(false);
 
   //Lenguajes de programación
   const lenguajeOpciones = [
@@ -83,14 +81,6 @@ function PuntosFuncion( props ){
 
   //Funciones cuadros de información
 
-  const handleMouseOverTitulo = () => {
-    setIsHoveringTitulo(true);
-  };
-
-  const handleMouseOutTitulo = () => {
-    setIsHoveringTitulo(false);
-  };
-
   const handleMouseOver = () => {
     setIsHovering(true);
   };
@@ -122,14 +112,7 @@ function PuntosFuncion( props ){
   const handleMouseOut4 = () => {
     setIsHovering4(false);
   };
-
-  const handleMouseOver5 = () => {
-    setIsHovering5(true);
-  };
-
-  const handleMouseOut5 = () => {
-    setIsHovering5(false);
-  };
+;
   
 
   const agregarUpf = upf => {
@@ -174,30 +157,36 @@ function PuntosFuncion( props ){
       <div className='contenedor-puntosfuncion'>
         <div>
           <FormularioUPF onSubmit={agregarUpf} enviarPeso={ enviarPeso } />
-          <table cellPadding='10' className='tabla' border='1' cellSpacing='0'  align='center'>
-            <thead>
-              <tr>
-                <td>Nombre</td>
-                <td>Tipo</td>
-                <td>Peso</td>
-              </tr>
-            </thead>
-            <tbody>
-              {
-                upfs.map((upf) => 
-                  <PuntoFuncion 
-                    key={upf.id}
-                    id={upf.id}
-                    nombre={upf.nombre}
-                    tipo={upf.tipo}
-                    det={upf.det}
-                    ftr={upf.ftr}
-                    ret={upf.ret}
-                    peso={upf.peso} />
-                )
-              }
-            </tbody>
-          </table>
+          {upfs.length!==0 &&<>
+            <div className='descripcion'>
+              <b>Tabla de puntos de función</b>
+            </div>
+            <table cellPadding='10' className='tabla' border='1' cellSpacing='0'  align='center'>
+              <thead>
+                <tr>
+                  <td>Nombre</td>
+                  <td>Tipo</td>
+                  <td>Peso</td>
+                </tr>
+              </thead>
+              <tbody>
+                
+                {
+                  upfs.map((upf) => 
+                    <PuntoFuncion 
+                      key={upf.id}
+                      id={upf.id}
+                      nombre={upf.nombre}
+                      tipo={upf.tipo}
+                      det={upf.det}
+                      ftr={upf.ftr}
+                      ret={upf.ret}
+                      peso={upf.peso} />
+                  )
+                }
+              </tbody>
+            </table>
+          </>}
         </div>
         <div>
           <FactorComplejidad cambiarFactorComplejidad={ cambiarTfc }/>

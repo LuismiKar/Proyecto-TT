@@ -3,6 +3,8 @@ import { v4 as uuidv4 } from 'uuid';
 import Input from '../Input';
 import Boton from '../Boton';
 import '../../Hojas-de-estilo/CocomoII.css';
+import { FiHelpCircle } from "react-icons/fi";
+import CuadroInfo from '../CuadroInfo';
 
 /*
 Entradas
@@ -19,6 +21,54 @@ var FormularioCosmic = function( props ){
   const [lecturas, setLecturas] = useState(0);
   const [escrituras, setEscrituras] = useState(0);
   const [totalPF, setTotalpf] = useState(0);
+
+  //Variables de los cuadros de información
+  const [isHoveringTitulo, setIsHoveringTitulo] = useState(false);
+  const [isHovering, setIsHovering] = useState(false);
+  const [isHovering2, setIsHovering2] = useState(false);
+  const [isHovering3, setIsHovering3] = useState(false);
+  const [isHovering4, setIsHovering4] = useState(false);
+
+  //Funciones de los cuadros de información
+  const handleMouseOverTitulo = () => {
+    setIsHoveringTitulo(true);
+  };
+
+  const handleMouseOutTitulo = () => {
+    setIsHoveringTitulo(false);
+  };
+
+  const handleMouseOver = () => {
+    setIsHovering(true);
+  };
+
+  const handleMouseOut = () => {
+    setIsHovering(false);
+  };
+
+  const handleMouseOver2 = () => {
+    setIsHovering2(true);
+  };
+
+  const handleMouseOut2 = () => {
+    setIsHovering2(false);
+  };
+  
+  const handleMouseOver3 = () => {
+    setIsHovering3(true);
+  };
+
+  const handleMouseOut3 = () => {
+    setIsHovering3(false);
+  };
+
+  const handleMouseOver4 = () => {
+    setIsHovering4(true);
+  };
+
+  const handleMouseOut4 = () => {
+    setIsHovering4(false);
+  };
 
   function sumarMovimientos(){
     
@@ -74,7 +124,16 @@ var FormularioCosmic = function( props ){
       <form 
         className='Cosmic-formulario'
         onSubmit={manejarEnvio}>
-        <h4>Puntos de funcion Cosmic</h4>
+        <h4>
+          <FiHelpCircle onMouseOver={handleMouseOverTitulo} onMouseOut={handleMouseOutTitulo} color='#000'/>
+          Puntos de funcion Cosmic
+        </h4>
+        {isHoveringTitulo && (
+            <CuadroInfo texto={'Funcionalidades del proyecto'}/>
+        )}
+        <div className='descripcion'>
+        En el siguiente apartado se debe agregar cada funcionalidad considerada del software
+        </div>
           <table>
             <tr>
               <td>Nombre: </td>
@@ -88,7 +147,7 @@ var FormularioCosmic = function( props ){
                     handleChange={handleChange}/></td>
             </tr>
             <tr>
-              <td>Entradas: </td>
+              <td>Número de entradas: </td>
               <td><Input 
                     attribute={{
                       id: 'entradas',
@@ -99,7 +158,7 @@ var FormularioCosmic = function( props ){
                     handleChange={handleChange}/></td>
             </tr>
             <tr>
-              <td>Salidas: </td>
+              <td>Número de salidas: </td>
               <td><Input 
                     attribute={{
                       id: 'salidas',
@@ -110,7 +169,7 @@ var FormularioCosmic = function( props ){
                     handleChange={handleChange}/></td>
             </tr>
             <tr>
-              <td>Lecturas: </td>
+              <td>Número de lecturas: </td>
               <td><Input 
                     attribute={{
                       id: 'lecturas',
@@ -121,7 +180,7 @@ var FormularioCosmic = function( props ){
                     handleChange={handleChange}/></td>
             </tr>
             <tr>
-              <td>Escrituras: </td>
+              <td>Número de escrituras: </td>
               <td><Input 
                     attribute={{
                       id: 'escrituras',

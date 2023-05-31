@@ -47,7 +47,7 @@ function CcDisTemp(){
   const [isHovering11, setIsHovering11] = useState(false);
   const [isHovering12, setIsHovering12] = useState(false);
   const [isHovering13, setIsHovering13] = useState(false);
-
+  const [isHovering14, setIsHovering14] = useState(false);
 
   //Multiplicadores de esfuerzo
 
@@ -356,6 +356,14 @@ function CcDisTemp(){
     setIsHovering13(false);
   };
 
+  const handleMouseOver14 = () => {
+    setIsHovering14(true);
+  };
+
+  const handleMouseOut14 = () => {
+    setIsHovering14(false);
+  };
+
   function calculoB(){
     setB(1.01 + 0.01 * ( Aprec + Aflex + Aresl + Ateam + Apmat ));
     console.log('B: ' + B);
@@ -570,7 +578,13 @@ function CcDisTemp(){
         name='boton'
         funcion={calcularEstimacion}
         texto='Calcular' />
-      P estimado: {pmEst}
+      <hr/>
+      <FiHelpCircle onMouseOver={handleMouseOver14} onMouseOut={handleMouseOut14} color='#146C94'/>          
+      Esfuerzo: {pmEst}
+      
+      {isHovering14 && (
+        <CuadroInfo texto={'Representa los meses de trabajo de una persona fulltime, requeridos para desarrollar el proyecto'}/>
+      )}
     </div>
   );
 }
