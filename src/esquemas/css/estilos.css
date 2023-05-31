@@ -1,0 +1,68 @@
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'open sans';
+}
+
+.contenido{
+    text-align: center;
+    padding: 60px 0;
+    width: 90%;
+    max-width: 1000px;
+    margin: auto;
+    overflow: hidden;
+}
+
+.titulo{
+    color: brown;
+    font-size: 30px;
+    text-align: center;
+    
+}
+
+header{
+    width: 100%;
+    height: 500px;
+    background: #9CECFB;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #0051d494, #65c6f7a4, #9cedfb99), url(../img/escuela.jpg);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #0051d494, #65c6f7a4, #9cedfb99), url(../img/escuela.jpg); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background-size: cover;
+    background-attachment: fixed;
+    position: relative;
+
+}
+
+.wave{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.izquierda{
+    width: 50%;
+    float: left;
+    text-align: left;
+    padding: 0px 0px 0 300px;
+    
+}
+
+.izquierda1{
+    width: 50%;
+    float: left;
+    text-align: left;
+    padding: 0px 0px 0 410px;
+    
+}
+
+.derecha{
+    width: 35%;
+    float: right;
+    text-align: left;
+    padding: 0px 0px 0 20px;
+    
+}
+
