@@ -8,6 +8,8 @@ import Registro from './Registro';
 import Usuario from './Usuario';
 import axios from 'axios';
 
+const direccion = 'http://localhost:2000';
+
 function InicioSesion( props ){
   const [username,setUsername] = useState({campo:'', valido: null});
   const [password,setPassword] = useState({campo:'', valido: null});
@@ -40,14 +42,28 @@ function InicioSesion( props ){
 
   const onSubmitInicioSesion = (e) =>{
     e.preventDefault();
-    usuarios.map((usuario) =>
-      {if(email.campo===usuario.email && password.campo===usuario.password){
-        console.log(usuario.email);
-        console.log(usuario.password);
-        setAux(true);
-        console.log('Aux: '+aux);
-      }}
-    );
+
+    //Aqui va la funcion para iniciar sesion
+    //##############
+
+    const formData = {
+      email: '',
+      nombreusuario:'',
+      contraseña:''
+    };
+
+    axios.get(direccion+'/user/'+email.campo)
+    .then(response =>{
+      console.log('Ya los tienes: ',response.data);
+      console.log(formData);
+    })
+    .catch(error=>{
+      console.log(error);
+    })
+
+
+    //#############
+        
     
     if( aux === true ){
       setFormularioValido(true); 
@@ -57,6 +73,10 @@ function InicioSesion( props ){
       setFormularioValido(null);
       setAux(null);
       console.log(aux);
+
+      console.log(email.campo);
+      console.log(password.campo);
+
     } else {
       setFormularioValido(false);
     }
@@ -76,6 +96,8 @@ function InicioSesion( props ){
       setPassword2({campo: '',valido: null});
       setFormularioValido(null);
 
+
+        //No tocar, es la funcion que registra usuarios
         const formData = {
           email: email.campo,
           nombreusuario: username.campo,
@@ -85,7 +107,9 @@ function InicioSesion( props ){
 
         console.log(formData);
 
-        axios.post('http://localhost:2000/user', formData)
+        axios.post(direccion+'/user', formData)
+
+        //Aqui termina la funcion para registrar usuarios
 
     } else {
       setFormularioValido(false);
