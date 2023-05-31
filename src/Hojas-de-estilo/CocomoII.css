@@ -145,7 +145,12 @@ tr{
 .tabla{
   margin-top: 20px;
   margin-left: 50px;
+  margin: 0 auto;
   
+}
+
+.tabla tr td{
+  padding: 3px;
 }
 
 thead{

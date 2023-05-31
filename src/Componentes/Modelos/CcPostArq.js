@@ -76,6 +76,8 @@ function CcPostArq(){
   const [isHovering22, setIsHovering22] = useState(false);
   const [isHovering23, setIsHovering23] = useState(false);
   const [isHovering24, setIsHovering24] = useState(false);
+  const [isHovering25, setIsHovering25] = useState(false);
+  const [isHovering26, setIsHovering26] = useState(false);
 
   //Multiplicadores de esfuerzo
 
@@ -469,6 +471,22 @@ function CcPostArq(){
     setIsHovering24(false);
   };
 
+  const handleMouseOver25 = () => {
+    setIsHovering25(true);
+  };
+
+  const handleMouseOut25 = () => {
+    setIsHovering25(false);
+  };
+
+  const handleMouseOver26 = () => {
+    setIsHovering26(true);
+  };
+
+  const handleMouseOut26 = () => {
+    setIsHovering26(false);
+  };
+
 //Asignacion de valores cada que cambia el input de seleccion
 
   //Producto
@@ -653,13 +671,22 @@ function CcPostArq(){
             }}
             handleChange={ handleChange }/>
       </div>
-      <h3>Multiplicadores de esfuerzo</h3>
+      <div className='descripcion2'>
+        A continuación, ingresa los datos que se indican, de acuerdo a las características de tu proyecto:
+      </div>
+      <h3>
+        <FiHelpCircle onMouseOver={handleMouseOver25} onMouseOut={handleMouseOut25} color='#000'/>
+        Multiplicadores de esfuerzo
+      </h3>
+      {isHovering25 && (
+        <CuadroInfo texto={'Factores que tienen un efecto multiplicativo sobre el esfuerzo'} />
+      )}
       <div className='contenedor-postarquitectura'>
         <div>
         
           <table>
             <tbody>
-              <tr>Producto</tr>
+              <tr><center><b>Producto</b></center></tr>
               <tr>
                 <td>
                   <FiHelpCircle onMouseOver={handleMouseOver} onMouseOut={handleMouseOut} color='#146C94'/> Confiabilidad requerida (RELY):
@@ -705,7 +732,7 @@ function CcPostArq(){
                 </td>
                 <td><Select options={ ruse } defaultValue={ ruse[1] } onChange={ handleSelectChangeRuse }/></td>
               </tr>
-              <br/>Plataforma<br/>
+              <br/><b>Plataforma</b><br/>
               <tr>
                 <td>
                   <FiHelpCircle onMouseOver={handleMouseOver6} onMouseOut={handleMouseOut6} color='#146C94'/> Restricción del tiempo de ejecución (TIME):
@@ -739,7 +766,7 @@ function CcPostArq(){
         <div>
           <table>
             <tbody>
-              <tr/>Personal<tr/>
+              <tr/><b>Personal</b><tr/>
               <tr>
                 <td>
                   <FiHelpCircle onMouseOver={handleMouseOver9} onMouseOut={handleMouseOut9} color='#146C94'/> Capacidad del analista (ACAP):
@@ -794,7 +821,7 @@ function CcPostArq(){
                 </td>
                 <td><Select options={ pcon } defaultValue={ pcon[2] } onChange={ handleSelectChangePcon }/></td>
               </tr>
-              <tr/>Proyecto<tr/>
+              <tr/><b>Proyecto</b><tr/>
               <tr>
                 <td>
                   <FiHelpCircle onMouseOver={handleMouseOver15} onMouseOut={handleMouseOut15} color='#146C94'/> Uso de herramientas de software (TOOL):
@@ -826,7 +853,13 @@ function CcPostArq(){
           </table>
         </div>
         <div>
-          <h3>Factor exponencial de escala</h3> 
+          <h3>
+            <FiHelpCircle onMouseOver={handleMouseOver26} onMouseOut={handleMouseOut26} color='#000'/>
+            Factor exponencial de escala
+          </h3>
+          {isHovering26 && (
+            <CuadroInfo texto={'Resultado de factores que influyen en la productividad y esfuerzo de un proyecto'} valor='corto'/>
+          )}
           <table>
             <tbody>
             <tr>

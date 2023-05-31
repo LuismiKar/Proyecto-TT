@@ -146,6 +146,9 @@ function CcCompAp(){
           {isHovering && (
             <CuadroInfo className='center' texto={'Enfoque de medición de tamaño de software'} />
           )}
+          <div className='descripcion2'>
+            A continuación, ingresa los datos que se indican, de acuerdo a las características de tu proyecto:
+          </div>
         </div>
         <PuntosObjeto cambiarPtsObj={ cambiarPtsObj }/>
       </div>

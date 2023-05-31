@@ -48,6 +48,8 @@ function CcDisTemp(){
   const [isHovering12, setIsHovering12] = useState(false);
   const [isHovering13, setIsHovering13] = useState(false);
   const [isHovering14, setIsHovering14] = useState(false);
+  const [isHovering15, setIsHovering15] = useState(false);
+  const [isHovering16, setIsHovering16] = useState(false);
 
   //Multiplicadores de esfuerzo
 
@@ -364,6 +366,22 @@ function CcDisTemp(){
     setIsHovering14(false);
   };
 
+  const handleMouseOver15 = () => {
+    setIsHovering15(true);
+  };
+
+  const handleMouseOut15 = () => {
+    setIsHovering15(false);
+  };
+
+  const handleMouseOver16 = () => {
+    setIsHovering16(true);
+  };
+
+  const handleMouseOut16 = () => {
+    setIsHovering16(false);
+  };
+
   function calculoB(){
     setB(1.01 + 0.01 * ( Aprec + Aflex + Aresl + Ateam + Apmat ));
     console.log('B: ' + B);
@@ -406,14 +424,23 @@ function CcDisTemp(){
             }}
             handleChange={ handleChange }/>
       </div>
+      <div className='descripcion2'>
+        A continuación, ingresa los datos que se indican, de acuerdo a las características de tu proyecto:
+      </div>
       <div className='contenedor-diseñotemprano'>
         <div>
-          <h3>Multiplicadores de esfuerzo</h3>
+          <h3>
+            <FiHelpCircle onMouseOver={handleMouseOver15} onMouseOut={handleMouseOut15} color='#000'/>
+            Multiplicadores de esfuerzo
+          </h3>
+          {isHovering15 && (
+            <CuadroInfo texto={'Factores que tienen un efecto multiplicativo sobre el esfuerzo'} valor='corto'/>
+          )}
           <table>
             <tbody>
               <tr>
                 <td>
-                  <FiHelpCircle onMouseOver={handleMouseOver} onMouseOut={handleMouseOut} color='#146C94'/> Confiabilidad y Complejidad del producto:
+                  <FiHelpCircle onMouseOver={handleMouseOver} onMouseOut={handleMouseOut} color='#146C94'/> Confiabilidad y Complejidad del producto (RCPX):
                   {isHovering && (
                     <CuadroInfo texto={'Confiabilidad y complejidad del producto'} valor='corto'/>
                   )}
@@ -422,7 +449,7 @@ function CcDisTemp(){
               </tr>
               <tr>
                 <td>
-                  <FiHelpCircle onMouseOver={handleMouseOver2} onMouseOut={handleMouseOut2} color='#146C94'/> Reusabilidad Requerida:
+                  <FiHelpCircle onMouseOver={handleMouseOver2} onMouseOut={handleMouseOut2} color='#146C94'/> Reusabilidad Requerida (RUSE):
                   {isHovering2 && (
                     <CuadroInfo texto={'Construcción de componentes reutilizables en el mismo o diferente proyecto'} valor='corto'/>
                   )}
@@ -431,7 +458,7 @@ function CcDisTemp(){
               </tr>
               <tr>
                 <td>
-                  <FiHelpCircle onMouseOver={handleMouseOver3} onMouseOut={handleMouseOut3} color='#146C94'/> Dificultad de la Plataforma:
+                  <FiHelpCircle onMouseOver={handleMouseOver3} onMouseOut={handleMouseOut3} color='#146C94'/> Dificultad de la Plataforma (PDIF):
                   {isHovering3 && (
                     <CuadroInfo texto={'Dificultad de la plataforma'} valor='corto'/>
                   )}
@@ -440,7 +467,7 @@ function CcDisTemp(){
               </tr>
               <tr>
                 <td>
-                  <FiHelpCircle onMouseOver={handleMouseOver4} onMouseOut={handleMouseOut4} color='#146C94'/> Aptitud del Personal:
+                  <FiHelpCircle onMouseOver={handleMouseOver4} onMouseOut={handleMouseOut4} color='#146C94'/> Aptitud del Personal (PERS):
                   {isHovering4 && (
                     <CuadroInfo texto={'Aptitud del personal'} valor='corto'/>
                   )}
@@ -449,7 +476,7 @@ function CcDisTemp(){
               </tr>
               <tr>
                 <td>
-                  <FiHelpCircle onMouseOver={handleMouseOver5} onMouseOut={handleMouseOut5} color='#146C94'/> Experiencia del Personal:
+                  <FiHelpCircle onMouseOver={handleMouseOver5} onMouseOut={handleMouseOut5} color='#146C94'/> Experiencia del Personal (PREX):
                   {isHovering5 && (
                     <CuadroInfo texto={'Experiencia del personal'} valor='corto'/>
                   )}
@@ -458,7 +485,7 @@ function CcDisTemp(){
               </tr>
               <tr>
                 <td>
-                  <FiHelpCircle onMouseOver={handleMouseOver6} onMouseOut={handleMouseOut6} color='#146C94'/> Facilidades:
+                  <FiHelpCircle onMouseOver={handleMouseOver6} onMouseOut={handleMouseOut6} color='#146C94'/> Facilidades (FCIL):
                   {isHovering6 && (
                     <CuadroInfo texto={'Facilidades'} valor='corto'/>
                   )}
@@ -467,7 +494,7 @@ function CcDisTemp(){
               </tr>
               <tr>
                 <td>
-                  <FiHelpCircle onMouseOver={handleMouseOver7} onMouseOut={handleMouseOut7} color='#146C94'/> Cronograma de Desarrollo Requerido:
+                  <FiHelpCircle onMouseOver={handleMouseOver7} onMouseOut={handleMouseOut7} color='#146C94'/> Cronograma de Desarrollo Requerido (SCED):
                   {isHovering7 && (
                     <CuadroInfo texto={'Restricción en los plazos de tiempo impuesta al equipo de trabajo'} valor='corto'/>
                   )}
@@ -478,12 +505,18 @@ function CcDisTemp(){
           </table>
         </div>
         <div>
-          <h3>Factor exponencial de escala</h3> 
+          <h3>
+            <FiHelpCircle onMouseOver={handleMouseOver16} onMouseOut={handleMouseOut16} color='#000'/>
+            Factor exponencial de escala
+          </h3>
+          {isHovering16 && (
+            <CuadroInfo texto={'Resultado de factores que influyen en la productividad y esfuerzo de un proyecto'} valor='corto'/>
+          )}
           <table>
             <tbody>
               <tr>
                 <td>
-                  <FiHelpCircle onMouseOver={handleMouseOver8} onMouseOut={handleMouseOut8} color='#146C94'/> Precedencia:
+                  <FiHelpCircle onMouseOver={handleMouseOver8} onMouseOut={handleMouseOut8} color='#146C94'/> Precedencia (PREC):
                   {isHovering8 && (
                     <CuadroInfo texto={'Grado de experiencia previa'} valor='corto'/>
                   )}
@@ -492,7 +525,7 @@ function CcDisTemp(){
               </tr>
               <tr>
                 <td>
-                  <FiHelpCircle onMouseOver={handleMouseOver9} onMouseOut={handleMouseOut9} color='#146C94'/> Flexibilidad en el desarrollo:
+                  <FiHelpCircle onMouseOver={handleMouseOver9} onMouseOut={handleMouseOut9} color='#146C94'/> Flexibilidad en el desarrollo (FLEX):
                   {isHovering9 && (
                     <CuadroInfo texto={'Exigencia en el cumplimiento de los requerimientos'} valor='corto'/>
                   )}
@@ -501,7 +534,7 @@ function CcDisTemp(){
               </tr>
               <tr>
                 <td>
-                  <FiHelpCircle onMouseOver={handleMouseOver10} onMouseOut={handleMouseOut10} color='#146C94'/> Arquitectura/Resolución de riesgo:
+                  <FiHelpCircle onMouseOver={handleMouseOver10} onMouseOut={handleMouseOut10} color='#146C94'/> Arquitectura/Resolución de riesgo (RESL):
                   {isHovering10 && (
                     <CuadroInfo texto={'Conocimiento de los ítems de riesgo crítico y el modo de abordarlos dentro del proyecto'} valor='corto'/>
                   )}
@@ -510,7 +543,7 @@ function CcDisTemp(){
               </tr>
               <tr>
                 <td>
-                  <FiHelpCircle onMouseOver={handleMouseOver11} onMouseOut={handleMouseOut11} color='#146C94'/> Cohesión de equipo:
+                  <FiHelpCircle onMouseOver={handleMouseOver11} onMouseOut={handleMouseOut11} color='#146C94'/> Cohesión de equipo (TEAM):
                   {isHovering11 && (
                     <CuadroInfo texto={'Dificultades de sincronización entre los participantes del proyecto'} valor='corto'/>
                   )}
@@ -519,7 +552,7 @@ function CcDisTemp(){
               </tr>
               <tr>
                 <td>
-                  <FiHelpCircle onMouseOver={handleMouseOver12} onMouseOut={handleMouseOut12} color='#146C94'/> Madurez del proceso:
+                  <FiHelpCircle onMouseOver={handleMouseOver12} onMouseOut={handleMouseOut12} color='#146C94'/> Madurez del proceso (PMAT):
                   {isHovering12 && (
                     <CuadroInfo texto={'Nivel de madurez de la organización'} valor='corto'/>
                   )}
