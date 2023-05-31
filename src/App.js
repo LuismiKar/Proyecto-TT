@@ -1,17 +1,7 @@
 import React, { useEffect } from 'react';
-import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import { ProSidebarProvider } from 'react-pro-sidebar';
 import PaginaPrincipal from './Componentes/PaginaPrincipal';
-import InicioSesion from './Componentes/InicioSesion';
-import Registro from './Componentes/Registro';
-import PaginaPrincipalAdmin from './Componentes/PaginaPrincipalAdmin';
-import CcCompAp from './Componentes/Modelos/CcCompAp';
-import CcDisTem from './Componentes/Modelos/CcDisTem';
-import CcPostArq from './Componentes/Modelos/CcPostArq';
-import PuntosCosmic from './Componentes/Modelos/PuntosCosmic';
-import GuiaUsuario from './Componentes/GuiaUsuario'
-import ListaProyectos from './Componentes/ListaProyectos';
 import {UserGetById} from './Componentes/Endpoints/User';
 
 
