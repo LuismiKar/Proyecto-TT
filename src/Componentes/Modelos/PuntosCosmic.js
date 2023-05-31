@@ -19,6 +19,14 @@ function PuntosCosmic(){
   const [totalPfC, setTotalPfC] = useState(0);
   const [esfuerzo, setEsfuerzo] = useState(0);
 
+  const [isHoveringTitulo, setIsHoveringTitulo] = useState(false);
+  const [isHovering, setIsHovering] = useState(false);
+  const [isHovering2, setIsHovering2] = useState(false);
+  const [isHovering3, setIsHovering3] = useState(false);
+  const [isHovering4, setIsHovering4] = useState(false);
+  const [isHovering5, setIsHovering5] = useState(false);
+  const [isHovering6, setIsHovering6] = useState(false);
+
   var enviarTotalPf = function(numActual){ setTotalPfC( Number(totalPfC) + numActual); }
 
   const agregarPfc = pfc => {

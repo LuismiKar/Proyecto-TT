@@ -14,6 +14,7 @@ function CcDisTemp(){
   const A = 2.94;
 
   const [ B , setB ] = useState(1.1997);
+  const [ metrica , setMetrica ] = useState('');
   const [ pmNom , setPMnom ] = useState(0);
   const [ pmEst , setPMest ] = useState(0);
   const [ Arcpx , setRcpx ] = useState(1);
@@ -221,6 +222,11 @@ function CcDisTemp(){
   const handleSelectChangePmat = ( { value } ) => {
     console.log("Pmat: " + value);
     setPmat(value);
+  }
+
+  const handleSelectChangeMetrica = ( { value } ) => {
+    console.log("Metrica: " + value);
+    setMetrica(value);
   }
 
   function handleChange(name,value) {
@@ -516,15 +522,18 @@ function CcDisTemp(){
           </table>
         </div>
         <div className='contenedor-ksloc'>
-          
+          <div className='descripcion2'>
+            Si no cuentas con la cantidad de líneas de código, selecciona <b>Puntos de función</b>
+            <Select options={ [ { label:"Puntos de función", value:'PF' },
+                                { label:"Líneas de código", value:'KSLOC' }] } 
+                    placeholder= 'Selecciona la métrica'
+                    onChange={ handleSelectChangeMetrica } />
+          </div>
           <table>
             <tbody>
               <tr>
-                <td>
-                  <FiHelpCircle onMouseOver={handleMouseOver13} onMouseOut={handleMouseOut13} color='#146C94'/> KSLOC: {Ksloc}
-                  {isHovering13 && (
-                    <CuadroInfo texto={'Miles de líneas de código del software a desarrollar'}/>
-                  )}
+                {metrica==='KSLOC' && <><td>
+                  Ingresa la cantidad de <b>miles</b> de líneas de código: 
                 </td>
                 <td>
                   <Input
@@ -535,8 +544,8 @@ function CcDisTemp(){
                     }}
                     handleChange={handleChange}
                 />
-                </td>
-                <td>
+                </td></>}
+                {metrica==='PF' && <><td>
                   <Boton 
                     name='boton-Modal'
                     funcion={openModal}
@@ -545,9 +554,16 @@ function CcDisTemp(){
                     <PuntosFuncion enviarSloc={enviarSloc} />
                   </Modal>
                 </td>
+                </>}
               </tr>
             </tbody>
           </table>
+        </div>
+        <div className='contenedor-ksloc'>
+          <FiHelpCircle onMouseOver={handleMouseOver13} onMouseOut={handleMouseOut13} color='#146C94'/> KSLOC: {Ksloc}
+          {isHovering13 && (
+            <CuadroInfo texto={'Miles de líneas de código del software a desarrollar'}/>
+          )}
         </div>
       </div>
       <Boton
