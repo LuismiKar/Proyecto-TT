@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import './App.css';
 import { ProSidebarProvider } from 'react-pro-sidebar';
 import PaginaPrincipal from './Componentes/PaginaPrincipal';
-import {UserGetById} from './Componentes/Endpoints/User';
 
 
 function App() {
@@ -15,9 +14,7 @@ function App() {
     <div className="App">
       <ProSidebarProvider>
         <PaginaPrincipal/>
-        <UserGetById/>
       </ProSidebarProvider>
-        
     </div>
   );
 }

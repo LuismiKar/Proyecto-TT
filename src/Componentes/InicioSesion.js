@@ -5,6 +5,8 @@ import { Formulario , ContenedorBotonCentrado , Boton, MensajeError, MensajeExit
 import { FiAlertCircle } from "react-icons/fi";
 import ComponenteInput from './ComponenteInput';
 import Registro from './Registro';
+import Usuario from './Usuario';
+import axios from 'axios';
 
 function InicioSesion( props ){
   const [username,setUsername] = useState({campo:'', valido: null});
@@ -73,10 +75,21 @@ function InicioSesion( props ){
       setPassword({campo: '',valido: null});
       setPassword2({campo: '',valido: null});
       setFormularioValido(null);
+
+        const formData = {
+          email: email.campo,
+          nombreusuario: username.campo,
+          contraseña : password.campo,
+          idtipousuario: 1
+        };
+
+        console.log(formData);
+
+        axios.post('http://localhost:2000/user', formData)
+
     } else {
       setFormularioValido(false);
     }
-
   }
 
   const validarPassword2 = () => {
