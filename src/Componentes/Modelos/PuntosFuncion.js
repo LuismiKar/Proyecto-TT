@@ -5,6 +5,8 @@ import '../../Hojas-de-estilo/CocomoII.css';
 import FactorComplejidad from './FactorComplejidad';
 import Boton from '../Boton';
 import Select from 'react-select';
+import { FiHelpCircle } from "react-icons/fi";
+import CuadroInfo from '../CuadroInfo';
 
 
 //DET: Campos leidos 
@@ -21,6 +23,16 @@ function PuntosFuncion( props ){
   const [lenguaje, setLenguaje] = useState(''); //Lenguaje de programacion
   const [nlenguaje, setNlenguaje] = useState(0); //Lenguaje de programacion
 
+  //Variables de los cuadros de información
+
+  const [isHoveringTitulo, setIsHoveringTitulo] = useState(false);
+  const [isHovering, setIsHovering] = useState(false);
+  const [isHovering2, setIsHovering2] = useState(false);
+  const [isHovering3, setIsHovering3] = useState(false);
+  const [isHovering4, setIsHovering4] = useState(false);
+  const [isHovering5, setIsHovering5] = useState(false);
+
+  //Lenguajes de programación
   const lenguajeOpciones = [
     { label:"Access", value:38},
     { label:"Ada 83", value:71 },
@@ -68,11 +80,62 @@ function PuntosFuncion( props ){
     { label:"Visual Basic 5.0", value:29 },
     { label:"Visual C++", value:34 }
   ]
+
+  //Funciones cuadros de información
+
+  const handleMouseOverTitulo = () => {
+    setIsHoveringTitulo(true);
+  };
+
+  const handleMouseOutTitulo = () => {
+    setIsHoveringTitulo(false);
+  };
+
+  const handleMouseOver = () => {
+    setIsHovering(true);
+  };
+
+  const handleMouseOut = () => {
+    setIsHovering(false);
+  };
+
+  const handleMouseOver2 = () => {
+    setIsHovering2(true);
+  };
+
+  const handleMouseOut2 = () => {
+    setIsHovering2(false);
+  };
+  
+  const handleMouseOver3 = () => {
+    setIsHovering3(true);
+  };
+
+  const handleMouseOut3 = () => {
+    setIsHovering3(false);
+  };
+
+  const handleMouseOver4 = () => {
+    setIsHovering4(true);
+  };
+
+  const handleMouseOut4 = () => {
+    setIsHovering4(false);
+  };
+
+  const handleMouseOver5 = () => {
+    setIsHovering5(true);
+  };
+
+  const handleMouseOut5 = () => {
+    setIsHovering5(false);
+  };
   
 
   const agregarUpf = upf => {
     if(upf.nombre.trim() && upf.peso!==0) { //Se verifica que la cadena no esta vacia
       upf.nombre = upf.nombre.trim(); //Se le quitan los espacios del principio y del final a la cadena
+      
       const upfsActualizados = [upf, ...upfs];//El operador ... convierte los upfs de un arreglo a upfs individuales
       setUPFs(upfsActualizados);
     }
@@ -101,34 +164,51 @@ function PuntosFuncion( props ){
   return(
     <div>
       <div className='titulo'>
-        <h2>Puntos de función</h2>
+        <h2>
+          Puntos de función
+        </h2>
+        Procuran cuantificar la funcionalidad de un sistema de software
+        
       </div>
+
       <div className='contenedor-puntosfuncion'>
         <div>
           <FormularioUPF onSubmit={agregarUpf} enviarPeso={ enviarPeso } />
-          <div>
-            {
-              upfs.map((upf) => 
-                <PuntoFuncion 
-                  key={upf.id}
-                  id={upf.id}
-                  nombre={upf.nombre}
-                  tipo={upf.tipo}
-                  det={upf.det}
-                  ftr={upf.ftr}
-                  ret={upf.ret}
-                  peso={upf.peso} />
-              )
-            }
-          </div>
- 
+          <table cellPadding='10' className='tabla' border='1' cellSpacing='0'  align='center'>
+            <thead>
+              <tr>
+                <td>Nombre</td>
+                <td>Tipo</td>
+                <td>Peso</td>
+              </tr>
+            </thead>
+            <tbody>
+              {
+                upfs.map((upf) => 
+                  <PuntoFuncion 
+                    key={upf.id}
+                    id={upf.id}
+                    nombre={upf.nombre}
+                    tipo={upf.tipo}
+                    det={upf.det}
+                    ftr={upf.ftr}
+                    ret={upf.ret}
+                    peso={upf.peso} />
+                )
+              }
+            </tbody>
+          </table>
         </div>
         <div>
           <FactorComplejidad cambiarFactorComplejidad={ cambiarTfc }/>
         </div>
       </div>
       <hr/>
+      <div className='descripcion2'>
+        En el siguiente apartado se debe seleccionar el lenguaje de programación del proyecto, y obtener las líneas de código
+      </div>
       <div className='contenedor-puntosfuncion'>
+        
         <div>
           Lenguaje de programación:
           <Select options={ lenguajeOpciones } placeholder="Seleccione el lenguaje" onChange={ handleSelectLenguaje } />
@@ -142,11 +222,31 @@ function PuntosFuncion( props ){
             funcion={calcularFP}
             texto='Calcular Puntos' />
         </div>
-        <div> 
-          Factor complejidad: { tfc }<br/>
-          Puntos de funcion no ajustados: { ufp }<br/>
-          Puntos de funcion: { fp }<br/>
-          Lineas de codigo: { sloc }<br/>
+        <div className='puro-texto'> 
+            <FiHelpCircle onMouseOver={handleMouseOver} onMouseOut={handleMouseOut} color='#146C94'/>
+            Factor complejidad: { tfc }
+            {isHovering && (
+              <CuadroInfo texto={'Total del factor complejidad'}/>
+            )}
+          <br/>
+            <FiHelpCircle onMouseOver={handleMouseOver2} onMouseOut={handleMouseOut2} color='#146C94'/>
+            Puntos de funcion no ajustados: { ufp }
+            {isHovering2 && (
+              <CuadroInfo texto={'Suma del peso de los puntos de función agregados'}/>
+            )}
+          <br/>
+            <FiHelpCircle onMouseOver={handleMouseOver3} onMouseOut={handleMouseOut3} color='#146C94'/>
+            Puntos de funcion: { fp }
+            {isHovering3 && (
+              <CuadroInfo texto={'Puntos de función ajustados'}/>
+            )}
+          <br/>
+            <FiHelpCircle onMouseOver={handleMouseOver4} onMouseOut={handleMouseOut4} color='#146C94'/>
+            Lineas de codigo: { sloc }
+            {isHovering4 && (
+              <CuadroInfo texto={'Líneas de código calculadas'}/>
+            )}
+           <br/>
         </div>
       </div>
       

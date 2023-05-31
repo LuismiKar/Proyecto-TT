@@ -1,6 +1,7 @@
 .contenedor-principal{
-  margin: 5%;
+  
   width: auto;
+  
 }
 
 .contenedor-postarquitectura{
@@ -50,6 +51,7 @@
   flex-direction: row;
   display: flex;
   flex-wrap: wrap;
+  padding: 10px;
 }
 
 .contenedor-puntosfuncion > div {
@@ -84,6 +86,9 @@
 .titulo{
   text-align: center;
   margin-bottom: 40px;
+  margin: 0 auto;
+  align-items: center;
+  justify-content: center;
 }
 
 .contenedor-puntosobjeto{
@@ -113,4 +118,32 @@ tr{
 
 .center{
   text-align: center;
+}
+
+.descripcion{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  text-align: center;
+  width: 500px;
+}
+
+.descripcion2{
+  margin-top: 10px;
+  margin-bottom: 10px;
+  text-align: center;
+  width: 90%;
+}
+
+.tabla{
+  margin-top: 20px;
+  margin-left: 50px;
+  
+}
+
+thead{
+  font-weight: bold;
+}
+
+.puro-texto{
+  padding-left: 50px;
 }

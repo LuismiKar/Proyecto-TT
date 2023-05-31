@@ -516,6 +516,7 @@ function CcDisTemp(){
           </table>
         </div>
         <div className='contenedor-ksloc'>
+          
           <table>
             <tbody>
               <tr>

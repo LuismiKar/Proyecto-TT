@@ -2,10 +2,11 @@ import React from 'react';
 
 function PuntoFuncion({ id , nombre , det , ftr , ret , tipo , peso }){
   return(
-    <div 
-      className='puntofuncion-contenedor' >
-        {nombre} {tipo} {det} {ftr} {ret} {peso}
-    </div>
+    <tr>
+      <td>{nombre}</td>
+      <td>{tipo}</td>
+      <td>{peso}</td>
+    </tr>
   );
 }
 

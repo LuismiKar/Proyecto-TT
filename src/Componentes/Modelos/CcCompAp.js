@@ -18,6 +18,7 @@ function CcCompAp(){
   const [ mcIcase , setMcIcase ] = useState(0);
   const [ nombreProyecto , setNombreProyecto ] = useState('');
 
+
   const [isHoveringTitulo, setIsHoveringTitulo] = useState(false);
   const [isHovering, setIsHovering] = useState(false);
   const [isHovering2, setIsHovering2] = useState(false);

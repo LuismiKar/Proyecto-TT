@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
 import Select from 'react-select';
 import Boton from '../Boton';
-
+import { FiHelpCircle } from "react-icons/fi";
+import CuadroInfo from '../CuadroInfo';
 
 var FactorComplejidad = function({ cambiarFactorComplejidad }){
 
@@ -29,6 +30,8 @@ var FactorComplejidad = function({ cambiarFactorComplejidad }){
     { label:"Significativo", value:4 },
     { label:"Esencial", value:5 }
   ]
+
+  const [isHoveringTitulo, setIsHoveringTitulo] = useState(false);
 
   const manejarCambioF1 = ( { value } ) => {
     console.log("F1: " + value);
@@ -100,13 +103,32 @@ var FactorComplejidad = function({ cambiarFactorComplejidad }){
     setF14(value);
   }
 
+  //Funciones cuadros de información
+
+  const handleMouseOverTitulo = () => {
+    setIsHoveringTitulo(true);
+  };
+
+  const handleMouseOutTitulo = () => {
+    setIsHoveringTitulo(false);
+  };
+
   function calcularFactorComplejidad(){
     setTotalFC( f1 + f2 + f3 + f4 + f5 + f6 + f7 + f8 + f9 + f10 + f11 + f12 + f13 + f14 );
   }
 
   return(
     <div className='UPF-formulario'>
-      <h3>Factor complejidad</h3>
+      <h3>
+        <FiHelpCircle onMouseOver={handleMouseOverTitulo} onMouseOut={handleMouseOutTitulo} color='#000'/>
+        Factor complejidad
+      </h3>
+      {isHoveringTitulo && (
+        <CuadroInfo texto={'Factores característicos del software'}/>
+      )}
+      <div className='descripcion'>
+        A continuación se debe asignar un valor a cada uno de los 14 factores
+      </div>
       <table>
         <tr>
           <td>F1. Mecanismos de recuperación y back-up confiables</td>
@@ -165,11 +187,13 @@ var FactorComplejidad = function({ cambiarFactorComplejidad }){
           <td><Select options={ pesos } defaultValue={ pesos[0] } onChange={manejarCambioF14} /></td>
         </tr>
         <tr>
+          <center>
           <Boton 
             name='BotonFC'
             funcion={calcularFactorComplejidad}
             onMouseOver={cambiarFactorComplejidad(totalFC)}
             texto='Calcular FC' />
+          </center>
         </tr>
       </table>
     </div>

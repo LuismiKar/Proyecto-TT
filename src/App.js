@@ -25,13 +25,7 @@ function App() {
     <div className="App">
       <ProSidebarProvider>
         <PaginaPrincipal/>
-        <Routes>
-          <Route exact path="/paginaprincipal" Component={PaginaPrincipal} />
-          <Route exact path="/paginaprincipalAdmin" Component={PaginaPrincipalAdmin} />
-          <Route exact path="/registro" Component={Registro} />
-          <Route exact path="/inicioSesion" Component={InicioSesion} />
-        </Routes>
-      <UserGetById/>
+        <UserGetById/>
       </ProSidebarProvider>
         
     </div>

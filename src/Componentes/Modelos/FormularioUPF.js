@@ -4,15 +4,23 @@ import Input from '../Input';
 import Boton from '../Boton';
 import Select from 'react-select';
 import '../../Hojas-de-estilo/CocomoII.css';
+import { FiHelpCircle } from "react-icons/fi";
+import CuadroInfo from '../CuadroInfo';
 
 var FormularioUPF = function( props ) {
     
+  const [aux, setAux] = useState('');
   const [nombre, setNombre] = useState('');
   const [tipo, setTipo] = useState('');
   const [det, setDet] = useState(0);
   const [ret, setRet] = useState(0);//Archivos logicos
   const [ftr, setFtr] = useState(0);//Consultas, entradas y salidas
   const [peso, setPeso] = useState(0);
+
+  //Variables de los cuadros de información
+  const [isHovering, setIsHovering] = useState(false);
+  const [isHovering2, setIsHovering2] = useState(false);
+  const [isHovering3, setIsHovering3] = useState(false);
 
   const tipoUPF = [
     { label:"Entrada externa", value:"EE" },
@@ -39,6 +47,32 @@ var FormularioUPF = function( props ) {
     AEprom: 7,
     AEalto: 10
   }
+
+  //Funciones cuadros de información
+
+  const handleMouseOver = () => {
+    setIsHovering(true);
+  };
+
+  const handleMouseOut = () => {
+    setIsHovering(false);
+  };
+
+  const handleMouseOver2 = () => {
+    setIsHovering2(true);
+  };
+
+  const handleMouseOut2 = () => {
+    setIsHovering2(false);
+  };
+  
+  const handleMouseOver3 = () => {
+    setIsHovering3(true);
+  };
+
+  const handleMouseOut3 = () => {
+    setIsHovering3(false);
+  };
 
   function asignarPesoArchivosLogicos(){
     if( det<0 || ret<0 ){
@@ -157,10 +191,21 @@ var FormularioUPF = function( props ) {
     <form 
       className='UPF-formulario'
       onSubmit={manejarEnvio}>
-      <h3>Funcionalidades</h3>
+      <h3>
+        <FiHelpCircle onMouseOver={handleMouseOver} onMouseOut={handleMouseOut} color='#000'/>
+        Funcionalidades
+      </h3>{isHovering && (
+        <CuadroInfo texto={'Caracteristicas del software'}/>
+      )}
+      
+      <div className='descripcion'>
+        En el siguiente apartado se debe agregar cada funcionalidad considerada del software
+      </div>
       <table>
         <tr>
-          <td>Nombre de la funcionalidad: </td>
+          <td>
+            Nombre de la funcionalidad: 
+          </td>
           <td>
             <Input 
               attribute={{
@@ -181,7 +226,13 @@ var FormularioUPF = function( props ) {
           </td>
         </tr>
         <tr>
-          <td>Campos de leidos: </td>
+          <td>
+            <FiHelpCircle onMouseOver={handleMouseOver2} onMouseOut={handleMouseOut2} color='#146C94'/>
+            Campos de leidos: 
+            {isHovering2 && (
+              <CuadroInfo texto={'Campos reconocibles por el usuario'}/>
+            )}
+          </td>
           <td>
             <Input 
               attribute={{
@@ -193,8 +244,9 @@ var FormularioUPF = function( props ) {
               handleChange={handleChange}/>
           </td>
         </tr>
-        <tr>
-          <td>Cantidad de tablas del archivo: </td>
+        {(tipo === 'EE' || tipo === 'CE' || tipo === 'SE') &&
+          <tr>
+          <td>Cantidad de tablas leídas: </td>
           <td>
             <Input 
               attribute={{
@@ -205,9 +257,16 @@ var FormularioUPF = function( props ) {
               }}
               handleChange={handleChange}/>
           </td>
-        </tr>
-        <tr>
-          <td>Archivos referenciados: </td>
+        </tr>}
+        {(tipo === 'ALI' || tipo === 'AEI') &&
+          <tr>
+          <td>
+            <FiHelpCircle onMouseOver={handleMouseOver3} onMouseOut={handleMouseOut3} color='#146C94'/>
+            Archivos referenciados: 
+            {isHovering3 && (
+              <CuadroInfo texto={'Fichero (interno o externo) leído/mantenido por el proceso'}/>
+            )}
+          </td>
           <td>
             <Input 
               attribute={{
@@ -218,12 +277,13 @@ var FormularioUPF = function( props ) {
               }}
               handleChange={handleChange}/>
           </td>
-        </tr>
+        </tr>}
       </table>   
+        <center>
         <Boton 
           name='formulario-boton' 
           texto='Agregar Upf'
-          onMouseOver={asignarFuncionPeso} /> 
+          onMouseOver={asignarFuncionPeso} /> </center>
     </form>
     </>
   );
