@@ -148,8 +148,11 @@ function PuntosCosmic(){
           Tasa de entrega: 
         </h4>
         {isHovering && (
-          <CuadroInfo texto={'Valor de ajuste para los puntos de función COSMIC'}/>
+          <CuadroInfo texto={'Valor de ajuste para los puntos de función COSMIC'} valor='corto'/>
         )}
+        <div className='descripcion3'>
+          Acontinuación se debe agregar la tasa de entrega del proyecto
+        </div>
           <Input 
             attribute={{
               id: 'tasaEntrega',

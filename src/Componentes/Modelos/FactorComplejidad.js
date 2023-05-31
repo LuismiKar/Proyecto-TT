@@ -124,7 +124,7 @@ var FactorComplejidad = function({ cambiarFactorComplejidad }){
         Factor complejidad
       </h3>
       {isHoveringTitulo && (
-        <CuadroInfo texto={'Factores característicos del software'}/>
+        <CuadroInfo texto={'Factores característicos del software'} valor='corto'/>
       )}
       <div className='descripcion'>
         A continuación se debe asignar un valor a cada uno de los 14 factores

@@ -129,7 +129,7 @@ var FormularioCosmic = function( props ){
           Puntos de funcion Cosmic
         </h4>
         {isHoveringTitulo && (
-            <CuadroInfo texto={'Funcionalidades del proyecto'}/>
+            <CuadroInfo texto={'Funcionalidades del proyecto'} valor='corto'/>
         )}
         <div className='descripcion'>
         En el siguiente apartado se debe agregar cada funcionalidad considerada del software

@@ -139,13 +139,13 @@ function CcCompAp(){
 
       <div className='contenedor-puntosobjeto'>
         <div className='titulo'>
-          {isHovering && (
-            <CuadroInfo className='center' texto={'Enfoque de medición de tamaño de software'}/>
-          )}
           <h3>
             <FiHelpCircle onMouseOver={handleMouseOver} onMouseOut={handleMouseOut} color='#000'/>
             Puntos objeto
           </h3> 
+          {isHovering && (
+            <CuadroInfo className='center' texto={'Enfoque de medición de tamaño de software'} />
+          )}
         </div>
         <PuntosObjeto cambiarPtsObj={ cambiarPtsObj }/>
       </div>
@@ -158,7 +158,7 @@ function CcCompAp(){
               <FiHelpCircle onMouseOver={handleMouseOver2} onMouseOut={handleMouseOut2} color='#146C94'/>
               Porcentaje de reuso:
               {isHovering2 && (
-                <CuadroInfo texto={'Porcentaje de reuso que se espera lograr en el proyecto'}/>
+                <CuadroInfo texto={'Porcentaje de reuso que se espera lograr en el proyecto'} valor='corto'/>
               )} 
             </td>
             <td>
@@ -186,7 +186,7 @@ function CcCompAp(){
               <FiHelpCircle onMouseOver={handleMouseOver3} onMouseOut={handleMouseOut3} color='#146C94'/>
               Madurez y capacidad del ICASE: 
               {isHovering3 && (
-                <CuadroInfo texto={'ICASE: Herramientas integradas'}/>
+                <CuadroInfo texto={'ICASE: Herramientas integradas'} valor='corto'/>
               )} 
             </td>
             <td>

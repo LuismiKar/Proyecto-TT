@@ -75,6 +75,7 @@ function CcPostArq(){
   const [isHovering21, setIsHovering21] = useState(false);
   const [isHovering22, setIsHovering22] = useState(false);
   const [isHovering23, setIsHovering23] = useState(false);
+  const [isHovering24, setIsHovering24] = useState(false);
 
   //Multiplicadores de esfuerzo
 
@@ -460,6 +461,14 @@ function CcPostArq(){
     setIsHovering23(false);
   };
 
+  const handleMouseOver24 = () => {
+    setIsHovering24(true);
+  };
+
+  const handleMouseOut24 = () => {
+    setIsHovering24(false);
+  };
+
 //Asignacion de valores cada que cambia el input de seleccion
 
   //Producto
@@ -655,7 +664,7 @@ function CcPostArq(){
                 <td>
                   <FiHelpCircle onMouseOver={handleMouseOver} onMouseOut={handleMouseOut} color='#146C94'/> Confiabilidad requerida (RELY):
                   {isHovering && (
-                    <CuadroInfo texto={'El producto cumple satisfactoriamente con la función que debe realizar'}/>
+                    <CuadroInfo texto={'El producto cumple satisfactoriamente con la función que debe realizar'} valor='corto'/>
                   )}
                 </td>
                 <td><Select options={ rely } defaultValue={ rely[2] } onChange={ handleSelectChangeRely } /></td>
@@ -664,7 +673,7 @@ function CcPostArq(){
                 <td>
                   <FiHelpCircle onMouseOver={handleMouseOver2} onMouseOut={handleMouseOut2} color='#146C94'/> Tamaño de la base de datos (DATA):
                   {isHovering2 && (
-                    <CuadroInfo texto={'Tamaño de la base de datos entre las líneas de código'}/>
+                    <CuadroInfo texto={'Tamaño de la base de datos entre las líneas de código'} valor='corto'/>
                   )}
                 </td>
                 <td><Select options={ data } defaultValue={ data[1] } onChange={ handleSelectChangeData } /></td>
@@ -673,7 +682,7 @@ function CcPostArq(){
                 <td>
                   <FiHelpCircle onMouseOver={handleMouseOver3} onMouseOut={handleMouseOut3} color='#146C94'/> Documentación de las etapa del ciclo de vida (DOCU):
                   {isHovering3 && (
-                    <CuadroInfo texto={'Adecuación de la documentación del proyecto a las necesidades particulares en cada etapa del ciclo de vida'}/>
+                    <CuadroInfo texto={'Adecuación de la documentación del proyecto a las necesidades particulares en cada etapa del ciclo de vida'} valor='corto'/>
                   )}
                 </td>
                 <td><Select options={ docu } defaultValue={ docu[2] } onChange={ handleSelectChangeDocu } /></td>
@@ -682,7 +691,7 @@ function CcPostArq(){
                 <td>
                   <FiHelpCircle onMouseOver={handleMouseOver4} onMouseOut={handleMouseOut4} color='#146C94'/> Complejidad del producto (CPLX):
                   {isHovering4 && (
-                    <CuadroInfo texto={'Complejidad de las operaciones empleadas en el producto'}/>
+                    <CuadroInfo texto={'Complejidad de las operaciones empleadas en el producto'} valor='corto'/>
                   )}
                 </td>
                 <td><Select options={ cplx } defaultValue={ cplx[2] } onChange={ handleSelectChangeCplx } /></td>
@@ -691,7 +700,7 @@ function CcPostArq(){
                 <td>
                   <FiHelpCircle onMouseOver={handleMouseOver5} onMouseOut={handleMouseOut5} color='#146C94'/> Requerimientos de reusabilidad (RUSE):
                   {isHovering5 && (
-                    <CuadroInfo texto={'Construcción de componentes reutilizables en el mismo o diferente proyecto'}/>
+                    <CuadroInfo texto={'Construcción de componentes reutilizables en el mismo o diferente proyecto'} valor='corto'/>
                   )}
                 </td>
                 <td><Select options={ ruse } defaultValue={ ruse[1] } onChange={ handleSelectChangeRuse }/></td>
@@ -701,7 +710,7 @@ function CcPostArq(){
                 <td>
                   <FiHelpCircle onMouseOver={handleMouseOver6} onMouseOut={handleMouseOut6} color='#146C94'/> Restricción del tiempo de ejecución (TIME):
                   {isHovering6 && (
-                    <CuadroInfo texto={'Grado de restricción de tiempo de ejecución impuesta sobre el sistema de software'}/>
+                    <CuadroInfo texto={'Grado de restricción de tiempo de ejecución impuesta sobre el sistema de software'} valor='corto'/>
                   )}
                 </td>
                 <td><Select options={ time } defaultValue={ time[0] } onChange={ handleSelectChangeTime } /></td>
@@ -710,7 +719,7 @@ function CcPostArq(){
                 <td>
                   <FiHelpCircle onMouseOver={handleMouseOver7} onMouseOut={handleMouseOut7} color='#146C94'/> Restricción del almacenamiento principal (STOR):
                   {isHovering7 && (
-                    <CuadroInfo texto={'Grado de restricción del almacenamiento principal impuesto sobre un sistema de software'}/>
+                    <CuadroInfo texto={'Grado de restricción del almacenamiento principal impuesto sobre un sistema de software'} valor='corto'/>
                   )}
                 </td>
                 <td><Select options={ stor } defaultValue={ stor[0] } onChange={ handleSelectChangeStor } /></td>
@@ -719,7 +728,7 @@ function CcPostArq(){
                 <td>
                   <FiHelpCircle onMouseOver={handleMouseOver8} onMouseOut={handleMouseOut8} color='#146C94'/> Volatilidad de la plataforma (PVOL):
                   {isHovering8 && (
-                    <CuadroInfo texto={'Frecuencia de los cambios en la plataforma subyacente'}/>
+                    <CuadroInfo texto={'Frecuencia de los cambios en la plataforma subyacente'} valor='corto'/>
                   )}
                 </td>
                 <td><Select options={ pvol } defaultValue={ pvol[1] } onChange={ handleSelectChangePvol } /></td>
@@ -735,7 +744,7 @@ function CcPostArq(){
                 <td>
                   <FiHelpCircle onMouseOver={handleMouseOver9} onMouseOut={handleMouseOut9} color='#146C94'/> Capacidad del analista (ACAP):
                   {isHovering9 && (
-                    <CuadroInfo texto={'Analista: trabaja con los requerimientos, en el diseño global y en el diseño detallado'}/>
+                    <CuadroInfo texto={'Analista: trabaja con los requerimientos, en el diseño global y en el diseño detallado'} valor='corto'/>
                   )}
                 </td>
                 <td><Select options={ acap } defaultValue={ acap[2] } onChange={ handleSelectChangeAcap }/></td>
@@ -744,7 +753,7 @@ function CcPostArq(){
                 <td>
                   <FiHelpCircle onMouseOver={handleMouseOver10} onMouseOut={handleMouseOut10} color='#146C94'/> Experiencia en la aplicación (AEXP):
                   {isHovering10 && (
-                    <CuadroInfo texto={'Nivel de experiencia del equipo de desarrollo en aplicaciones similares'}/>
+                    <CuadroInfo texto={'Nivel de experiencia del equipo de desarrollo en aplicaciones similares'} valor='corto'/>
                   )}
                 </td>
                 <td><Select options={ aexp } defaultValue={ aexp[2] } onChange={ handleSelectChangeAexp }/></td>
@@ -753,7 +762,7 @@ function CcPostArq(){
                 <td>
                   <FiHelpCircle onMouseOver={handleMouseOver11} onMouseOut={handleMouseOut11} color='#146C94'/> Capacidad del programador (PCAP):
                   {isHovering11 && (
-                    <CuadroInfo texto={'Uso de herramientas actuales y trabajo en equipo'}/>
+                    <CuadroInfo texto={'Uso de herramientas actuales y trabajo en equipo'} valor='corto'/>
                   )}
                 </td>
                 <td><Select options={ pcap } defaultValue={ pcap[2] } onChange={ handleSelectChangePcap }/></td>
@@ -762,7 +771,7 @@ function CcPostArq(){
                 <td>
                   <FiHelpCircle onMouseOver={handleMouseOver12} onMouseOut={handleMouseOut12} color='#146C94'/> Experiencia en la plataforma (PEXP):
                   {isHovering12 && (
-                    <CuadroInfo texto={'Experiencia menor a 2 meses - Muy bajo, Experiencia de 6 años o más - Muy alto'}/>
+                    <CuadroInfo texto={'Experiencia menor a 2 meses - Muy bajo, Experiencia de 6 años o más - Muy alto'} valor='corto'/>
                   )}
                 </td>
                 <td><Select options={ pexp } defaultValue={ pexp[2] } onChange={ handleSelectChangePexp }/></td>
@@ -771,7 +780,7 @@ function CcPostArq(){
                 <td>
                   <FiHelpCircle onMouseOver={handleMouseOver13} onMouseOut={handleMouseOut13} color='#146C94'/> Experiencia en el lenguaje y las herramientas (LTEX):
                   {isHovering13 && (
-                    <CuadroInfo texto={'Experiencia del equipo en el uso del lenguaje y herramientas a emplear'}/>
+                    <CuadroInfo texto={'Experiencia del equipo en el uso del lenguaje y herramientas a emplear'} valor='corto'/>
                   )}
                 </td>
                 <td><Select options={ ltex } defaultValue={ ltex[2] } onChange={ handleSelectChangeLtex }/></td>
@@ -780,7 +789,7 @@ function CcPostArq(){
                 <td>
                   <FiHelpCircle onMouseOver={handleMouseOver14} onMouseOut={handleMouseOut14} color='#146C94'/> Continuidad del personal (PCON):
                   {isHovering14 && (
-                    <CuadroInfo texto={'Grado de permanencia anual del personal (48% Muy bajo, 3% Muy alto)'}/>
+                    <CuadroInfo texto={'Grado de permanencia anual del personal (48% Muy bajo, 3% Muy alto)'} valor='corto'/>
                   )}
                 </td>
                 <td><Select options={ pcon } defaultValue={ pcon[2] } onChange={ handleSelectChangePcon }/></td>
@@ -790,7 +799,7 @@ function CcPostArq(){
                 <td>
                   <FiHelpCircle onMouseOver={handleMouseOver15} onMouseOut={handleMouseOut15} color='#146C94'/> Uso de herramientas de software (TOOL):
                   {isHovering15 && (
-                    <CuadroInfo texto={'Muy bajo por el uso de herramientas sólo para codificación, edición y depuración a Muy alto por herramientas integradas al proceso de desarrollo'}/>
+                    <CuadroInfo texto={'Muy bajo por el uso de herramientas sólo para codificación, edición y depuración a Muy alto por herramientas integradas al proceso de desarrollo'} valor='corto'/>
                   )}
                 </td>
                 <td><Select options={ tool } defaultValue={ tool[2] } onChange={ handleSelectChangeTool }/></td>
@@ -799,7 +808,7 @@ function CcPostArq(){
                 <td>
                   <FiHelpCircle onMouseOver={handleMouseOver16} onMouseOut={handleMouseOut16} color='#146C94'/> Cronograma requerido para el desarrollo (SCED):
                   {isHovering16 && (
-                    <CuadroInfo texto={'Restricción en los plazos de tiempo impuesta al equipo de trabajo'}/>
+                    <CuadroInfo texto={'Restricción en los plazos de tiempo impuesta al equipo de trabajo'} valor='corto'/>
                   )}
                 </td>
                 <td><Select options={ sced } defaultValue={ sced[2] } onChange={ handleSelectChangeSced }/></td>
@@ -808,7 +817,7 @@ function CcPostArq(){
                 <td>
                   <FiHelpCircle onMouseOver={handleMouseOver17} onMouseOut={handleMouseOut17} color='#146C94'/> Desarrollo multisitio (SITE):
                   {isHovering17 && (
-                    <CuadroInfo texto={'Ubicación espacial (disposición del equipo de trabajo) y comunicación (soporte de comunicación)'}/>
+                    <CuadroInfo texto={'Ubicación espacial (disposición del equipo de trabajo) y comunicación (soporte de comunicación)'} valor='corto'/>
                   )}
                 </td>
                 <td><Select options={ site } defaultValue={ site[2] } onChange={ handleSelectChangeSite }/></td>
@@ -824,7 +833,7 @@ function CcPostArq(){
                 <td>
                   <FiHelpCircle onMouseOver={handleMouseOver18} onMouseOut={handleMouseOut18} color='#146C94'/> Precedencia:
                   {isHovering18 && (
-                    <CuadroInfo texto={'Grado de experiencia previa'}/>
+                    <CuadroInfo texto={'Grado de experiencia previa'} valor='corto'/>
                   )}
                 </td>
                 <td><Select options={ prec } defaultValue={ prec[2] } onChange={ handleSelectChangePrec } /></td>
@@ -833,7 +842,7 @@ function CcPostArq(){
                 <td>
                   <FiHelpCircle onMouseOver={handleMouseOver19} onMouseOut={handleMouseOut19} color='#146C94'/> Flexibilidad en el desarrollo:
                   {isHovering19 && (
-                    <CuadroInfo texto={'Exigencia en el cumplimiento de los requerimientos'}/>
+                    <CuadroInfo texto={'Exigencia en el cumplimiento de los requerimientos'} valor='corto'/>
                   )}
                 </td>
                 <td><Select options={ flex } defaultValue={ flex[2] } onChange={ handleSelectChangeFlex } /></td>
@@ -842,7 +851,7 @@ function CcPostArq(){
                 <td>
                   <FiHelpCircle onMouseOver={handleMouseOver20} onMouseOut={handleMouseOut20} color='#146C94'/> Arquitectura/Resolución de riesgo:
                   {isHovering20 && (
-                    <CuadroInfo texto={'Conocimiento de los ítems de riesgo crítico y el modo de abordarlos dentro del proyecto'}/>
+                    <CuadroInfo texto={'Conocimiento de los ítems de riesgo crítico y el modo de abordarlos dentro del proyecto'} valor='corto'/>
                   )}
                 </td>
                 <td><Select options={ resl } defaultValue={ resl[2] } onChange={ handleSelectChangeResl } /></td>
@@ -851,7 +860,7 @@ function CcPostArq(){
                 <td>
                   <FiHelpCircle onMouseOver={handleMouseOver21} onMouseOut={handleMouseOut21} color='#146C94'/> Cohesión de equipo:
                   {isHovering21 && (
-                    <CuadroInfo texto={'Dificultades de sincronización entre los participantes del proyecto'}/>
+                    <CuadroInfo texto={'Dificultades de sincronización entre los participantes del proyecto'} valor='corto'/>
                   )}
                 </td>
                 <td><Select options={ team } defaultValue={ team[2] } onChange={ handleSelectChangeTeam } /></td>
@@ -860,7 +869,7 @@ function CcPostArq(){
                 <td>
                   <FiHelpCircle onMouseOver={handleMouseOver22} onMouseOut={handleMouseOut22} color='#146C94'/> Madurez del proceso:
                   {isHovering22 && (
-                    <CuadroInfo texto={'Nivel de madurez de la organización'}/>
+                    <CuadroInfo texto={'Nivel de madurez de la organización'} valor='corto'/>
                   )}
                 </td>
                 <td><Select options={ pmat } defaultValue={ pmat[2] } onChange={ handleSelectChangePmat } /></td>
@@ -907,9 +916,9 @@ function CcPostArq(){
               </tbody>
             </table>
             <div className='contenedor-ksloc'>
-              <FiHelpCircle onMouseOver={handleMouseOver13} onMouseOut={handleMouseOut13} color='#146C94'/> KSLOC: {Ksloc}
-              {isHovering13 && (
-                <CuadroInfo texto={'Miles de líneas de código del software a desarrollar'}/>
+              <FiHelpCircle onMouseOver={handleMouseOver24} onMouseOut={handleMouseOut24} color='#146C94'/> KSLOC: {Ksloc}
+              {isHovering24 && (
+                <CuadroInfo texto={'Miles de líneas de código del software a desarrollar'} valor='corto'/>
               )}
             </div>
           </div>

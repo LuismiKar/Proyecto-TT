@@ -195,7 +195,7 @@ var FormularioUPF = function( props ) {
         <FiHelpCircle onMouseOver={handleMouseOver} onMouseOut={handleMouseOut} color='#000'/>
         Funcionalidades
       </h3>{isHovering && (
-        <CuadroInfo texto={'Caracteristicas del software'}/>
+        <CuadroInfo texto={'Caracteristicas del software'} valor='corto'/>
       )}
       
       <div className='descripcion'>
@@ -230,7 +230,7 @@ var FormularioUPF = function( props ) {
             <FiHelpCircle onMouseOver={handleMouseOver2} onMouseOut={handleMouseOut2} color='#146C94'/>
             Campos de leidos: 
             {isHovering2 && (
-              <CuadroInfo texto={'Campos reconocibles por el usuario'}/>
+              <CuadroInfo texto={'Campos reconocibles por el usuario'} valor='corto'/>
             )}
           </td>
           <td>
@@ -264,7 +264,7 @@ var FormularioUPF = function( props ) {
             <FiHelpCircle onMouseOver={handleMouseOver3} onMouseOut={handleMouseOut3} color='#146C94'/>
             Archivos referenciados: 
             {isHovering3 && (
-              <CuadroInfo texto={'Fichero (interno o externo) leído/mantenido por el proceso'}/>
+              <CuadroInfo texto={'Fichero (interno o externo) leído/mantenido por el proceso'} valor='corto'/>
             )}
           </td>
           <td>

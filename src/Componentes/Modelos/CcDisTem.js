@@ -415,7 +415,7 @@ function CcDisTemp(){
                 <td>
                   <FiHelpCircle onMouseOver={handleMouseOver} onMouseOut={handleMouseOut} color='#146C94'/> Confiabilidad y Complejidad del producto:
                   {isHovering && (
-                    <CuadroInfo texto={'Confiabilidad y complejidad del producto'}/>
+                    <CuadroInfo texto={'Confiabilidad y complejidad del producto'} valor='corto'/>
                   )}
                 </td>
                 <td><Select options={ rcpx } defaultValue={ rcpx[3] } onChange={ handleSelectChangeRcpx } /></td>
@@ -424,7 +424,7 @@ function CcDisTemp(){
                 <td>
                   <FiHelpCircle onMouseOver={handleMouseOver2} onMouseOut={handleMouseOut2} color='#146C94'/> Reusabilidad Requerida:
                   {isHovering2 && (
-                    <CuadroInfo texto={'Construcción de componentes reutilizables en el mismo o diferente proyecto'}/>
+                    <CuadroInfo texto={'Construcción de componentes reutilizables en el mismo o diferente proyecto'} valor='corto'/>
                   )}
                 </td>
                 <td><Select options={ ruse } defaultValue={ ruse[1] } onChange={ handleSelectChangeRuse }/></td>
@@ -433,7 +433,7 @@ function CcDisTemp(){
                 <td>
                   <FiHelpCircle onMouseOver={handleMouseOver3} onMouseOut={handleMouseOut3} color='#146C94'/> Dificultad de la Plataforma:
                   {isHovering3 && (
-                    <CuadroInfo texto={'Dificultad de la plataforma'}/>
+                    <CuadroInfo texto={'Dificultad de la plataforma'} valor='corto'/>
                   )}
                 </td>
                 <td><Select options={ pdif } defaultValue={ pdif[1] } onChange={ handleSelectChangePdif } /></td>
@@ -442,7 +442,7 @@ function CcDisTemp(){
                 <td>
                   <FiHelpCircle onMouseOver={handleMouseOver4} onMouseOut={handleMouseOut4} color='#146C94'/> Aptitud del Personal:
                   {isHovering4 && (
-                    <CuadroInfo texto={'Aptitud del personal'}/>
+                    <CuadroInfo texto={'Aptitud del personal'} valor='corto'/>
                   )}
                 </td>
                 <td><Select options={ pers } defaultValue={ pers[3] } onChange={ handleSelectChangePers } /></td>
@@ -451,7 +451,7 @@ function CcDisTemp(){
                 <td>
                   <FiHelpCircle onMouseOver={handleMouseOver5} onMouseOut={handleMouseOut5} color='#146C94'/> Experiencia del Personal:
                   {isHovering5 && (
-                    <CuadroInfo texto={'Experiencia del personal'}/>
+                    <CuadroInfo texto={'Experiencia del personal'} valor='corto'/>
                   )}
                 </td>
                 <td><Select options={ prex } defaultValue={ prex[3] } onChange={ handleSelectChangePrex } /></td>
@@ -460,7 +460,7 @@ function CcDisTemp(){
                 <td>
                   <FiHelpCircle onMouseOver={handleMouseOver6} onMouseOut={handleMouseOut6} color='#146C94'/> Facilidades:
                   {isHovering6 && (
-                    <CuadroInfo texto={'Facilidades'}/>
+                    <CuadroInfo texto={'Facilidades'} valor='corto'/>
                   )}
                 </td>
                 <td><Select options={ fcil } defaultValue={ fcil[3] } onChange={ handleSelectChangeFcil } /></td>
@@ -469,7 +469,7 @@ function CcDisTemp(){
                 <td>
                   <FiHelpCircle onMouseOver={handleMouseOver7} onMouseOut={handleMouseOut7} color='#146C94'/> Cronograma de Desarrollo Requerido:
                   {isHovering7 && (
-                    <CuadroInfo texto={'Restricción en los plazos de tiempo impuesta al equipo de trabajo'}/>
+                    <CuadroInfo texto={'Restricción en los plazos de tiempo impuesta al equipo de trabajo'} valor='corto'/>
                   )}
                 </td>
                 <td><Select options={ sced } defaultValue={ sced[2] } onChange={ handleSelectChangeSced }/></td>
@@ -485,7 +485,7 @@ function CcDisTemp(){
                 <td>
                   <FiHelpCircle onMouseOver={handleMouseOver8} onMouseOut={handleMouseOut8} color='#146C94'/> Precedencia:
                   {isHovering8 && (
-                    <CuadroInfo texto={'Grado de experiencia previa'}/>
+                    <CuadroInfo texto={'Grado de experiencia previa'} valor='corto'/>
                   )}
                 </td>
                 <td><Select options={ prec } defaultValue={ prec[2] } onChange={ handleSelectChangePrec } /></td>
@@ -494,7 +494,7 @@ function CcDisTemp(){
                 <td>
                   <FiHelpCircle onMouseOver={handleMouseOver9} onMouseOut={handleMouseOut9} color='#146C94'/> Flexibilidad en el desarrollo:
                   {isHovering9 && (
-                    <CuadroInfo texto={'Exigencia en el cumplimiento de los requerimientos'}/>
+                    <CuadroInfo texto={'Exigencia en el cumplimiento de los requerimientos'} valor='corto'/>
                   )}
                 </td>
                 <td><Select options={ flex } defaultValue={ flex[2] } onChange={ handleSelectChangeFlex } /></td>
@@ -503,7 +503,7 @@ function CcDisTemp(){
                 <td>
                   <FiHelpCircle onMouseOver={handleMouseOver10} onMouseOut={handleMouseOut10} color='#146C94'/> Arquitectura/Resolución de riesgo:
                   {isHovering10 && (
-                    <CuadroInfo texto={'Conocimiento de los ítems de riesgo crítico y el modo de abordarlos dentro del proyecto'}/>
+                    <CuadroInfo texto={'Conocimiento de los ítems de riesgo crítico y el modo de abordarlos dentro del proyecto'} valor='corto'/>
                   )}
                 </td>
                 <td><Select options={ resl } defaultValue={ resl[2] } onChange={ handleSelectChangeResl } /></td>
@@ -512,7 +512,7 @@ function CcDisTemp(){
                 <td>
                   <FiHelpCircle onMouseOver={handleMouseOver11} onMouseOut={handleMouseOut11} color='#146C94'/> Cohesión de equipo:
                   {isHovering11 && (
-                    <CuadroInfo texto={'Dificultades de sincronización entre los participantes del proyecto'}/>
+                    <CuadroInfo texto={'Dificultades de sincronización entre los participantes del proyecto'} valor='corto'/>
                   )}
                 </td>
                 <td><Select options={ team } defaultValue={ team[2] } onChange={ handleSelectChangeTeam } /></td>
@@ -521,7 +521,7 @@ function CcDisTemp(){
                 <td>
                   <FiHelpCircle onMouseOver={handleMouseOver12} onMouseOut={handleMouseOut12} color='#146C94'/> Madurez del proceso:
                   {isHovering12 && (
-                    <CuadroInfo texto={'Nivel de madurez de la organización'}/>
+                    <CuadroInfo texto={'Nivel de madurez de la organización'} valor='corto'/>
                   )}
                 </td>
                 <td><Select options={ pmat } defaultValue={ pmat[2] } onChange={ handleSelectChangePmat } /></td>
@@ -570,7 +570,7 @@ function CcDisTemp(){
         <div className='contenedor-ksloc'>
           <FiHelpCircle onMouseOver={handleMouseOver13} onMouseOut={handleMouseOut13} color='#146C94'/> KSLOC: {Ksloc}
           {isHovering13 && (
-            <CuadroInfo texto={'Miles de líneas de código del software a desarrollar'}/>
+            <CuadroInfo texto={'Miles de líneas de código del software a desarrollar'} valor='corto'/>
           )}
         </div>
       </div>

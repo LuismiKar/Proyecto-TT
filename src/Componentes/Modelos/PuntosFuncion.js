@@ -215,25 +215,25 @@ function PuntosFuncion( props ){
             <FiHelpCircle onMouseOver={handleMouseOver} onMouseOut={handleMouseOut} color='#146C94'/>
             Factor complejidad: { tfc }
             {isHovering && (
-              <CuadroInfo texto={'Total del factor complejidad'}/>
+              <CuadroInfo texto={'Total del factor complejidad'} valor='corto'/>
             )}
           <br/>
             <FiHelpCircle onMouseOver={handleMouseOver2} onMouseOut={handleMouseOut2} color='#146C94'/>
             Puntos de funcion no ajustados: { ufp }
             {isHovering2 && (
-              <CuadroInfo texto={'Suma del peso de los puntos de función agregados'}/>
+              <CuadroInfo texto={'Suma del peso de los puntos de función agregados'} valor='corto'/>
             )}
           <br/>
             <FiHelpCircle onMouseOver={handleMouseOver3} onMouseOut={handleMouseOut3} color='#146C94'/>
             Puntos de funcion: { fp }
             {isHovering3 && (
-              <CuadroInfo texto={'Puntos de función ajustados'}/>
+              <CuadroInfo texto={'Puntos de función ajustados'} valor='corto'/>
             )}
           <br/>
             <FiHelpCircle onMouseOver={handleMouseOver4} onMouseOut={handleMouseOut4} color='#146C94'/>
             Lineas de codigo: { sloc }
             {isHovering4 && (
-              <CuadroInfo texto={'Líneas de código calculadas'}/>
+              <CuadroInfo texto={'Líneas de código calculadas'} valor='corto'/>
             )}
            <br/>
         </div>

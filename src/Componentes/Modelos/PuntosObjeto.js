@@ -159,7 +159,7 @@ var PuntosObjeto = function({ cambiarPtsObj }){
                 <FiHelpCircle onMouseOver={handleMouseOver} onMouseOut={handleMouseOut} color='#146C94'/>
                 Complejidad 3GL
                 {isHovering && (
-                  <CuadroInfo texto={'Lenguaje de tercera generación'}/>
+                  <CuadroInfo texto={'Lenguaje de tercera generación'} valor='corto'/>
                 )}
               </td>
               <td>

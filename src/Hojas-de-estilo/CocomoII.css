@@ -134,6 +134,14 @@ tr{
   width: 90%;
 }
 
+.descripcion3{
+  margin-left: 70px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  text-align: center;
+  width: 300px;
+}
+
 .tabla{
   margin-top: 20px;
   margin-left: 50px;

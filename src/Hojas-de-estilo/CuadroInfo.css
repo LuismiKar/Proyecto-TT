@@ -5,3 +5,11 @@
   background-color: white;
   width: 250px;
 }
+
+.contenedor-cuadro-largo{
+  position: absolute;
+  border: 1px solid #19A7CE;
+  padding: 5px;
+  background-color: white;
+  width: 500px;
+}

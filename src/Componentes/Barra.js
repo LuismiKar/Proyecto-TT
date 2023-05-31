@@ -81,7 +81,7 @@ function Barra(){
                       <MenuItem component={<Link to="/cosmic/puntosdeFuncionCosmic" className='link'/>}>Puntos de función COSMIC</MenuItem>
                     </SubMenu>
                   {valor === 'estudiante' && <MenuItem icon={<FiList/>} component={<Link to="/listaProyectos" className='link'/>} >Proyectos creados</MenuItem>}
-                  <MenuItem icon={<FiHelpCircle/>}>Guía de usuario</MenuItem>
+                  <MenuItem icon={<FiHelpCircle/>} component={<Link to="/guiaDeUsuario" className='link'/>} >Guía de usuario</MenuItem>
                   {valor === 'administrador' && <MenuItem icon={<FiList/>} component={<Link to="/listaUsuarios" className='link'/>} >Usuarios registrados</MenuItem>}
                   {valor === 'administrador' && <MenuItem icon={<FiList/>} component={<Link to="/listaProyectos" className='link'/>} >Proyectos registrados</MenuItem>}
                 </Menu>
