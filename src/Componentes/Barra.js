@@ -33,6 +33,7 @@ function Barra(){
 
   function cerrarSesion(){
     setValor(null);
+    window.location.reload();
     setUsername(null);
   }
 
