@@ -193,7 +193,8 @@ function PuntosFuncion( props ){
       </div>
       <hr/>
       <div className='descripcion2'>
-        En el siguiente apartado se debe seleccionar el lenguaje de programación del proyecto, y obtener las líneas de código
+        En el siguiente apartado se debe seleccionar el lenguaje de programación del proyecto, obtener los puntos de función 
+        y calcular las líneas de código.
       </div>
       <div className='contenedor-puntosfuncion'>
         
@@ -204,11 +205,13 @@ function PuntosFuncion( props ){
             name='calcularSloc-boton' 
             funcion={props.enviarSloc(sloc)}
             onMouseOver={calcularSloc}
-            texto='Calcular SLOC' />
+            texto='Calcular Líneas de código' />
           <Boton 
             name='calcularPF-boton' 
             funcion={calcularFP}
-            texto='Calcular Puntos' />
+            texto='Calcular Total PF' />
+          <br/>
+          *PF: Puntos de función ajustados
         </div>
         <div className='puro-texto'> 
             <FiHelpCircle onMouseOver={handleMouseOver} onMouseOut={handleMouseOut} color='#146C94'/>
@@ -226,7 +229,7 @@ function PuntosFuncion( props ){
             <FiHelpCircle onMouseOver={handleMouseOver3} onMouseOut={handleMouseOut3} color='#146C94'/>
             Puntos de funcion: { fp }
             {isHovering3 && (
-              <CuadroInfo texto={'Puntos de función ajustados'} valor='corto'/>
+              <CuadroInfo texto={'Obtener con el botón Calcular total PF'} valor='corto'/>
             )}
           <br/>
             <FiHelpCircle onMouseOver={handleMouseOver4} onMouseOut={handleMouseOut4} color='#146C94'/>

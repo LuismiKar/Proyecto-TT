@@ -133,7 +133,7 @@ function PuntosCosmic(){
         {isHoveringTitulo && (
           <CuadroInfo texto={'Determina el tamaño del software a partir de las funcionalidades'}/>
         )}
-      </div><br/>
+      </div><br/><br/>
       <div className='contenedor-nombreProyecto'>
         <h4>Nombre del proyecto: </h4>
         <ComponenteInput

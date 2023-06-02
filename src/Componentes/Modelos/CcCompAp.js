@@ -25,6 +25,7 @@ function CcCompAp(){
   const [isHovering2, setIsHovering2] = useState(false);
   const [isHovering3, setIsHovering3] = useState(false);
   const [isHovering4, setIsHovering4] = useState(false);
+  
 
   const Tablaprod = [
     { label:"vlo", value:4 },
@@ -130,7 +131,7 @@ function CcCompAp(){
         </h2>{isHoveringTitulo && (
             <CuadroInfo texto={'Desarrollos de software durante la etapa de prototipación'}/>
           )}
-      </div><br/>
+      </div><br/><br/>
       <div className='contenedor-nombreProyecto'>
         <h4>Nombre del proyecto: </h4>
         <ComponenteInput
@@ -159,7 +160,7 @@ function CcCompAp(){
             <CuadroInfo className='center' texto={'Enfoque de medición de tamaño de software'} />
           )}
           <div className='descripcion2'>
-            A continuación, ingresa los datos que se indican, de acuerdo a las características de tu proyecto:
+            Como primer paso, se calculan los puntos objeto, de acuerdo a las características de tu proyecto:
           </div>
         </div>
         <PuntosObjeto cambiarPtsObj={ cambiarPtsObj }/>

@@ -205,7 +205,7 @@ var FormularioUPF = function( props ) {
       )}
       
       <div className='descripcion'>
-        En el siguiente apartado se debe agregar cada funcionalidad considerada del software
+        En el siguiente apartado se debe agregar cada funcionalidad considerada del software.
       </div>
       <table>
         <tr>
@@ -309,7 +309,7 @@ var FormularioUPF = function( props ) {
         <center>
         <Boton 
           name='formulario-boton' 
-          texto='Agregar Upf'
+          texto='Agregar Punto de función'
           onMouseOver={asignarFuncionPeso} /> </center>
     </form>
     </>

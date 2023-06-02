@@ -417,7 +417,7 @@ function CcDisTemp(){
         </h2>{isHoveringTitulo && (
             <CuadroInfo texto={'Proyectos de software en etapa temprana'}/>
           )}
-      </div><br/>
+      </div><br/><br/>
       <div className='contenedor-nombreProyecto'>
         <h4>Nombre del proyecto: </h4>
         <ComponenteInput

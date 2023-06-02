@@ -664,7 +664,7 @@ function CcPostArq(){
         </h2>{isHoveringTitulo && (
             <CuadroInfo texto={'Proyectos de software durante la etapa del desarrollo'}/>
           )}
-      </div><br/>
+      </div><br/><br/>
       <div className='contenedor-nombreProyecto'>
         <h4>Nombre del proyecto: </h4>
         <ComponenteInput

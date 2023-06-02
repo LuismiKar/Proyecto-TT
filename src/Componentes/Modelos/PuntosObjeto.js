@@ -18,6 +18,8 @@ var PuntosObjeto = function({ cambiarPtsObj }){
   const [ totalPtsObj , setTotalPtsObj ] = useState(0);
 
   const [isHovering, setIsHovering] = useState(false);
+  const [isHovering2, setIsHovering2] = useState(false);
+  const [isHovering3, setIsHovering3] = useState(false);
 
   const expresiones = {
     nombre: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
@@ -64,6 +66,22 @@ var PuntosObjeto = function({ cambiarPtsObj }){
 
   const handleMouseOut = () => {
     setIsHovering(false);
+  };
+
+  const handleMouseOver2 = () => {
+    setIsHovering2(true);
+  };
+
+  const handleMouseOut2 = () => {
+    setIsHovering2(false);
+  };
+  
+  const handleMouseOver3 = () => {
+    setIsHovering3(true);
+  };
+
+  const handleMouseOut3 = () => {
+    setIsHovering3(false);
   };
   
   function asignarPesoPantallas(){
@@ -117,8 +135,15 @@ var PuntosObjeto = function({ cambiarPtsObj }){
       <div>
         <table>
           <tr>
-            <td>Ingresa el número de pantallas: </td>
             <td>
+              <FiHelpCircle onMouseOver={handleMouseOver2} onMouseOut={handleMouseOut2} color='#146C94'/>
+              Ingresa el número de pantallas: 
+              {isHovering2 && (
+                <CuadroInfo texto={'Número de interfaces del sistema'} valor='corto'/>
+              )}
+            </td>
+            <td>
+              
               <ComponenteInput
                 attribute={{
                   id: 'pantallas',
@@ -132,10 +157,17 @@ var PuntosObjeto = function({ cambiarPtsObj }){
                 leyendaerror='El valor debe ser positivo'
                 nombreMostrado={false}
               />
+              
             </td>
           </tr>
           <tr>
-            <td>Ingresa el número de reportes:</td>
+            <td>
+              <FiHelpCircle onMouseOver={handleMouseOver3} onMouseOut={handleMouseOut3} color='#146C94'/>
+              Ingresa el número de reportes:
+              {isHovering3 && (
+                <CuadroInfo texto={'Número de documentos del sistema'} valor='corto'/>
+              )}
+            </td>
             <td>
               <ComponenteInput
                 attribute={{
@@ -150,6 +182,7 @@ var PuntosObjeto = function({ cambiarPtsObj }){
                 leyendaerror='El valor debe ser positivo'
                 nombreMostrado={false}
               />
+              
             </td>
           </tr>   
           <tr>

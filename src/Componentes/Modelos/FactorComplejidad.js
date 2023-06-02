@@ -192,7 +192,7 @@ var FactorComplejidad = function({ cambiarFactorComplejidad }){
             name='BotonFC'
             funcion={calcularFactorComplejidad}
             onMouseOver={cambiarFactorComplejidad(totalFC)}
-            texto='Calcular FC' />
+            texto='Calcular Factor Complejidad' />
           </center>
         </tr>
       </table>
