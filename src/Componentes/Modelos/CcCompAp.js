@@ -6,17 +6,18 @@ import Boton from '../Boton';
 import PuntosObjeto from './PuntosObjeto';
 import { FiHelpCircle } from "react-icons/fi";
 import CuadroInfo from '../CuadroInfo';
+import ComponenteInput from '../ComponenteInput';
 
 function CcCompAp(){
 
   const [ pmEst , setPmEst ] = useState(0);
   const [ NptsObj , setNptsobj ] = useState(0);
   const [ ptsObj , setPtsobj ] = useState(0);
-  const [ reuso , setReuso ] = useState(0);
+  const [ reuso , setReuso ] = useState({campo:'', valido: null});
   const [ prod , setProd ] = useState(0);
   const [ ecDes , setEcDes ] = useState(0);
   const [ mcIcase , setMcIcase ] = useState(0);
-  const [ nombreProyecto , setNombreProyecto ] = useState('');
+  const [nombreProyecto,setNombreProyecto] = useState({campo:'', valido: null});
 
 
   const [isHoveringTitulo, setIsHoveringTitulo] = useState(false);
@@ -32,6 +33,11 @@ function CcCompAp(){
     { label:"hi", value:25 },
     { label:"vhi", value:50 }
   ]
+
+  const expresiones = {
+    nombre: /^[a-zA-ZÀ-ÿ\s]{1,20}$/, // Letras y espacios, pueden llevar acentos.
+    numeros: /^\d*\.?\d+$/
+  }
 
   var cambiarPtsObj = function(numActual){
     setPtsobj(numActual);
@@ -124,17 +130,23 @@ function CcCompAp(){
         </h2>{isHoveringTitulo && (
             <CuadroInfo texto={'Desarrollos de software durante la etapa de prototipación'}/>
           )}
-      </div>
+      </div><br/>
       <div className='contenedor-nombreProyecto'>
-        <h4>Nombre del proyecto:</h4>
-          <Input 
+        <h4>Nombre del proyecto: </h4>
+        <ComponenteInput
             attribute={{
-              id: 'nombre-proyecto',
-              name: 'nombre-proyecto',
+              id: 'nombreProyecto',
+              name: 'nombreProyecto',
               type: 'text',
-              placeholder: 'Ingrese nombre'
+              placeholder: ''
             }}
-            handleChange={ handleSelectChange }/>
+            name='Nombre del proyecto:'
+            estado={nombreProyecto}
+            handleChange={setNombreProyecto}
+            expresionRegular={expresiones.nombre}
+            leyendaerror='Nombre inválido'
+            nombreMostrado={false}
+        />
       </div>
 
       <div className='contenedor-puntosobjeto'>
@@ -165,14 +177,20 @@ function CcCompAp(){
               )} 
             </td>
             <td>
-              <Input 
-              attribute={{
-                id: 'reuso',
-                name: 'reuso',
-                type: 'number',
-                placeholder: ''
-              }}
-              handleChange={ handleSelectChange }/>
+              <ComponenteInput
+                attribute={{
+                  id: 'reuso',
+                  name: 'reuso',
+                  type: 'text',
+                  placeholder: ''
+                }}
+                name='Nombre del proyecto:'
+                estado={reuso}
+                handleChange={setReuso}
+                expresionRegular={expresiones.numeros}
+                leyendaerror='El valor debe ser positivo'
+                nombreMostrado={false}
+              />
             </td>
           </tr>
           <tr><td colSpan='2'><center><h3>Productividad</h3></center></td></tr>

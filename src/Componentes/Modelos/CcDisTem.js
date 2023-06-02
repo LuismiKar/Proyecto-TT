@@ -8,6 +8,7 @@ import Modal from '../Modal';
 import PuntosFuncion from './PuntosFuncion';
 import { FiHelpCircle } from "react-icons/fi";
 import CuadroInfo from '../CuadroInfo';
+import ComponenteInput from '../ComponenteInput';
 
 function CcDisTemp(){
 
@@ -30,7 +31,7 @@ function CcDisTemp(){
   const [ Ateam , setTeam ] = useState(3.29);
   const [ Apmat , setPmat ] = useState(4.68);
   const [ Ksloc , setKsloc ] = useState(0);
-  const [ nombreProyecto , setNombreProyecto ] = useState('');
+  const [nombreProyecto,setNombreProyecto] = useState({campo:'', valido: null});
 
   const [isOpenModal,openModal,closeModal] = useModal(false);
   const [isHoveringTitulo, setIsHoveringTitulo] = useState(false);
@@ -50,6 +51,10 @@ function CcDisTemp(){
   const [isHovering14, setIsHovering14] = useState(false);
   const [isHovering15, setIsHovering15] = useState(false);
   const [isHovering16, setIsHovering16] = useState(false);
+
+  const expresiones = {
+    nombre: /^[a-zA-ZÀ-ÿ\s]{1,20}$/, // Letras y espacios, pueden llevar acentos.
+  }
 
   //Multiplicadores de esfuerzo
 
@@ -412,17 +417,23 @@ function CcDisTemp(){
         </h2>{isHoveringTitulo && (
             <CuadroInfo texto={'Proyectos de software en etapa temprana'}/>
           )}
-      </div>
+      </div><br/>
       <div className='contenedor-nombreProyecto'>
         <h4>Nombre del proyecto: </h4>
-        <Input 
+        <ComponenteInput
             attribute={{
-              id: 'nombre-proyecto',
-              name: 'nombre-proyecto',
+              id: 'nombreProyecto',
+              name: 'nombreProyecto',
               type: 'text',
-              placeholder: 'Ingrese nombre'
+              placeholder: ''
             }}
-            handleChange={ handleChange }/>
+            name='Nombre del proyecto:'
+            estado={nombreProyecto}
+            handleChange={setNombreProyecto}
+            expresionRegular={expresiones.nombre}
+            leyendaerror='Nombre inválido'
+            nombreMostrado={false}
+        />
       </div>
       <div className='descripcion2'>
         A continuación, ingresa los datos que se indican, de acuerdo a las características de tu proyecto:

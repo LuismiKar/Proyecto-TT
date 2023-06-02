@@ -157,6 +157,7 @@ function InicioSesion( props ){
                       handleChange={setUsername}
                       expresionRegular={expresiones.usuario}
                       leyendaerror='Nombre de usuario inválido'
+                      nombreMostrado={true}
                   />
                 </div>
                 <div>
@@ -172,6 +173,7 @@ function InicioSesion( props ){
                       handleChange={setEmail}
                       expresionRegular={expresiones.correo}
                       leyendaerror='Correo electrónico inválido'
+                      nombreMostrado={true}
                   />
                 </div>
                 <div>
@@ -179,7 +181,7 @@ function InicioSesion( props ){
                       attribute={{
                         id: 'password',
                         name: 'password',
-                        type: 'text',
+                        type: 'password',
                         placeholder: 'Ingresa tu contraseña'
                       }}
                       name='Contraseña:'
@@ -187,6 +189,7 @@ function InicioSesion( props ){
                       handleChange={setPassword}
                       expresionRegular={expresiones.password}
                       leyendaerror='Contraseña inválida'
+                      nombreMostrado={true}
                   />
                 </div>
                 <div>
@@ -194,7 +197,7 @@ function InicioSesion( props ){
                       attribute={{
                         id: 'password2',
                         name: 'password2',
-                        type: 'text',
+                        type: 'password',
                         placeholder: 'Ingresa tu contraseña'
                       }}
                       name='Confirma contraseña:'
@@ -203,6 +206,7 @@ function InicioSesion( props ){
                       expresionRegular={expresiones.password}
                       leyendaerror='Contraseña inválida'
                       funcion={validarPassword2}
+                      nombreMostrado={true}
                   />
                 </div>
                 {formularioValido === false && <MensajeError>
@@ -240,6 +244,7 @@ function InicioSesion( props ){
                     handleChange={setEmail}
                     expresionRegular={expresiones.correo}
                     leyendaerror='Correo electrónico inválido'
+                    nombreMostrado={true}
                 />
               </div>
               <div>
@@ -247,12 +252,13 @@ function InicioSesion( props ){
                     attribute={{
                       id: 'login-password',
                       name: 'password',
-                      type: 'text',
+                      type: 'password',
                       placeholder: 'Ingresa tu contraseña'
                     }}
                     name='Contraseña:'
                     estado={password}
                     handleChange={setPassword}
+                    nombreMostrado={true}
                 />
               </div>
               

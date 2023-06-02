@@ -5,6 +5,7 @@ import Boton from '../Boton';
 import '../../Hojas-de-estilo/CocomoII.css';
 import { FiHelpCircle } from "react-icons/fi";
 import CuadroInfo from '../CuadroInfo';
+import ComponenteInput from '../ComponenteInput';
 
 /*
 Entradas
@@ -15,11 +16,11 @@ Escrituras
 
 var FormularioCosmic = function( props ){
 
-  const [nombre, setNombre] = useState('');
-  const [entradas, setEntradas] = useState(0);
-  const [salidas, setSalidas] = useState(0);
-  const [lecturas, setLecturas] = useState(0);
-  const [escrituras, setEscrituras] = useState(0);
+  const [nombre, setNombre] = useState({campo:'', valido: null});
+  const [entradas, setEntradas] = useState({campo:'', valido: null});
+  const [salidas, setSalidas] = useState({campo:'', valido: null});
+  const [lecturas, setLecturas] = useState({campo:'', valido: null});
+  const [escrituras, setEscrituras] = useState({campo:'', valido: null});
   const [totalPF, setTotalpf] = useState(0);
 
   //Variables de los cuadros de información
@@ -28,6 +29,11 @@ var FormularioCosmic = function( props ){
   const [isHovering2, setIsHovering2] = useState(false);
   const [isHovering3, setIsHovering3] = useState(false);
   const [isHovering4, setIsHovering4] = useState(false);
+
+  const expresiones = {
+    nombre: /^[a-zA-ZÀ-ÿ\s]{1,60}$/, // Letras y espacios, pueden llevar acentos.
+    numeros: /^\d*\.?\d+$/ // Al menos un numero positivo y un punto 
+  }
 
   //Funciones de los cuadros de información
   const handleMouseOverTitulo = () => {
@@ -79,11 +85,11 @@ var FormularioCosmic = function( props ){
     e.preventDefault();//Evitar que se recargue cuando se envie el formulario
     const NuevoPFCosmic = {
       id: uuidv4(),
-      nombre: nombre, 
-      ent: entradas,
-      sal: salidas,
-      esc: escrituras,
-      lec: lecturas,
+      nombre: nombre.campo, 
+      ent: entradas.campo,
+      sal: salidas.campo,
+      esc: escrituras.campo,
+      lec: lecturas.campo,
       totalPF: totalPF 
     }
     props.onSubmit(NuevoPFCosmic);
@@ -137,58 +143,84 @@ var FormularioCosmic = function( props ){
           <table>
             <tr>
               <td>Nombre: </td>
-              <td><Input 
+              <td><ComponenteInput
                     attribute={{
                       id: 'nombre',
                       name: 'nombre',
                       type: 'text',
-                      placeholder: 'Ingresa el nombre'
+                      placeholder: ''
                     }}
-                    handleChange={handleChange}/></td>
+                    estado={nombre}
+                    handleChange={setNombre}
+                    expresionRegular={expresiones.nombre}
+                    leyendaerror='Nombre inválido'
+                    nombreMostrado={false}
+                  />
+              </td>
             </tr>
             <tr>
               <td>Número de entradas: </td>
-              <td><Input 
+              <td><ComponenteInput
                     attribute={{
                       id: 'entradas',
                       name: 'entradas',
-                      type: 'number',
+                      type: 'text',
                       placeholder: ''
                     }}
-                    handleChange={handleChange}/></td>
+                    estado={entradas}
+                    handleChange={setEntradas}
+                    expresionRegular={expresiones.numeros}
+                    leyendaerror='El valor debe ser positivo'
+                    nombreMostrado={false}
+                  /></td>
             </tr>
             <tr>
               <td>Número de salidas: </td>
-              <td><Input 
+              <td><ComponenteInput
                     attribute={{
                       id: 'salidas',
                       name: 'salidas',
-                      type: 'number',
+                      type: 'text',
                       placeholder: ''
                     }}
-                    handleChange={handleChange}/></td>
+                    estado={salidas}
+                    handleChange={setSalidas}
+                    expresionRegular={expresiones.numeros}
+                    leyendaerror='El valor debe ser positivo'
+                    nombreMostrado={false}
+                  /></td>
             </tr>
             <tr>
               <td>Número de lecturas: </td>
-              <td><Input 
+              <td><ComponenteInput
                     attribute={{
                       id: 'lecturas',
                       name: 'lecturas',
-                      type: 'number',
+                      type: 'text',
                       placeholder: ''
                     }}
-                    handleChange={handleChange}/></td>
+                    estado={lecturas}
+                    handleChange={setLecturas}
+                    expresionRegular={expresiones.numeros}
+                    leyendaerror='El valor debe ser positivo'
+                    nombreMostrado={false}
+                  /></td>
             </tr>
             <tr>
               <td>Número de escrituras: </td>
-              <td><Input 
+              <td><ComponenteInput
                     attribute={{
                       id: 'escrituras',
                       name: 'escrituras',
-                      type: 'number',
+                      type: 'text',
                       placeholder: ''
                     }}
-                    handleChange={handleChange}/></td>
+                    estado={escrituras}
+                    handleChange={setEscrituras}
+                    expresionRegular={expresiones.numeros}
+                    leyendaerror='El valor debe ser positivo'
+                    nombreMostrado={false}
+                  /></td>
             </tr>
           </table>
         <Boton 

@@ -1,3 +1,8 @@
+.contenedor-input{
+    position: relative;
+}
+
 .contenedor-input input{
-    border: 1px solid black;
+    border: 1px solid;
+    position: relative;
 }

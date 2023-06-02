@@ -6,21 +6,27 @@ import Select from 'react-select';
 import '../../Hojas-de-estilo/CocomoII.css';
 import { FiHelpCircle } from "react-icons/fi";
 import CuadroInfo from '../CuadroInfo';
+import ComponenteInput from '../ComponenteInput';
 
 var FormularioUPF = function( props ) {
     
   const [aux, setAux] = useState('');
-  const [nombre, setNombre] = useState('');
+  const [nombre, setNombre] = useState({campo:'', valido: null});
   const [tipo, setTipo] = useState('');
-  const [det, setDet] = useState(0);
-  const [ret, setRet] = useState(0);//Archivos logicos
-  const [ftr, setFtr] = useState(0);//Consultas, entradas y salidas
+  const [det, setDet] = useState({campo:'', valido: null});
+  const [ret, setRet] = useState({campo:'', valido: null});//Archivos logicos
+  const [ftr, setFtr] = useState({campo:'', valido: null});//Consultas, entradas y salidas
   const [peso, setPeso] = useState(0);
 
   //Variables de los cuadros de información
   const [isHovering, setIsHovering] = useState(false);
   const [isHovering2, setIsHovering2] = useState(false);
   const [isHovering3, setIsHovering3] = useState(false);
+
+  const expresiones = {
+    nombre: /^[a-zA-ZÀ-ÿ\s]{1,60}$/, // Letras y espacios, pueden llevar acentos.
+    numeros: /^\d*\.?\d+$/ // Al menos un numero positivo y un punto 
+  }
 
   const tipoUPF = [
     { label:"Entrada externa", value:"EE" },
@@ -75,16 +81,16 @@ var FormularioUPF = function( props ) {
   };
 
   function asignarPesoArchivosLogicos(){
-    if( det<0 || ret<0 ){
+    if( det.campo<0 || ret.campo<0 ){
       console.log('Los valores deben ser positivos');
     }
-    if( (ret===1 && det<20) || (ret>1 && ret<6 && det<20) || (ret===1 && det>19 && det<51) ){
+    if( (ret.campo===1 && det.campo<20) || (ret.campo>1 && ret.campo<6 && det.campo<20) || (ret.campo===1 && det.campo>19 && det.campo<51) ){
       if(tipo==='ALI')  
         setPeso(ComplejidadPeso['AIbajo']);
       else
         setPeso(ComplejidadPeso['AEbajo']);
         
-    }else if( (ret===1 && det>50) || (ret>1 && ret<6 && det>19 && det<51) || (ret>5 && det<20) ){
+    }else if( (ret.campo===1 && det.campo>50) || (ret.campo>1 && ret.campo<6 && det.campo>19 && det.campo<51) || (ret.campo>5 && det.campo<20) ){
       if(tipo==='ALI')  
         setPeso(ComplejidadPeso['AIprom']);
       else
@@ -99,15 +105,15 @@ var FormularioUPF = function( props ) {
   }
 
   function asignarPesoSEyCE(){
-    if( det<0 || ret<0 ){
+    if( det.campo<0 || ret.campo<0 ){
       console.log('Los valores deben ser positivos');
     }
-    if( (ftr<2 && det<6) || (ftr>1 && ftr<4 && det<6) || (ftr<2 && det>5 && det<20) ){
+    if( (ftr.campo<2 && det.campo<6) || (ftr.campo>1 && ftr.campo<4 && det.campo<6) || (ftr.campo<2 && det.campo>5 && det.campo<20) ){
       if(tipo==='SE')  
         setPeso(ComplejidadPeso['SEbajo']);
       else
         setPeso(ComplejidadPeso['CEbajo']);
-    }else if( (ftr<2 && det>19) || (ftr>1 && ftr<4 && det>5 && det<20) || (ftr>3 && det<6) ){
+    }else if( (ftr.campo<2 && det.campo>19) || (ftr.campo>1 && ftr.campo<4 && det.campo>5 && det.campo<20) || (ftr.campo>3 && det.campo<6) ){
       if(tipo==='SE')  
         setPeso(ComplejidadPeso['SEprom']);
       else
@@ -121,12 +127,12 @@ var FormularioUPF = function( props ) {
   }
 
   function asignarPesoEE(){
-    if( det<0 || ret<0 ){
+    if( det.campo<0 || ret.campo<0 ){
       console.log('Los valores deben ser positivos');
     }
-    if( (ftr<2 && det<5) || (ftr>1 && ftr<4 && det<5) || (ftr<2 && det>4 && det<16) ){
+    if( (ftr.campo<2 && det.campo<5) || (ftr.campo>1 && ftr.campo<4 && det.campo<5) || (ftr.campo<2 && det.campo>4 && det.campo<16) ){
       setPeso(ComplejidadPeso['EEbajo']);
-    }else if( (ftr<2 && det>15) || (ftr>1 && ftr<4 && det>4 && det<16) || (ftr>2 && det<5) ){
+    }else if( (ftr.campo<2 && det.campo>15) || (ftr.campo>1 && ftr.campo<4 && det.campo>4 && det.campo<16) || (ftr.campo>2 && det.campo<5) ){
       setPeso(ComplejidadPeso['EEprom']);
     }else{
       setPeso(ComplejidadPeso['EEalto']);
@@ -146,11 +152,11 @@ var FormularioUPF = function( props ) {
     e.preventDefault();//Evitar que se recargue cuando se envie el formulario
     const NuevoUFP = {
       id: uuidv4(),
-      nombre: nombre, 
+      nombre: nombre.campo, 
       tipo: tipo,
-      det: det,
-      ret: ret,
-      ftr: ftr,
+      det: det.campo,
+      ret: ret.campo,
+      ftr: ftr.campo,
       peso: peso
     }
     props.onSubmit(NuevoUFP);
@@ -204,17 +210,22 @@ var FormularioUPF = function( props ) {
       <table>
         <tr>
           <td>
-            Nombre de la funcionalidad: 
+            Nombre de la funcionalidad:
           </td>
           <td>
-            <Input 
+            <ComponenteInput
               attribute={{
                 id: 'nombre',
                 name: 'nombre',
                 type: 'text',
-                placeholder: 'Ingresa el nombre'
+                placeholder: ''
               }}
-              handleChange={handleChange}/>
+              estado={nombre}
+              handleChange={setNombre}
+              expresionRegular={expresiones.nombre}
+              leyendaerror='Nombre inválido'
+              nombreMostrado={false}
+            />
           </td>
         </tr>
         <tr>
@@ -228,34 +239,44 @@ var FormularioUPF = function( props ) {
         <tr>
           <td>
             <FiHelpCircle onMouseOver={handleMouseOver2} onMouseOut={handleMouseOut2} color='#146C94'/>
-            Campos de leidos: 
+            Campos leídos: 
             {isHovering2 && (
               <CuadroInfo texto={'Campos reconocibles por el usuario'} valor='corto'/>
             )}
           </td>
           <td>
-            <Input 
-              attribute={{
-                id: 'det',
-                name: 'det',
-                type: 'number',
-                placeholder: 'Campos leidos'
-              }}
-              handleChange={handleChange}/>
+            <ComponenteInput
+                attribute={{
+                  id: 'det',
+                  name: 'det',
+                  type: 'text',
+                  placeholder: ''
+                }}
+                estado={det}
+                handleChange={setDet}
+                expresionRegular={expresiones.numeros}
+                leyendaerror='El valor debe ser positivo'
+                nombreMostrado={false}
+              />
           </td>
         </tr>
         {(tipo === 'EE' || tipo === 'CE' || tipo === 'SE') &&
           <tr>
           <td>Cantidad de tablas leídas: </td>
           <td>
-            <Input 
-              attribute={{
-                id: 'ret',
-                name: 'ret',
-                type: 'number',
-                placeholder: 'Cantidad de tablas'
-              }}
-              handleChange={handleChange}/>
+            <ComponenteInput
+                attribute={{
+                  id: 'ret',
+                  name: 'ret',
+                  type: 'text',
+                  placeholder: ''
+                }}
+                estado={ret}
+                handleChange={setRet}
+                expresionRegular={expresiones.numeros}
+                leyendaerror='El valor debe ser positivo'
+                nombreMostrado={false}
+            />
           </td>
         </tr>}
         {(tipo === 'ALI' || tipo === 'AEI') &&
@@ -268,14 +289,19 @@ var FormularioUPF = function( props ) {
             )}
           </td>
           <td>
-            <Input 
-              attribute={{
-                id: 'ftr',
-                name: 'ftr',
-                type: 'number',
-                placeholder: 'Archivos referenciados'
-              }}
-              handleChange={handleChange}/>
+            <ComponenteInput
+                attribute={{
+                  id: 'ftr',
+                  name: 'ftr',
+                  type: 'text',
+                  placeholder: ''
+                }}
+                estado={ftr}
+                handleChange={setFtr}
+                expresionRegular={expresiones.numeros}
+                leyendaerror='El valor debe ser positivo'
+                nombreMostrado={false}
+            />
           </td>
         </tr>}
       </table>   

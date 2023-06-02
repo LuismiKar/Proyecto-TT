@@ -118,7 +118,6 @@ function PuntosFuncion( props ){
   const agregarUpf = upf => {
     if(upf.nombre.trim() && upf.peso!==0) { //Se verifica que la cadena no esta vacia
       upf.nombre = upf.nombre.trim(); //Se le quitan los espacios del principio y del final a la cadena
-      
       const upfsActualizados = [upf, ...upfs];//El operador ... convierte los upfs de un arreglo a upfs individuales
       setUPFs(upfsActualizados);
     }

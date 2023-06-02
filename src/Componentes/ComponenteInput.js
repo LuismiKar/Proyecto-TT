@@ -3,7 +3,7 @@ import '../Hojas-de-estilo/Input.css'
 import { FiCheck, FiX } from "react-icons/fi";
 import { Label , GrupoInput, Input , LeyendaError, IconoValidacion} from '../Elementos/UsuarioElementos';
 
-function ComponenteInput({ name,  estado, attribute, handleChange, expresionRegular, leyendaerror , funcion }) {
+function ComponenteInput({ name,  estado, attribute, handleChange, expresionRegular, leyendaerror , funcion , nombreMostrado }) {
 
     const onChange = (e) => {
         handleChange({...estado, campo: e.target.value});
@@ -27,7 +27,7 @@ function ComponenteInput({ name,  estado, attribute, handleChange, expresionRegu
 
 	return(
 		<div className='contenedor-input'>
-            <Label>{name} </Label>
+            {nombreMostrado===true && <Label>{name} </Label>}
             <GrupoInput>
                 <Input
                     id={attribute.id}

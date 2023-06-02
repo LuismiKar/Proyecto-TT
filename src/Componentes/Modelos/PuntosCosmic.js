@@ -6,6 +6,7 @@ import Input from '../Input';
 import Boton from '../Boton';
 import { FiHelpCircle } from "react-icons/fi";
 import CuadroInfo from '../CuadroInfo';
+import ComponenteInput from '../ComponenteInput';
 
 
 /*
@@ -19,6 +20,7 @@ function PuntosCosmic(){
 
   const [pfcs, setPfcs] = useState([]);
   const [tasaEntrega, setTasaentrega] = useState(0);
+  const [nombreProyecto,setNombreProyecto] = useState({campo:'', valido: null});
   const [totalPfC, setTotalPfC] = useState(0);
   const [pmEst, setPmEst] = useState(0);
 
@@ -31,6 +33,11 @@ function PuntosCosmic(){
   const [isHovering5, setIsHovering5] = useState(false);
   const [isHovering6, setIsHovering6] = useState(false);
 
+  const expresiones = {
+    nombre: /^[a-zA-ZÀ-ÿ\s]{1,20}$/, // Letras y espacios, pueden llevar acentos.
+    numeros: /^\d*\.?\d+$/ // Al menos un numero positivo y un punto 
+  }
+
   var enviarTotalPf = function(numActual){ setTotalPfC( Number(totalPfC) + numActual); }
 
   const agregarPfc = pfc => {
@@ -40,6 +47,7 @@ function PuntosCosmic(){
       setPfcs(pfcsActualizados);
     }
   };
+  
 
   //Funcion de los cuadros de informacion
 
@@ -125,43 +133,55 @@ function PuntosCosmic(){
         {isHoveringTitulo && (
           <CuadroInfo texto={'Determina el tamaño del software a partir de las funcionalidades'}/>
         )}
-      </div>
+      </div><br/>
       <div className='contenedor-nombreProyecto'>
         <h4>Nombre del proyecto: </h4>
-        <Input 
+        <ComponenteInput
             attribute={{
-              id: 'nombre-proyecto',
-              name: 'nombre-proyecto',
+              id: 'nombreProyecto',
+              name: 'nombreProyecto',
               type: 'text',
-              placeholder: 'Ingrese nombre'
+              placeholder: ''
             }}
-            handleChange={ handleChange }/>
+            name='Nombre del proyecto:'
+            estado={nombreProyecto}
+            handleChange={setNombreProyecto}
+            expresionRegular={expresiones.nombre}
+            leyendaerror='Nombre inválido'
+            nombreMostrado={false}
+        />
       </div>
       <div className='contenedor-cosmic'>
         <div>
           <FormularioCosmic onSubmit={ agregarPfc } enviarTotalPf={ enviarTotalPf } />
           
         </div>
-        <div>
-        <h4>
-          <FiHelpCircle onMouseOver={handleMouseOver} onMouseOut={handleMouseOut} color='#000'/>
-          Tasa de entrega: 
-        </h4>
-        {isHovering && (
-          <CuadroInfo texto={'Valor de ajuste para los puntos de función COSMIC'} valor='corto'/>
-        )}
-        <div className='descripcion3'>
-          Acontinuación se debe agregar la tasa de entrega del proyecto
-        </div>
-          <Input 
-            attribute={{
-              id: 'tasaEntrega',
-              name: 'tasaEntrega',
-              type: 'number',
-              placeholder: ''
-            }}
-            handleChange={handleChange}/>
-          
+        <div className='tasa-entrega'>
+          <h4>
+            <FiHelpCircle onMouseOver={handleMouseOver} onMouseOut={handleMouseOut} color='#000'/>
+            Tasa de entrega: 
+          </h4>
+          {isHovering && (
+            <CuadroInfo texto={'Valor de ajuste para los puntos de función COSMIC'} valor='corto'/>
+          )}
+          <div className='descripcion3'>
+            Acontinuación se debe agregar la tasa de entrega del proyecto
+          </div>
+          <div className='componente-input'>
+            <ComponenteInput
+              attribute={{
+                id: 'tasaEntrega',
+                name: 'tasaEntrega',
+                type: 'text',
+                placeholder: ''
+              }}
+              estado={tasaEntrega}
+              handleChange={setTasaentrega}
+              expresionRegular={expresiones.numeros}
+              leyendaerror='El valor debe ser positivo'
+              nombreMostrado={false}
+            />
+          </div>
         </div>
         {pfcs.length!==0 &&<>
         <div className='descripcion'>

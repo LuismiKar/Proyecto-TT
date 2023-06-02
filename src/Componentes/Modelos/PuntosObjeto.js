@@ -5,18 +5,24 @@ import Boton from '../Boton';
 import Select from 'react-select';
 import { FiHelpCircle } from "react-icons/fi";
 import CuadroInfo from '../CuadroInfo';
+import ComponenteInput from '../ComponenteInput';
 
 var PuntosObjeto = function({ cambiarPtsObj }){
 
-  const [ nPantallas , setPantallas ] = useState(0);
-  const [ nReportes , setReportes ] = useState(0);
-  const [ nServidores , setServidores ] = useState(0);
+  const [ nPantallas , setPantallas ] = useState({campo:'', valido: null});
+  const [ nReportes , setReportes ] = useState({campo:'', valido: null});
+  const [ nServidores , setServidores ] = useState({campo:'', valido: null});
   const [ complejidadPant , setComplejidadPant ] = useState('');
   const [ complejidadRep , setComplejidadRep ] = useState('');
   const [ complejidad3gl , setComplejidad3gl ] = useState(0);
   const [ totalPtsObj , setTotalPtsObj ] = useState(0);
 
   const [isHovering, setIsHovering] = useState(false);
+
+  const expresiones = {
+    nombre: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
+    numeros: /^\d*\.?\d+$/
+  }
 
   const comp3gl = [
     { label:"si", value:10 },
@@ -113,40 +119,55 @@ var PuntosObjeto = function({ cambiarPtsObj }){
           <tr>
             <td>Ingresa el número de pantallas: </td>
             <td>
-              <Input 
+              <ComponenteInput
                 attribute={{
                   id: 'pantallas',
                   name: 'pantallas',
-                  type: 'number',
+                  type: 'text',
                   placeholder: ''
                 }}
-                handleChange={handleChange}/>
+                estado={nPantallas}
+                handleChange={setPantallas}
+                expresionRegular={expresiones.numeros}
+                leyendaerror='El valor debe ser positivo'
+                nombreMostrado={false}
+              />
             </td>
           </tr>
           <tr>
             <td>Ingresa el número de reportes:</td>
             <td>
-              <Input 
+              <ComponenteInput
                 attribute={{
                   id: 'reportes',
                   name: 'reportes',
-                  type: 'number',
+                  type: 'text',
                   placeholder: ''
                 }}
-                handleChange={handleChange}/> 
+                estado={nReportes}
+                handleChange={setReportes}
+                expresionRegular={expresiones.numeros}
+                leyendaerror='El valor debe ser positivo'
+                nombreMostrado={false}
+              />
             </td>
           </tr>   
           <tr>
             <td>Ingresa el número de servidores:</td>
             <td>
-              <Input 
+              <ComponenteInput
                 attribute={{
-                  id: 'servidores',
-                  name: 'servidores',
-                  type: 'servidores',
+                  id: 'nombreProyecto',
+                  name: 'nombreProyecto',
+                  type: 'text',
                   placeholder: ''
                 }}
-                handleChange={handleChange}/> 
+                estado={nServidores}
+                handleChange={setServidores}
+                expresionRegular={expresiones.numeros}
+                leyendaerror='El valor debe ser positivo'
+                nombreMostrado={false}
+              />
             </td>
           </tr>
         </table>
