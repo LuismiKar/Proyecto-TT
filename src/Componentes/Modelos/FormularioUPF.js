@@ -12,7 +12,7 @@ var FormularioUPF = function( props ) {
     
   const [aux, setAux] = useState('');
   const [nombre, setNombre] = useState({campo:'', valido: null});
-  const [tipo, setTipo] = useState('');
+  const [tipo, setTipo] = useState(null);
   const [det, setDet] = useState({campo:'', valido: null});
   const [ret, setRet] = useState({campo:'', valido: null});//Archivos logicos
   const [ftr, setFtr] = useState({campo:'', valido: null});//Consultas, entradas y salidas
@@ -228,15 +228,8 @@ var FormularioUPF = function( props ) {
             />
           </td>
         </tr>
-        <tr>
-          <td>Tipo de funcionalidad: </td>
-          <td>
-            <div className='select'>
-              <Select options={ tipoUPF } placeholder='Tipo de UPF' onChange={ handleSelectChange } />
-            </div>
-          </td>
-        </tr>
-        <tr>
+        
+        {tipo!==null && <tr>
           <td>
             <FiHelpCircle onMouseOver={handleMouseOver2} onMouseOut={handleMouseOut2} color='#146C94'/>
             Campos leídos: 
@@ -259,7 +252,7 @@ var FormularioUPF = function( props ) {
                 nombreMostrado={false}
               />
           </td>
-        </tr>
+        </tr>}
         {(tipo === 'EE' || tipo === 'CE' || tipo === 'SE') &&
           <tr>
           <td>Cantidad de tablas leídas: </td>
@@ -304,6 +297,14 @@ var FormularioUPF = function( props ) {
             />
           </td>
         </tr>}
+        <tr>
+          <td>Tipo de funcionalidad: </td>
+          <td>
+            <div className='select'>
+              <Select options={ tipoUPF } placeholder='Tipo de UPF' onChange={ handleSelectChange } />
+            </div>
+          </td>
+        </tr>
       </table>   
         <center>
         <Boton 
