@@ -78,7 +78,7 @@ var FormularioCosmic = function( props ){
 
   function sumarMovimientos(){
     
-    setTotalpf( Number(entradas) + Number(salidas) + Number(lecturas) + Number(escrituras) );
+    setTotalpf( Number(entradas.campo) + Number(salidas.campo) + Number(lecturas.campo) + Number(escrituras.campo) );
   }
 
   const manejarEnvio = e => {
@@ -138,7 +138,7 @@ var FormularioCosmic = function( props ){
             <CuadroInfo texto={'Funcionalidades del proyecto'} valor='corto'/>
         )}
         <div className='descripcion'>
-        En el siguiente apartado se debe agregar cada funcionalidad considerada del software
+        En el siguiente apartado se debe agregar una por una cada funcionalidad considerada del software
         </div>
           <table>
             <tr>

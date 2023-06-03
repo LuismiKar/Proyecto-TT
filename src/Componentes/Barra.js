@@ -21,7 +21,7 @@ import ListaUsuarios from './ListaUsuarios';
 function Barra(){
 
   const { collapseSidebar } = useProSidebar();
-  const [valor,setValor] = useState('estudiante');
+  const [valor,setValor] = useState('administrador');
   const [username,setUsername] = useState(null);
   const [isOpenModal,openModal,closeModal] = useModal(false);
 

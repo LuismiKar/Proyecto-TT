@@ -23,7 +23,8 @@ var PuntosObjeto = function({ cambiarPtsObj }){
 
   const expresiones = {
     nombre: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
-    numeros: /^\d*\.?\d+$/
+    numeros: /^\d*\.?\d+$/,
+    numerosenteros: /^\d+$/
   }
 
   const comp3gl = [
@@ -85,14 +86,14 @@ var PuntosObjeto = function({ cambiarPtsObj }){
   };
   
   function asignarPesoPantallas(){
-    if( nPantallas<0 || nServidores<0 ){
+    if( nPantallas.campo<0 || nServidores.campo<0 ){
       console.log('Los valores deben ser positivos');
     }
-    if( (nPantallas<4 && nServidores<2) || (nPantallas<3 && nServidores<4) || (nPantallas>2 && nPantallas<8 && nServidores<2) ){
+    if( (nPantallas.campo<4 && nServidores.campo<2) || (nPantallas.campo<3 && nServidores.campo<4) || (nPantallas.campo>2 && nPantallas.campo<8 && nServidores.campo<2) ){
       console.log('Pantallas: Es simple');
       console.log(ComplejidadPeso['PSimple']);
       setComplejidadPant(ComplejidadPeso['PSimple']);
-    }else if( (nPantallas<3 && nServidores>3) || (nPantallas>2 && nPantallas<8 && nServidores<4) || (nPantallas>7 && nServidores<2) ){
+    }else if( (nPantallas.campo<3 && nServidores.campo>3) || (nPantallas.campo>2 && nPantallas.campo<8 && nServidores.campo<4) || (nPantallas.campo>7 && nServidores.campo<2) ){
       console.log('Pantallas: Es media');
       console.log(ComplejidadPeso['PMedia']);
       setComplejidadPant(ComplejidadPeso['PMedia']);
@@ -104,14 +105,14 @@ var PuntosObjeto = function({ cambiarPtsObj }){
   }
 
   function asignarPesoReportes(){
-    if( nReportes<0 || nServidores<0 ){
+    if( nReportes.campo<0 || nServidores.campo<0 ){
       console.log('Los valores deben ser positivos');
     }
-    if( (nReportes<=1 && nServidores<2) || (nReportes<=1 && nServidores<4) || (nReportes>=2 && nReportes<4 && nServidores<2) ){
+    if( (nReportes.campo<=1 && nServidores.campo<2) || (nReportes.campo<=1 && nServidores.campo<4) || (nReportes.campo>=2 && nReportes.campo<4 && nServidores.campo<2) ){
       console.log('Reportes: Es simple');
       console.log(ComplejidadPeso['RSimple']);
       setComplejidadRep(ComplejidadPeso['RSimple']);
-    }else if( (nReportes<=1 && nServidores>3) || (nReportes>=2 && nReportes<4 && nServidores<4) || (nReportes>3 && nServidores<2) ){
+    }else if( (nReportes.campo<=1 && nServidores.campo>3) || (nReportes.campo>=2 && nReportes.campo<4 && nServidores.campo<4) || (nReportes.campo>3 && nServidores.campo<2) ){
       console.log('Reportes: Es media');
       console.log(ComplejidadPeso['RMedia']);
       setComplejidadRep(ComplejidadPeso['RMedia']);
@@ -153,8 +154,8 @@ var PuntosObjeto = function({ cambiarPtsObj }){
                 }}
                 estado={nPantallas}
                 handleChange={setPantallas}
-                expresionRegular={expresiones.numeros}
-                leyendaerror='El valor debe ser positivo'
+                expresionRegular={expresiones.numerosenteros}
+                leyendaerror='El valor debe ser entero positivo'
                 nombreMostrado={false}
               />
               
@@ -178,8 +179,8 @@ var PuntosObjeto = function({ cambiarPtsObj }){
                 }}
                 estado={nReportes}
                 handleChange={setReportes}
-                expresionRegular={expresiones.numeros}
-                leyendaerror='El valor debe ser positivo'
+                expresionRegular={expresiones.numerosenteros}
+                leyendaerror='El valor debe ser entero positivo'
                 nombreMostrado={false}
               />
               
@@ -190,15 +191,15 @@ var PuntosObjeto = function({ cambiarPtsObj }){
             <td>
               <ComponenteInput
                 attribute={{
-                  id: 'nombreProyecto',
-                  name: 'nombreProyecto',
+                  id: 'servidores',
+                  name: 'servidores',
                   type: 'text',
                   placeholder: ''
                 }}
                 estado={nServidores}
                 handleChange={setServidores}
-                expresionRegular={expresiones.numeros}
-                leyendaerror='El valor debe ser positivo'
+                expresionRegular={expresiones.numerosenteros}
+                leyendaerror='El valor debe ser entero positivo'
                 nombreMostrado={false}
               />
             </td>
@@ -230,7 +231,12 @@ var PuntosObjeto = function({ cambiarPtsObj }){
           funcion={calcularPtsObj}
           texto='Calcular'
           onMouseOver={enviarDatos(totalPtsObj)} />
-
+        {totalPtsObj!== 0 &&
+          <>
+            <h3>Puntos objeto:</h3>
+            {totalPtsObj}
+          </>
+        }
       </div>
       <div>
         

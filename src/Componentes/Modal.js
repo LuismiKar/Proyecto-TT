@@ -8,7 +8,7 @@ const Modal = ({ children, isOpen, closeModal }) => {
   return(
     <article className={`modal ${isOpen && "abrir"}`} onClick={closeModal}>
       <div className="modal-contenedor" onClick={handleModalContainerClick}>
-        <FiX className="modal-cerrar" onClick={closeModal} ></FiX>
+        <FiX className="modal-cerrar" onClick={closeModal} size='25px'></FiX>
         {children}
       </div>
     </article>

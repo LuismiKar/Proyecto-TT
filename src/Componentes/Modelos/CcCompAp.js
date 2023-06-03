@@ -37,7 +37,8 @@ function CcCompAp(){
 
   const expresiones = {
     nombre: /^[a-zA-ZÀ-ÿ\s]{1,20}$/, // Letras y espacios, pueden llevar acentos.
-    numeros: /^\d*\.?\d+$/
+    numeros: /^\d*\.?\d+$/,
+    reuso:  /^([0-9][0-9]?|[0-9][0-9]?\.[0-9]*|100)$/
   }
 
   var cambiarPtsObj = function(numActual){
@@ -115,7 +116,7 @@ function CcCompAp(){
   };
   
   function calcularPm(){
-    //setNptsobj( ptsObj * ( 100 - reuso ) / 100 ); 
+    setNptsobj( ptsObj * ( 100 - reuso.campo ) / 100 ); 
     console.log('Nuevos Puntos objetos: '+NptsObj);
     console.log('Prod: ' + prod);
     setPmEst( NptsObj / prod );
@@ -160,15 +161,18 @@ function CcCompAp(){
             <CuadroInfo className='center' texto={'Enfoque de medición de tamaño de software'} />
           )}
           <div className='descripcion2'>
-            Como primer paso, se calculan los puntos objeto, de acuerdo a las características de tu proyecto:
+            Como primer paso, se calculan los puntos objeto, de acuerdo a las características de tu proyecto,
+            ingresa los valores requeridos, y al finalizar presiona el botón "Calcular" para obtener los puntos objeto:
           </div>
         </div>
         <PuntosObjeto cambiarPtsObj={ cambiarPtsObj }/>
       </div>
+      <div className='descripcion2'>
+        Como segundo paso se debe incluir el valor del reuso que se espera del proyecto
+      </div>
       <div className='contenedor-composicionaplicacion'>
       <table>
         <tbody>
-          
           <tr>
             <td>
               <FiHelpCircle onMouseOver={handleMouseOver2} onMouseOut={handleMouseOut2} color='#146C94'/>
@@ -188,10 +192,18 @@ function CcCompAp(){
                 name='Nombre del proyecto:'
                 estado={reuso}
                 handleChange={setReuso}
-                expresionRegular={expresiones.numeros}
+                expresionRegular={expresiones.reuso}
                 leyendaerror='El valor debe ser positivo'
                 nombreMostrado={false}
               />
+            </td>
+          </tr>
+          <tr>
+            <td colSpan='2'>
+            <div className='descripcion2'>
+              <br/>Y por último, seleccionar las caraterísticas de la productividad del proyecto, y dar click en el 
+              botón "Calcular Esfuerzo":
+            </div>
             </td>
           </tr>
           <tr><td colSpan='2'><center><h3>Productividad</h3></center></td></tr>
@@ -218,13 +230,13 @@ function CcCompAp(){
                 onChange={ handleSelectChangeMcIcase } /></td>
           </tr>
           <tr>
-            <center>
+            <td colSpan='2'>
             <Boton
               name='boton-'
               funcion={ calcularPm }
-              texto='Calcular PM' 
+              texto='Calcular Esfuerzo' 
               onMouseOver={calcularProd}/>
-            </center>
+            </td>
           </tr>
         </tbody>
       </table>

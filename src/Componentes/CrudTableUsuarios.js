@@ -5,7 +5,7 @@ import Usuario from './Usuario';
 function CrudTableUsuarios({ data }) {
   return(
     <div>
-      <h3>Tabla de datos</h3>
+      <h3>Usuarios registrados</h3>
       <table>
         <thead>
           <tr>

@@ -1,0 +1,18 @@
+.boton-agregarusuario{
+    text-align: left;
+    font-weight: bold;
+    margin-top: 50px;
+    margin-left: 100px;
+}
+
+.icon{
+    margin-right: 10px;
+}
+
+.tabla-usuarios tr td{
+    padding: 5px;
+}
+
+.agregar-usuario{
+    padding: 30px;
+}

@@ -29,6 +29,7 @@ function PuntosFuncion( props ){
   const [isHovering2, setIsHovering2] = useState(false);
   const [isHovering3, setIsHovering3] = useState(false);
   const [isHovering4, setIsHovering4] = useState(false);
+  const [isHovering5, setIsHovering5] = useState(false);
 
   //Lenguajes de programación
   const lenguajeOpciones = [
@@ -112,7 +113,14 @@ function PuntosFuncion( props ){
   const handleMouseOut4 = () => {
     setIsHovering4(false);
   };
-;
+
+  const handleMouseOver5 = () => {
+    setIsHovering5(true);
+  };
+
+  const handleMouseOut5 = () => {
+    setIsHovering5(false);
+  };
   
 
   const agregarUpf = upf => {
@@ -158,7 +166,13 @@ function PuntosFuncion( props ){
           <FormularioUPF onSubmit={agregarUpf} enviarPeso={ enviarPeso } />
           {upfs.length!==0 &&<>
             <div className='descripcion'>
-              <b>Tabla de puntos de función</b>
+              <b>
+                <FiHelpCircle onMouseOver={handleMouseOver5} onMouseOut={handleMouseOut5} color='#000'/>
+                Tabla de puntos de función
+              </b>
+              {isHovering5 && (
+                <CuadroInfo texto={'La tabla se irá actualizando cada que se agreguen funcionalidades nuevas'} valor='corto'/>
+              )}
             </div>
             <table cellPadding='10' className='tabla' border='1' cellSpacing='0'  align='center'>
               <thead>
@@ -202,14 +216,14 @@ function PuntosFuncion( props ){
           Lenguaje de programación:
           <Select options={ lenguajeOpciones } placeholder="Seleccione el lenguaje" onChange={ handleSelectLenguaje } />
           <Boton 
+            name='calcularPF-boton' 
+            funcion={calcularFP}
+            texto='Calcular Total PF' />
+          <Boton 
             name='calcularSloc-boton' 
             funcion={props.enviarSloc(sloc)}
             onMouseOver={calcularSloc}
             texto='Calcular Líneas de código' />
-          <Boton 
-            name='calcularPF-boton' 
-            funcion={calcularFP}
-            texto='Calcular Total PF' />
           <br/>
           *PF: Puntos de función ajustados
         </div>

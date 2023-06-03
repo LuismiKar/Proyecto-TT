@@ -155,7 +155,7 @@ function InicioSesion( props ){
                       name='Nombre de usuario:'
                       estado={username}
                       handleChange={setUsername}
-                      expresionRegular={expresiones.usuario}
+                      expresionRegular={expresiones.nombre}
                       leyendaerror='Nombre de usuario inválido'
                       nombreMostrado={true}
                   />

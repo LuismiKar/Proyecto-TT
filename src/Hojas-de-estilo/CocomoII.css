@@ -108,6 +108,10 @@ h3{
   margin-top: 50px;
 }
 
+.contenedor-Metrica{
+  margin-top: 20px;
+}
+
 tr{
   text-align: left;
 }
@@ -159,4 +163,8 @@ thead{
 
 .puro-texto{
   padding-left: 50px;
+}
+
+.descripcion b{
+  text-align: center;
 }

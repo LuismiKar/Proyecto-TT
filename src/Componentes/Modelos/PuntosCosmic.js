@@ -19,7 +19,7 @@ Escrituras
 function PuntosCosmic(){
 
   const [pfcs, setPfcs] = useState([]);
-  const [tasaEntrega, setTasaentrega] = useState(0);
+  const [tasaEntrega, setTasaentrega] = useState({campo:'', valido: null});
   const [nombreProyecto,setNombreProyecto] = useState({campo:'', valido: null});
   const [totalPfC, setTotalPfC] = useState(0);
   const [pmEst, setPmEst] = useState(0);
@@ -120,7 +120,7 @@ function PuntosCosmic(){
   };
 
   function calcularEsfuerzo(){
-    setPmEst(tasaEntrega * totalPfC);
+    setPmEst(tasaEntrega.campo * totalPfC);
   }
 
   return(
@@ -183,9 +183,16 @@ function PuntosCosmic(){
             />
           </div>
         </div>
-        {pfcs.length!==0 &&<>
-        <div className='descripcion'>
-          <b>Tabla de puntos de función</b>
+      </div>
+      {pfcs.length!==0 &&<>
+        <div className='descripcion2'>
+          <b>
+            <FiHelpCircle onMouseOver={handleMouseOver3} onMouseOut={handleMouseOut3} color='#000'/>
+            Tabla de puntos de función
+          </b>
+          {isHovering3 && (
+            <CuadroInfo texto={'La tabla se irá actualizando cada que se agreguen funcionalidades nuevas'} valor='corto'/>
+          )}
         </div>
         <table cellPadding='10' className='tabla' border='1' cellSpacing='0'  align='center'>
             <thead>
@@ -214,15 +221,13 @@ function PuntosCosmic(){
             }
           </tbody>
         </table>
-        </> }
-        
-        
-      </div>
-      
+        </> 
+      }
+      <br/>
       <Boton 
             name='calcularUFP-boton' 
             funcion={calcularEsfuerzo}
-            texto='Calcular UFP' />
+            texto='Calcular Esfuerzo' />
       <hr/>
       <FiHelpCircle onMouseOver={handleMouseOver2} onMouseOut={handleMouseOut2} color='#146C94'/>          
       Esfuerzo: {pmEst}

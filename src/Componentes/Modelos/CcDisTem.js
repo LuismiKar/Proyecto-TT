@@ -9,6 +9,7 @@ import PuntosFuncion from './PuntosFuncion';
 import { FiHelpCircle } from "react-icons/fi";
 import CuadroInfo from '../CuadroInfo';
 import ComponenteInput from '../ComponenteInput';
+import TablaValores from '../TablaValores';
 
 function CcDisTemp(){
 
@@ -30,7 +31,7 @@ function CcDisTemp(){
   const [ Aresl , setResl ] = useState(4.24);
   const [ Ateam , setTeam ] = useState(3.29);
   const [ Apmat , setPmat ] = useState(4.68);
-  const [ Ksloc , setKsloc ] = useState(0);
+  const [ Ksloc , setKsloc ] = useState({campo:'', valido: null});
   const [nombreProyecto,setNombreProyecto] = useState({campo:'', valido: null});
 
   const [isOpenModal,openModal,closeModal] = useModal(false);
@@ -51,9 +52,11 @@ function CcDisTemp(){
   const [isHovering14, setIsHovering14] = useState(false);
   const [isHovering15, setIsHovering15] = useState(false);
   const [isHovering16, setIsHovering16] = useState(false);
+  const [isHovering17, setIsHovering17] = useState(false);
 
   const expresiones = {
     nombre: /^[a-zA-ZÀ-ÿ\s]{1,20}$/, // Letras y espacios, pueden llevar acentos.
+    numeros: /^\d*\.?\d+$/ //Numeros positivos con decimales
   }
 
   //Multiplicadores de esfuerzo
@@ -169,7 +172,7 @@ function CcDisTemp(){
     { label:"xhi", value:0 } 
   ]
 
-  var enviarSloc = function(numActual){ setKsloc(numActual/1000); }
+  var enviarSloc = function(numActual){ setKsloc(''); }
 
   const handleSelectChangeRcpx = ( { value } ) => {
     console.log("Rcpx: " + value);
@@ -387,6 +390,14 @@ function CcDisTemp(){
     setIsHovering16(false);
   };
 
+  const handleMouseOver17 = () => {
+    setIsHovering17(true);
+  };
+
+  const handleMouseOut17 = () => {
+    setIsHovering17(false);
+  };
+
   function calculoB(){
     setB(1.01 + 0.01 * ( Aprec + Aflex + Aresl + Ateam + Apmat ));
     console.log('B: ' + B);
@@ -394,10 +405,10 @@ function CcDisTemp(){
 
   function calculoPMnominal(){
     calculoB();
-    setPMnom( A * Math.pow(Ksloc,B) );
+    setPMnom( A * Math.pow(Ksloc.campo,B) );
     console.log('A: ' + A);
-    console.log('Ksloc: ' + Ksloc);
-    console.log('Exponente' + Math.pow(Ksloc,B))
+    console.log('Ksloc: ' + Ksloc.campo);
+    console.log('Exponente' + Math.pow(Ksloc.campo,B))
     console.log('pmNom: ' + pmNom);
   }
 
@@ -436,7 +447,11 @@ function CcDisTemp(){
         />
       </div>
       <div className='descripcion2'>
+        <FiHelpCircle onMouseOver={handleMouseOver17} onMouseOut={handleMouseOut17} color='#000'/>
         A continuación, ingresa los datos que se indican, de acuerdo a las características de tu proyecto:
+        {isHovering17 && (
+          <CuadroInfo texto={<TablaValores/>} valor='corto'/>
+        )}
       </div>
       <div className='contenedor-diseñotemprano'>
         <div>
@@ -451,10 +466,10 @@ function CcDisTemp(){
             <tbody>
               <tr>
                 <td>
-                  <FiHelpCircle onMouseOver={handleMouseOver} onMouseOut={handleMouseOut} color='#146C94'/> Confiabilidad y Complejidad del producto (RCPX):
-                  {isHovering && (
+                  {/*<FiHelpCircle onMouseOver={handleMouseOver} onMouseOut={handleMouseOut} color='#146C94'/> */}Confiabilidad y Complejidad del producto (RCPX):
+                  {/*{isHovering && (
                     <CuadroInfo texto={'Confiabilidad y complejidad del producto'} valor='corto'/>
-                  )}
+                  )}*/}
                 </td>
                 <td><Select options={ rcpx } defaultValue={ rcpx[3] } onChange={ handleSelectChangeRcpx } /></td>
               </tr>
@@ -469,10 +484,10 @@ function CcDisTemp(){
               </tr>
               <tr>
                 <td>
-                  <FiHelpCircle onMouseOver={handleMouseOver3} onMouseOut={handleMouseOut3} color='#146C94'/> Dificultad de la Plataforma (PDIF):
-                  {isHovering3 && (
+                  {/*<FiHelpCircle onMouseOver={handleMouseOver3} onMouseOut={handleMouseOut3} color='#146C94'/> */}Dificultad de la Plataforma (PDIF):
+                  {/*{isHovering3 && (
                     <CuadroInfo texto={'Dificultad de la plataforma'} valor='corto'/>
-                  )}
+                  )}*/}
                 </td>
                 <td><Select options={ pdif } defaultValue={ pdif[1] } onChange={ handleSelectChangePdif } /></td>
               </tr>
@@ -480,17 +495,17 @@ function CcDisTemp(){
                 <td>
                   <FiHelpCircle onMouseOver={handleMouseOver4} onMouseOut={handleMouseOut4} color='#146C94'/> Aptitud del Personal (PERS):
                   {isHovering4 && (
-                    <CuadroInfo texto={'Aptitud del personal'} valor='corto'/>
+                    <CuadroInfo texto={'Capacidad del personal para realizar las actividades'} valor='corto'/>
                   )}
                 </td>
                 <td><Select options={ pers } defaultValue={ pers[3] } onChange={ handleSelectChangePers } /></td>
               </tr>
               <tr>
                 <td>
-                  <FiHelpCircle onMouseOver={handleMouseOver5} onMouseOut={handleMouseOut5} color='#146C94'/> Experiencia del Personal (PREX):
-                  {isHovering5 && (
+                  {/*<FiHelpCircle onMouseOver={handleMouseOver5} onMouseOut={handleMouseOut5} color='#146C94'/> */}Experiencia del Personal (PREX):
+                  {/*{isHovering5 && (
                     <CuadroInfo texto={'Experiencia del personal'} valor='corto'/>
-                  )}
+                  )}*/}
                 </td>
                 <td><Select options={ prex } defaultValue={ prex[3] } onChange={ handleSelectChangePrex } /></td>
               </tr>
@@ -573,7 +588,18 @@ function CcDisTemp(){
             </tbody>
           </table>
         </div>
-        <div className='contenedor-ksloc'>
+      </div>                
+      <div className='descripcion2'>
+        <br/>
+          Posteriormente, se deben calcular las líneas de código del proyecto, sin embargo, hay dos opciones: 
+          <br/> 
+          1.- Contar con la cantidad de líneas de código.
+          <br/> 
+          2.- Contar con las funcionalidades del proyecto (Puntos de función).   
+        
+      </div>
+      <div className='contenedor-diseñotemprano'>
+        <div className='contenedor-Metrica'>
           <div className='descripcion2'>
             Si no cuentas con la cantidad de líneas de código, selecciona <b>Puntos de función</b>
             <Select options={ [ { label:"Puntos de función", value:'PF' },
@@ -588,13 +614,18 @@ function CcDisTemp(){
                   Ingresa la cantidad de <b>miles</b> de líneas de código: 
                 </td>
                 <td>
-                  <Input
-                    attribute={{
-                      id: 'ksloc',
-                      name: 'ksloc',
-                      type: 'number'
-                    }}
-                    handleChange={handleChange}
+                <ComponenteInput
+                  attribute={{
+                    id: 'ksloc',
+                    name: 'ksloc',
+                    type: 'text',
+                    placeholder: ''
+                  }}
+                  estado={Ksloc}
+                  handleChange={setKsloc}
+                  expresionRegular={expresiones.numeros}
+                  leyendaerror='El valor debe ser positivo'
+                  nombreMostrado={false}
                 />
                 </td></>}
                 {metrica==='PF' && <><td>
@@ -608,11 +639,18 @@ function CcDisTemp(){
                 </td>
                 </>}
               </tr>
+              {metrica==='KSLOC' && 
+                <tr>
+                  <td colSpan='2'>
+                    (1 KSLOC = 1000 SLOC)<br/>
+                    *SLOC: Líneas de código
+                  </td>
+                </tr>}
             </tbody>
           </table>
         </div>
         <div className='contenedor-ksloc'>
-          <FiHelpCircle onMouseOver={handleMouseOver13} onMouseOut={handleMouseOut13} color='#146C94'/> KSLOC: {Ksloc}
+          <FiHelpCircle onMouseOver={handleMouseOver13} onMouseOut={handleMouseOut13} color='#146C94'/> KSLOC: {Ksloc.campo}
           {isHovering13 && (
             <CuadroInfo texto={'Miles de líneas de código del software a desarrollar'} valor='corto'/>
           )}

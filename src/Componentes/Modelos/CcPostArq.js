@@ -9,6 +9,7 @@ import PuntosFuncion from './PuntosFuncion';
 import { FiHelpCircle } from "react-icons/fi";
 import CuadroInfo from '../CuadroInfo';
 import ComponenteInput from '../ComponenteInput';
+import TablaValores from '../TablaValores';
 
 function CcPostArq(){
 
@@ -79,6 +80,7 @@ function CcPostArq(){
   const [isHovering24, setIsHovering24] = useState(false);
   const [isHovering25, setIsHovering25] = useState(false);
   const [isHovering26, setIsHovering26] = useState(false);
+  const [isHovering27, setIsHovering27] = useState(false);
 
   const expresiones = {
     nombre: /^[a-zA-ZÀ-ÿ\s]{1,20}$/, // Letras y espacios, pueden llevar acentos.
@@ -492,6 +494,14 @@ function CcPostArq(){
     setIsHovering26(false);
   };
 
+  const handleMouseOver27 = () => {
+    setIsHovering27(true);
+  };
+
+  const handleMouseOut27 = () => {
+    setIsHovering27(false);
+  };
+
 //Asignacion de valores cada que cambia el input de seleccion
 
   //Producto
@@ -683,7 +693,11 @@ function CcPostArq(){
         />
       </div>
       <div className='descripcion2'>
+        <FiHelpCircle onMouseOver={handleMouseOver26} onMouseOut={handleMouseOut26} color='#000'/>
         A continuación, ingresa los datos que se indican, de acuerdo a las características de tu proyecto:
+        {isHovering26 && (
+          <CuadroInfo texto={<TablaValores/>} valor='corto'/>
+        )}
       </div>
       <h3>
         <FiHelpCircle onMouseOver={handleMouseOver25} onMouseOut={handleMouseOut25} color='#000'/>
@@ -827,7 +841,7 @@ function CcPostArq(){
                 <td>
                   <FiHelpCircle onMouseOver={handleMouseOver14} onMouseOut={handleMouseOut14} color='#146C94'/> Continuidad del personal (PCON):
                   {isHovering14 && (
-                    <CuadroInfo texto={'Grado de permanencia anual del personal (48% Muy bajo, 3% Muy alto)'} valor='corto'/>
+                    <CuadroInfo texto={'Grado de permanencia anual del personal afectado a un proyecto (48% Muy bajo, 3% Muy alto)'} valor='corto'/>
                   )}
                 </td>
                 <td><Select options={ pcon } defaultValue={ pcon[2] } onChange={ handleSelectChangePcon }/></td>
@@ -921,15 +935,25 @@ function CcPostArq(){
             </tbody>
           </table>
         </div>
-        <div className='contenedor-ksloc'>
+      </div>
+        <div className='descripcion2'>
+          <br/>
+            Posteriormente, se deben calcular las líneas de código del proyecto, sin embargo, hay dos opciones: 
+          <br/> 
+            1.- Contar con la cantidad de líneas de código.
+          <br/> 
+            2.- Contar con las funcionalidades del proyecto (Puntos de función).   
+        </div>
+      <div className='contenedor-postarquitectura'>
+        <div className='contenedor-metrica'>
           <div className='descripcion2'>
-              Si no cuentas con la cantidad de líneas de código, selecciona <b>Puntos de función</b>
-              <Select options={ [ { label:"Puntos de función", value:'PF' },
-                                  { label:"Líneas de código", value:'KSLOC' }] } 
-                      placeholder= 'Selecciona la métrica'
-                      onChange={ handleSelectChangeMetrica } />
-            </div>
-          <table>
+            Si no cuentas con la cantidad de líneas de código, selecciona <b>Puntos de función</b>
+            <Select options={ [ { label:"Puntos de función", value:'PF' },
+                                { label:"Líneas de código", value:'KSLOC' }] } 
+                    placeholder= 'Selecciona la métrica'
+                    onChange={ handleSelectChangeMetrica } />
+          </div>
+            <table>
               <tbody>
                 <tr>
                   {metrica==='KSLOC' && <><td>
@@ -943,8 +967,9 @@ function CcPostArq(){
                         type: 'number'
                       }}
                       handleChange={handleChange}
-                  />
-                  </td></>}
+                    />
+                  </td>
+                  </>}
                   {metrica==='PF' && <><td>
                     <center><Boton 
                       name='boton-Modal'
@@ -957,15 +982,22 @@ function CcPostArq(){
                   </td>
                   </>}
                 </tr>
+                {metrica==='KSLOC' && 
+                <tr>
+                  <td colSpan='2'>
+                    (1 KSLOC = 1000 SLOC)<br/>
+                    *SLOC: Líneas de código
+                  </td>
+                </tr>}
               </tbody>
             </table>
-            <div className='contenedor-ksloc'>
-              <FiHelpCircle onMouseOver={handleMouseOver24} onMouseOut={handleMouseOut24} color='#146C94'/> KSLOC: {Ksloc}
-              {isHovering24 && (
-                <CuadroInfo texto={'Miles de líneas de código del software a desarrollar'} valor='corto'/>
-              )}
-            </div>
-          </div>
+        </div>
+        <div className='contenedor-ksloc'>
+          <FiHelpCircle onMouseOver={handleMouseOver24} onMouseOut={handleMouseOut24} color='#146C94'/> KSLOC: {Ksloc}
+          {isHovering24 && (
+            <CuadroInfo texto={'Miles de líneas de código del software a desarrollar'} valor='corto'/>
+          )}
+        </div>
       </div>
       <Boton
         name='boton'

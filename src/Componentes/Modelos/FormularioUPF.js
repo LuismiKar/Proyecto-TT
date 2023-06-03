@@ -161,6 +161,7 @@ var FormularioUPF = function( props ) {
     }
     props.onSubmit(NuevoUFP);
     props.enviarPeso(peso);
+
   };
 
   //Función para ver los cambios del campo de texto
@@ -205,7 +206,7 @@ var FormularioUPF = function( props ) {
       )}
       
       <div className='descripcion'>
-        En el siguiente apartado se debe agregar cada funcionalidad considerada del software.
+        En el siguiente apartado se debe agregar una por una cada funcionalidad considerada en el software.
       </div>
       <table>
         <tr>
