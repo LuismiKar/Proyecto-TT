@@ -93,8 +93,14 @@ var FormularioCosmic = function( props ){
       totalPF: totalPF 
     }
     props.onSubmit(NuevoPFCosmic);
-    sumarMovimientos();
     props.enviarTotalPf(totalPF);
+    if(totalPF!==0){
+      setNombre({campo:'',valido:null});
+      setEntradas({campo:'',valido:null});
+      setSalidas({campo:'',valido:null});
+      setLecturas({campo:'',valido:null});
+      setEscrituras({campo:'',valido:null});
+    }
   };
 
   //Función para ver los cambios del campo de texto
@@ -225,7 +231,8 @@ var FormularioCosmic = function( props ){
           </table>
         <Boton 
           name='formularioCosmic-boton' 
-          texto='Agregar punto' />             
+          texto='Agregar punto'
+          onMouseOver={sumarMovimientos} />             
       </form>
     </div>
   );

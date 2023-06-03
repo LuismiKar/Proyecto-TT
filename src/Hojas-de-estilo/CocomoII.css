@@ -168,3 +168,10 @@ thead{
 .descripcion b{
   text-align: center;
 }
+
+.info-apoyo{
+  width: 100%;
+  text-align: left;
+  font-size: small;
+  font-weight: bold;
+}

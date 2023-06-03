@@ -7,6 +7,7 @@ import PuntosObjeto from './PuntosObjeto';
 import { FiHelpCircle } from "react-icons/fi";
 import CuadroInfo from '../CuadroInfo';
 import ComponenteInput from '../ComponenteInput';
+import TablaValores from '../TablaValores';
 
 function CcCompAp(){
 
@@ -25,7 +26,7 @@ function CcCompAp(){
   const [isHovering2, setIsHovering2] = useState(false);
   const [isHovering3, setIsHovering3] = useState(false);
   const [isHovering4, setIsHovering4] = useState(false);
-  
+  const [isHovering5, setIsHovering5] = useState(false);
 
   const Tablaprod = [
     { label:"vlo", value:4 },
@@ -113,6 +114,14 @@ function CcCompAp(){
 
   const handleMouseOut4 = () => {
     setIsHovering4(false);
+  };
+
+  const handleMouseOver5 = () => {
+    setIsHovering5(true);
+  };
+
+  const handleMouseOut5 = () => {
+    setIsHovering5(false);
   };
   
   function calcularPm(){
@@ -207,6 +216,17 @@ function CcCompAp(){
             </td>
           </tr>
           <tr><td colSpan='2'><center><h3>Productividad</h3></center></td></tr>
+          <tr>
+            <td colSpan='2'>
+              <div className='info-apoyo'>
+                <FiHelpCircle onMouseOver={handleMouseOver5} onMouseOut={handleMouseOut5} color='#000'/>
+                Informacion de apoyo
+              </div>
+              {isHovering5 && (
+                <CuadroInfo texto={<TablaValores/>} valor='corto'/>
+              )}
+            </td>
+          </tr>
           <tr>
             <td>Experiencia y capacidad de los desarrolladores: </td>
             <td>

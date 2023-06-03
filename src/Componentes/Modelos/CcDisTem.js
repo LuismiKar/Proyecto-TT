@@ -10,6 +10,7 @@ import { FiHelpCircle } from "react-icons/fi";
 import CuadroInfo from '../CuadroInfo';
 import ComponenteInput from '../ComponenteInput';
 import TablaValores from '../TablaValores';
+import { LeyendaError } from '../../Elementos/UsuarioElementos';
 
 function CcDisTemp(){
 
@@ -17,8 +18,11 @@ function CcDisTemp(){
 
   const [ B , setB ] = useState(1.1997);
   const [ metrica , setMetrica ] = useState('');
+  const [ Ksloc , setKsloc ] = useState(0);
+  const [nombreProyecto,setNombreProyecto] = useState({campo:'', valido: null});
   const [ pmNom , setPMnom ] = useState(0);
   const [ pmEst , setPMest ] = useState(0);
+
   const [ Arcpx , setRcpx ] = useState(1);
   const [ Aruse , setRuse ] = useState(1);
   const [ Apdif , setPdif ] = useState(1);
@@ -31,8 +35,7 @@ function CcDisTemp(){
   const [ Aresl , setResl ] = useState(4.24);
   const [ Ateam , setTeam ] = useState(3.29);
   const [ Apmat , setPmat ] = useState(4.68);
-  const [ Ksloc , setKsloc ] = useState({campo:'', valido: null});
-  const [nombreProyecto,setNombreProyecto] = useState({campo:'', valido: null});
+
 
   const [isOpenModal,openModal,closeModal] = useModal(false);
   const [isHoveringTitulo, setIsHoveringTitulo] = useState(false);
@@ -172,7 +175,7 @@ function CcDisTemp(){
     { label:"xhi", value:0 } 
   ]
 
-  var enviarSloc = function(numActual){ setKsloc(''); }
+  var enviarSloc = function(numActual){ setKsloc(numActual); }
 
   const handleSelectChangeRcpx = ( { value } ) => {
     console.log("Rcpx: " + value);
@@ -243,7 +246,6 @@ function CcDisTemp(){
     switch(name){
       case 'ksloc':
         setKsloc(value);
-        console.log('Ksloc: ' + Ksloc);
         break;
       case 'nombre-proyecto':
         console.log("Nombre: " + value);
@@ -405,10 +407,10 @@ function CcDisTemp(){
 
   function calculoPMnominal(){
     calculoB();
-    setPMnom( A * Math.pow(Ksloc.campo,B) );
+    setPMnom( A * Math.pow(Ksloc,B) );
     console.log('A: ' + A);
-    console.log('Ksloc: ' + Ksloc.campo);
-    console.log('Exponente' + Math.pow(Ksloc.campo,B))
+    console.log('Ksloc: ' + Ksloc);
+    console.log('Exponente' + Math.pow(Ksloc,B))
     console.log('pmNom: ' + pmNom);
   }
 
@@ -447,14 +449,17 @@ function CcDisTemp(){
         />
       </div>
       <div className='descripcion2'>
-        <FiHelpCircle onMouseOver={handleMouseOver17} onMouseOut={handleMouseOut17} color='#000'/>
         A continuación, ingresa los datos que se indican, de acuerdo a las características de tu proyecto:
-        {isHovering17 && (
-          <CuadroInfo texto={<TablaValores/>} valor='corto'/>
-        )}
       </div>
       <div className='contenedor-diseñotemprano'>
         <div>
+          <div className='info-apoyo'>
+            <FiHelpCircle onMouseOver={handleMouseOver17} onMouseOut={handleMouseOut17} color='#000'/>
+            Informacion de apoyo
+          </div>
+          {isHovering17 && (
+            <CuadroInfo texto={<TablaValores/>} valor='corto'/>
+          )}
           <h3>
             <FiHelpCircle onMouseOver={handleMouseOver15} onMouseOut={handleMouseOut15} color='#000'/>
             Multiplicadores de esfuerzo
@@ -462,6 +467,7 @@ function CcDisTemp(){
           {isHovering15 && (
             <CuadroInfo texto={'Factores que tienen un efecto multiplicativo sobre el esfuerzo'} valor='corto'/>
           )}
+          
           <table>
             <tbody>
               <tr>
@@ -531,6 +537,7 @@ function CcDisTemp(){
           </table>
         </div>
         <div>
+          <br/>
           <h3>
             <FiHelpCircle onMouseOver={handleMouseOver16} onMouseOut={handleMouseOut16} color='#000'/>
             Factor exponencial de escala
@@ -614,19 +621,14 @@ function CcDisTemp(){
                   Ingresa la cantidad de <b>miles</b> de líneas de código: 
                 </td>
                 <td>
-                <ComponenteInput
-                  attribute={{
-                    id: 'ksloc',
-                    name: 'ksloc',
-                    type: 'text',
-                    placeholder: ''
-                  }}
-                  estado={Ksloc}
-                  handleChange={setKsloc}
-                  expresionRegular={expresiones.numeros}
-                  leyendaerror='El valor debe ser positivo'
-                  nombreMostrado={false}
-                />
+                  <Input
+                      attribute={{
+                        id: 'ksloc',
+                        name: 'ksloc',
+                        type: 'number'
+                      }}
+                      handleChange={handleChange}
+                  />
                 </td></>}
                 {metrica==='PF' && <><td>
                   <Boton 
@@ -650,7 +652,7 @@ function CcDisTemp(){
           </table>
         </div>
         <div className='contenedor-ksloc'>
-          <FiHelpCircle onMouseOver={handleMouseOver13} onMouseOut={handleMouseOut13} color='#146C94'/> KSLOC: {Ksloc.campo}
+          <FiHelpCircle onMouseOver={handleMouseOver13} onMouseOut={handleMouseOut13} color='#146C94'/> KSLOC: {Ksloc}
           {isHovering13 && (
             <CuadroInfo texto={'Miles de líneas de código del software a desarrollar'} valor='corto'/>
           )}

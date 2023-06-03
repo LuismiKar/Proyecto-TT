@@ -161,7 +161,10 @@ var FormularioUPF = function( props ) {
     }
     props.onSubmit(NuevoUFP);
     props.enviarPeso(peso);
-
+    setNombre({campo:'',valido:null});
+    setFtr({campo:'',valido:null});
+    setDet({campo:'',valido:null});
+    setRet({campo:'',valido:null});
   };
 
   //Función para ver los cambios del campo de texto

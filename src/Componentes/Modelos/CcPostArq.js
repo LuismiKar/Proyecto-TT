@@ -19,6 +19,7 @@ function CcPostArq(){
   const [ metrica , setMetrica ] = useState('');
   const [ pmNom , setPMnom ] = useState(0);
   const [ pmEst , setPMest ] = useState(0);
+  const [ Ksloc , setKsloc ] = useState('');
   const [nombreProyecto,setNombreProyecto] = useState({campo:'', valido: null});
   const [isOpenModal,openModal,closeModal] = useModal(false);
 
@@ -49,7 +50,6 @@ function CcPostArq(){
   const [ Aresl , setResl ] = useState(4.24);
   const [ Ateam , setTeam ] = useState(3.29);
   const [ Apmat , setPmat ] = useState(4.68);
-  const [ Ksloc , setKsloc ] = useState('');
 
   //Cuadros de informacion
 
@@ -693,12 +693,15 @@ function CcPostArq(){
         />
       </div>
       <div className='descripcion2'>
-        <FiHelpCircle onMouseOver={handleMouseOver26} onMouseOut={handleMouseOut26} color='#000'/>
         A continuación, ingresa los datos que se indican, de acuerdo a las características de tu proyecto:
-        {isHovering26 && (
+      </div>
+      <div className='info-apoyo'>
+        <FiHelpCircle onMouseOver={handleMouseOver17} onMouseOut={handleMouseOut17} color='#000'/>
+        Informacion de apoyo
+      </div>
+        {isHovering17 && (
           <CuadroInfo texto={<TablaValores/>} valor='corto'/>
         )}
-      </div>
       <h3>
         <FiHelpCircle onMouseOver={handleMouseOver25} onMouseOut={handleMouseOut25} color='#000'/>
         Multiplicadores de esfuerzo
