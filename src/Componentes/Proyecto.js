@@ -1,23 +1,17 @@
 import React from 'react';
-import '../Hojas-de-estilo/ListaProyectos.css';
-import { AiOutlineCloseCircle } from "react-icons/ai";
+import { FiXSquare , FiEdit } from "react-icons/fi";
 
-function Proyecto({ id , nombre , tipo , esfuerzo , eliminarProyecto }){
+function Proyecto({ el , eliminarProyecto , modificarProyecto }){
   return(
-    <div className='contenedor-proyecto' >
-      <tr className='contenedor-fila'>
-        <td>{nombre}</td>
-        <td>{tipo}</td>
-        <td>{esfuerzo}</td>
-        <td>
-          <div 
-            className='contenedor-icono' 
-            onClick={() => eliminarProyecto(id)}>
-              <AiOutlineCloseCircle className='proyecto-icono' />
-          </div>
-        </td>
-      </tr>
-    </div>
+    <tr>
+      <td>{el.nombre}</td>
+      <td>{el.tipo}</td>
+      <td>{el.esfuerzo}</td>
+      <td>
+        <FiEdit size='20px' onClick={() => modificarProyecto(el)}/>
+        <FiXSquare size='20px' onClick={() => eliminarProyecto(el.id)}/>
+      </td>
+    </tr>
   );
 }
 

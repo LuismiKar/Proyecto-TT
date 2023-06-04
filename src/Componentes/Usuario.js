@@ -1,5 +1,5 @@
 import React from 'react';
-import { FiXSquare , FiEdit , FiPlusSquare } from "react-icons/fi";
+import { FiXSquare , FiEdit } from "react-icons/fi";
 
 function Usuario({ el , eliminarUsuario , modificarUsuario }) {
   return(
@@ -8,7 +8,7 @@ function Usuario({ el , eliminarUsuario , modificarUsuario }) {
         <td>{el.email}</td>
         <td>{el.tipo}</td>
         <td>
-          <FiEdit size='20px' onClick={() => modificarUsuario(el.email)}/>
+          <FiEdit size='20px' onClick={() => modificarUsuario(el)}/>
           <FiXSquare size='20px' onClick={() => eliminarUsuario(el.email)}/>
         </td>
       </tr>
