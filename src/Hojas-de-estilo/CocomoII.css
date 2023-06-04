@@ -175,3 +175,16 @@ thead{
   font-size: small;
   font-weight: bold;
 }
+
+.contenedor-resultado{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contenedor-resultado .resultado{
+  border: 2px solid #19A7CE;
+  margin-left: 20px;
+  width: 200px;
+  height: 25px;
+}

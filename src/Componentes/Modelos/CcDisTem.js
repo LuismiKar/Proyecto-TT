@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState , useEffect } from 'react';
 import { useModal } from '../Hooks/useModal';
 import '../../Hojas-de-estilo/CocomoII.css';
 import Select from 'react-select';
@@ -405,8 +405,11 @@ function CcDisTemp(){
     console.log('B: ' + B);
   }
 
-  function calculoPMnominal(){
+  useEffect(() => {
     calculoB();
+  });
+
+  function calculoPMnominal(){
     setPMnom( A * Math.pow(Ksloc,B) );
     console.log('A: ' + A);
     console.log('Ksloc: ' + Ksloc);
@@ -414,10 +417,9 @@ function CcDisTemp(){
     console.log('pmNom: ' + pmNom);
   }
 
-  const calcularEstimacion = () => {
-    
+  const calcularEsfuerzo = () => {
     calculoPMnominal();
-    setPMest( pmNom * ( Arcpx * Aruse * Apdif * Apers * Aprex * Afcil * Asced ) );
+    setPMest( (pmNom * ( Arcpx * Aruse * Apdif * Apers * Aprex * Afcil * Asced )).toFixed(3) );
     console.log('pmEst: ' + pmEst);
   }
 
@@ -660,15 +662,19 @@ function CcDisTemp(){
       </div>
       <Boton
         name='boton'
-        funcion={calcularEstimacion}
-        texto='Calcular' />
+        funcion={calcularEsfuerzo}
+        texto='Calcular Esfuerzo'
+        onMouseOver={calculoPMnominal} />
       <hr/>
-      <FiHelpCircle onMouseOver={handleMouseOver14} onMouseOut={handleMouseOut14} color='#146C94'/>          
-      Esfuerzo: {pmEst}
-      
-      {isHovering14 && (
+      <br/>
+      <div className='contenedor-resultado'>
+        <FiHelpCircle onMouseOver={handleMouseOver14} onMouseOut={handleMouseOut14} color='#146C94'/>           
+        Esfuerzo: 
+        <div className='resultado'>{pmEst}</div>
+        {isHovering14 && (
         <CuadroInfo texto={'Representa los meses de trabajo de una persona fulltime, requeridos para desarrollar el proyecto'}/>
       )}
+      </div>
     </div>
   );
 }

@@ -120,7 +120,7 @@ function PuntosCosmic(){
   };
 
   function calcularEsfuerzo(){
-    setPmEst(tasaEntrega.campo * totalPfC);
+    setPmEst((tasaEntrega.campo * totalPfC).toFixed(3));
   }
 
   return(
@@ -229,12 +229,15 @@ function PuntosCosmic(){
             funcion={calcularEsfuerzo}
             texto='Calcular Esfuerzo' />
       <hr/>
-      <FiHelpCircle onMouseOver={handleMouseOver2} onMouseOut={handleMouseOut2} color='#146C94'/>          
-      Esfuerzo: {pmEst}
-      
-      {isHovering2 && (
+      <br/>
+      <div className='contenedor-resultado'>
+        <FiHelpCircle onMouseOver={handleMouseOver2} onMouseOut={handleMouseOut2} color='#146C94'/>          
+        Esfuerzo: 
+        <div className='resultado'>{pmEst}</div>
+        {isHovering2 && (
         <CuadroInfo texto={'Representa los meses de trabajo de una persona fulltime, requeridos para desarrollar el proyecto'}/>
       )}
+      </div>
     </div>
   );
 }

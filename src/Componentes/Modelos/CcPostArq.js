@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState , useEffect } from 'react';
 import { useModal } from '../Hooks/useModal';
 import '../../Hojas-de-estilo/CocomoII.css';
 import Select from 'react-select';
@@ -649,6 +649,10 @@ function CcPostArq(){
     console.log('B: ' + B);
   }
 
+  useEffect(() => {
+    calculoB();
+  });
+
   function calculoPMnominal(){
     setPMnom( A * Math.pow(Ksloc,B) );
     console.log('A: ' + A);
@@ -657,10 +661,8 @@ function CcPostArq(){
     console.log('pmNom: ' + pmNom);
   }
 
-  const calcularEstimacion = () => {
-    calculoB();
-    calculoPMnominal();
-    setPMest( pmNom * ( Arely * Adata * Adocu * Acplx * Aruse * Atime * Astor * Apvol * Aacap * Aaexp * Apcap * Apexp * Altex * Apcon * Atool * Asced * Asite ) );
+  const calcularEsfuerzo = () => {
+    setPMest( (pmNom * ( Arely * Adata * Adocu * Acplx * Aruse * Atime * Astor * Apvol * Aacap * Aaexp * Apcap * Apexp * Altex * Apcon * Atool * Asced * Asite ).toFixed(3)) );
     console.log('pmEst: ' + pmEst);
     //console.log('Entra a calcularEstimacion');
   }
@@ -1004,15 +1006,19 @@ function CcPostArq(){
       </div>
       <Boton
         name='boton'
-        funcion={calcularEstimacion}
-        texto='Calcular' />
+        funcion={calcularEsfuerzo}
+        texto='Calcular Esfuerzo'
+        onMouseOver={calculoPMnominal} />
       <hr/>
-      <FiHelpCircle onMouseOver={handleMouseOver23} onMouseOut={handleMouseOut23} color='#146C94'/>          
-      Esfuerzo: {pmEst}
-      
-      {isHovering23 && (
+      <br/>
+      <div className='contenedor-resultado'>
+        <FiHelpCircle onMouseOver={handleMouseOver23} onMouseOut={handleMouseOut23} color='#146C94'/>          
+        Esfuerzo: 
+        <div className='resultado'>{pmEst}</div>
+        {isHovering23 && (
         <CuadroInfo texto={'Representa los meses de trabajo de una persona fulltime, requeridos para desarrollar el proyecto'}/>
-      )}
+        )}
+      </div>
     </div>
   );
 }

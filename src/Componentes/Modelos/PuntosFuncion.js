@@ -221,8 +221,8 @@ function PuntosFuncion( props ){
             texto='Calcular Total PF' />
           <Boton 
             name='calcularSloc-boton' 
-            funcion={props.enviarSloc(sloc)}
-            onMouseOver={calcularSloc}
+            funcion={calcularSloc}
+            onMouseOut={props.enviarSloc(sloc)}
             texto='Calcular Líneas de código' />
           <br/>
           *PF: Puntos de función ajustados

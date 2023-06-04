@@ -123,12 +123,15 @@ function CcCompAp(){
   const handleMouseOut5 = () => {
     setIsHovering5(false);
   };
-  
-  function calcularPm(){
+
+  function calcularNPtosObjeto(){
     setNptsobj( ptsObj * ( 100 - reuso.campo ) / 100 ); 
     console.log('Nuevos Puntos objetos: '+NptsObj);
     console.log('Prod: ' + prod);
-    setPmEst( NptsObj / prod );
+  }
+  
+  function calcularEsfuerzo(){
+    setPmEst( (NptsObj / prod).toFixed(3) );
     console.log('Esfuerzo: ' + pmEst );
   }
 
@@ -253,20 +256,25 @@ function CcCompAp(){
             <td colSpan='2'>
             <Boton
               name='boton-'
-              funcion={ calcularPm }
+              funcion={ calcularEsfuerzo }
               texto='Calcular Esfuerzo' 
-              onMouseOver={calcularProd}/>
+              onMouseOver={ calcularNPtosObjeto }
+              onFocus={calcularProd}/>
             </td>
           </tr>
         </tbody>
       </table>
       </div>
       <hr/>
-      <FiHelpCircle onMouseOver={handleMouseOver4} onMouseOut={handleMouseOut4} color='#146C94'/>          
-      Esfuerzo: {pmEst}
-      {isHovering4 && (
-        <CuadroInfo texto={'Representa los meses de trabajo de una persona fulltime, requeridos para desarrollar el proyecto'}/>
-      )}
+      <br/>
+      <div className='contenedor-resultado'>
+        <FiHelpCircle onMouseOver={handleMouseOver4} onMouseOut={handleMouseOut4} color='#146C94'/>          
+        Esfuerzo: 
+        <div className='resultado'>{pmEst}</div>
+        {isHovering4 && (
+          <CuadroInfo texto={'Representa los meses de trabajo de una persona fulltime, requeridos para desarrollar el proyecto'}/>
+        )}
+      </div>
     </div>
   );
 }

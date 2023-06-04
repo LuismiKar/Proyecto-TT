@@ -125,9 +125,12 @@ var PuntosObjeto = function({ cambiarPtsObj }){
 
   function enviarDatos(Dato){ cambiarPtsObj(Dato) }
 
-  function calcularPtsObj(){
+  function ejecutarFunciones(){
     asignarPesoPantallas();
     asignarPesoReportes();
+  }
+
+  function calcularPtsObj(){
     setTotalPtsObj( complejidadPant + complejidadRep + complejidad3gl );
   }
 
@@ -230,7 +233,8 @@ var PuntosObjeto = function({ cambiarPtsObj }){
           name='boton-ptsobj'
           funcion={calcularPtsObj}
           texto='Calcular'
-          onMouseOver={enviarDatos(totalPtsObj)} />
+          onMouseOver={ejecutarFunciones}
+          onBlur={enviarDatos(totalPtsObj)} />
         {totalPtsObj!== 0 &&
           <>
             <h3>Puntos objeto:</h3>
