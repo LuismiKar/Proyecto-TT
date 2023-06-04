@@ -1,5 +1,5 @@
 .contenedor-principal{
-  
+  padding: 50px;
   width: auto;
   
 }
@@ -187,4 +187,16 @@ thead{
   margin-left: 20px;
   width: 200px;
   height: 25px;
+}
+
+.tasa-entrega h4{
+  text-align: center;
+}
+
+.Cosmic-formulario h4{
+  text-align: center;
+}
+
+.Cosmic-formulario button{
+  text-align: center;
 }

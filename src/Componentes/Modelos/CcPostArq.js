@@ -716,7 +716,7 @@ function CcPostArq(){
         
           <table>
             <tbody>
-              <tr><center><b>Producto</b></center></tr>
+              <tr><td colSpan='2'><b>Producto</b></td></tr>
               <tr>
                 <td>
                   <FiHelpCircle onMouseOver={handleMouseOver} onMouseOut={handleMouseOut} color='#146C94'/> Confiabilidad requerida (RELY):
@@ -762,41 +762,13 @@ function CcPostArq(){
                 </td>
                 <td><Select options={ ruse } defaultValue={ ruse[1] } onChange={ handleSelectChangeRuse }/></td>
               </tr>
-              <br/><b>Plataforma</b><br/>
-              <tr>
-                <td>
-                  <FiHelpCircle onMouseOver={handleMouseOver6} onMouseOut={handleMouseOut6} color='#146C94'/> Restricción del tiempo de ejecución (TIME):
-                  {isHovering6 && (
-                    <CuadroInfo texto={'Grado de restricción de tiempo de ejecución impuesta sobre el sistema de software'} valor='corto'/>
-                  )}
-                </td>
-                <td><Select options={ time } defaultValue={ time[0] } onChange={ handleSelectChangeTime } /></td>
-              </tr>
-              <tr>
-                <td>
-                  <FiHelpCircle onMouseOver={handleMouseOver7} onMouseOut={handleMouseOut7} color='#146C94'/> Restricción del almacenamiento principal (STOR):
-                  {isHovering7 && (
-                    <CuadroInfo texto={'Grado de restricción del almacenamiento principal impuesto sobre un sistema de software'} valor='corto'/>
-                  )}
-                </td>
-                <td><Select options={ stor } defaultValue={ stor[0] } onChange={ handleSelectChangeStor } /></td>
-              </tr>
-              <tr>
-                <td>
-                  <FiHelpCircle onMouseOver={handleMouseOver8} onMouseOut={handleMouseOut8} color='#146C94'/> Volatilidad de la plataforma (PVOL):
-                  {isHovering8 && (
-                    <CuadroInfo texto={'Frecuencia de los cambios en la plataforma subyacente'} valor='corto'/>
-                  )}
-                </td>
-                <td><Select options={ pvol } defaultValue={ pvol[1] } onChange={ handleSelectChangePvol } /></td>
-              </tr>
             </tbody>
           </table>
         </div>
         <div>
-          <table>
+        <table>
             <tbody>
-              <tr/><b>Personal</b><tr/>
+              <tr/><td colSpan='2'><b>Personal</b></td><tr/>
               <tr>
                 <td>
                   <FiHelpCircle onMouseOver={handleMouseOver9} onMouseOut={handleMouseOut9} color='#146C94'/> Capacidad del analista (ACAP):
@@ -851,7 +823,51 @@ function CcPostArq(){
                 </td>
                 <td><Select options={ pcon } defaultValue={ pcon[2] } onChange={ handleSelectChangePcon }/></td>
               </tr>
-              <tr/><b>Proyecto</b><tr/>
+              
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div className='contenedor-postarquitectura'>
+        <div>
+          <table>
+            <tbody>
+              <tr><td colSpan='2'><b>Plataforma</b></td></tr>
+              <tr>
+                <td>
+                  <FiHelpCircle onMouseOver={handleMouseOver6} onMouseOut={handleMouseOut6} color='#146C94'/> Restricción del tiempo de ejecución (TIME):
+                  {isHovering6 && (
+                    <CuadroInfo texto={'Grado de restricción de tiempo de ejecución impuesta sobre el sistema de software'} valor='corto'/>
+                  )}
+                </td>
+                <td><Select options={ time } defaultValue={ time[0] } onChange={ handleSelectChangeTime } /></td>
+              </tr>
+              <tr>
+                <td>
+                  <FiHelpCircle onMouseOver={handleMouseOver7} onMouseOut={handleMouseOut7} color='#146C94'/> Restricción del almacenamiento principal (STOR):
+                  {isHovering7 && (
+                    <CuadroInfo texto={'Grado de restricción del almacenamiento principal impuesto sobre un sistema de software'} valor='corto'/>
+                  )}
+                </td>
+                <td><Select options={ stor } defaultValue={ stor[0] } onChange={ handleSelectChangeStor } /></td>
+              </tr>
+              <tr>
+                <td>
+                  <FiHelpCircle onMouseOver={handleMouseOver8} onMouseOut={handleMouseOut8} color='#146C94'/> Volatilidad de la plataforma (PVOL):
+                  {isHovering8 && (
+                    <CuadroInfo texto={'Frecuencia de los cambios en la plataforma subyacente'} valor='corto'/>
+                  )}
+                </td>
+                <td><Select options={ pvol } defaultValue={ pvol[1] } onChange={ handleSelectChangePvol } /></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div>
+          
+          <table>
+            <tbody>
+              <tr/><td colSpan='2'><b>Proyecto</b></td><tr/>
               <tr>
                 <td>
                   <FiHelpCircle onMouseOver={handleMouseOver15} onMouseOut={handleMouseOut15} color='#146C94'/> Uso de herramientas de software (TOOL):
@@ -881,66 +897,75 @@ function CcPostArq(){
               </tr>
             </tbody>
           </table>
-        </div>
-        <div>
-          <h3>
-            <FiHelpCircle onMouseOver={handleMouseOver26} onMouseOut={handleMouseOut26} color='#000'/>
-            Factor exponencial de escala
-          </h3>
-          {isHovering26 && (
-            <CuadroInfo texto={'Resultado de factores que influyen en la productividad y esfuerzo de un proyecto'} valor='corto'/>
-          )}
-          <table>
-            <tbody>
-            <tr>
-                <td>
-                  <FiHelpCircle onMouseOver={handleMouseOver18} onMouseOut={handleMouseOut18} color='#146C94'/> Precedencia:
-                  {isHovering18 && (
-                    <CuadroInfo texto={'Grado de experiencia previa'} valor='corto'/>
-                  )}
-                </td>
-                <td><Select options={ prec } defaultValue={ prec[2] } onChange={ handleSelectChangePrec } /></td>
-              </tr>
-              <tr>
-                <td>
-                  <FiHelpCircle onMouseOver={handleMouseOver19} onMouseOut={handleMouseOut19} color='#146C94'/> Flexibilidad en el desarrollo:
-                  {isHovering19 && (
-                    <CuadroInfo texto={'Exigencia en el cumplimiento de los requerimientos'} valor='corto'/>
-                  )}
-                </td>
-                <td><Select options={ flex } defaultValue={ flex[2] } onChange={ handleSelectChangeFlex } /></td>
-              </tr>
-              <tr>
-                <td>
-                  <FiHelpCircle onMouseOver={handleMouseOver20} onMouseOut={handleMouseOut20} color='#146C94'/> Arquitectura/Resolución de riesgo:
-                  {isHovering20 && (
-                    <CuadroInfo texto={'Conocimiento de los ítems de riesgo crítico y el modo de abordarlos dentro del proyecto'} valor='corto'/>
-                  )}
-                </td>
-                <td><Select options={ resl } defaultValue={ resl[2] } onChange={ handleSelectChangeResl } /></td>
-              </tr>
-              <tr>
-                <td>
-                  <FiHelpCircle onMouseOver={handleMouseOver21} onMouseOut={handleMouseOut21} color='#146C94'/> Cohesión de equipo:
-                  {isHovering21 && (
-                    <CuadroInfo texto={'Dificultades de sincronización entre los participantes del proyecto'} valor='corto'/>
-                  )}
-                </td>
-                <td><Select options={ team } defaultValue={ team[2] } onChange={ handleSelectChangeTeam } /></td>
-              </tr>
-              <tr>
-                <td>
-                  <FiHelpCircle onMouseOver={handleMouseOver22} onMouseOut={handleMouseOut22} color='#146C94'/> Madurez del proceso:
-                  {isHovering22 && (
-                    <CuadroInfo texto={'Nivel de madurez de la organización'} valor='corto'/>
-                  )}
-                </td>
-                <td><Select options={ pmat } defaultValue={ pmat[2] } onChange={ handleSelectChangePmat } /></td>
-              </tr>
-            </tbody>
-          </table>
+          
         </div>
       </div>
+      <div className='descripcion2'>
+        Total Multiplicadores de esfuerzo: {( Arely * Adata * Adocu * Acplx * Aruse * Atime * Astor * Apvol * Aacap * Aaexp * Apcap * Apexp * Altex * Apcon * Atool * Asced * Asite ).toFixed(2)}
+      </div>  
+      <br/>
+      <div>
+        <h3>
+          <FiHelpCircle onMouseOver={handleMouseOver26} onMouseOut={handleMouseOut26} color='#000'/>
+          Factor exponencial de escala
+        </h3>
+        {isHovering26 && (
+          <CuadroInfo texto={'Resultado de factores que influyen en la productividad y esfuerzo de un proyecto'} valor='corto'/>
+        )}
+        <table>
+          <tbody>
+          <tr>
+              <td>
+                <FiHelpCircle onMouseOver={handleMouseOver18} onMouseOut={handleMouseOut18} color='#146C94'/> Precedencia:
+                {isHovering18 && (
+                  <CuadroInfo texto={'Grado de experiencia previa'} valor='corto'/>
+                )}
+              </td>
+              <td><Select options={ prec } defaultValue={ prec[2] } onChange={ handleSelectChangePrec } /></td>
+            </tr>
+            <tr>
+              <td>
+                <FiHelpCircle onMouseOver={handleMouseOver19} onMouseOut={handleMouseOut19} color='#146C94'/> Flexibilidad en el desarrollo:
+                {isHovering19 && (
+                  <CuadroInfo texto={'Exigencia en el cumplimiento de los requerimientos'} valor='corto'/>
+                )}
+              </td>
+              <td><Select options={ flex } defaultValue={ flex[2] } onChange={ handleSelectChangeFlex } /></td>
+            </tr>
+            <tr>
+              <td>
+                <FiHelpCircle onMouseOver={handleMouseOver20} onMouseOut={handleMouseOut20} color='#146C94'/> Arquitectura/Resolución de riesgo:
+                {isHovering20 && (
+                  <CuadroInfo texto={'Conocimiento de los ítems de riesgo crítico y el modo de abordarlos dentro del proyecto'} valor='corto'/>
+                )}
+              </td>
+              <td><Select options={ resl } defaultValue={ resl[2] } onChange={ handleSelectChangeResl } /></td>
+            </tr>
+            <tr>
+              <td>
+                <FiHelpCircle onMouseOver={handleMouseOver21} onMouseOut={handleMouseOut21} color='#146C94'/> Cohesión de equipo:
+                {isHovering21 && (
+                  <CuadroInfo texto={'Dificultades de sincronización entre los participantes del proyecto'} valor='corto'/>
+                )}
+              </td>
+              <td><Select options={ team } defaultValue={ team[2] } onChange={ handleSelectChangeTeam } /></td>
+            </tr>
+            <tr>
+              <td>
+                <FiHelpCircle onMouseOver={handleMouseOver22} onMouseOut={handleMouseOut22} color='#146C94'/> Madurez del proceso:
+                {isHovering22 && (
+                  <CuadroInfo texto={'Nivel de madurez de la organización'} valor='corto'/>
+                )}
+              </td>
+              <td><Select options={ pmat } defaultValue={ pmat[2] } onChange={ handleSelectChangePmat } /></td>
+            </tr>
+          </tbody>
+        </table>
+        <div className='descripcion2'>
+          Total Factores de escala: {(Aprec + Aflex + Aresl + Ateam + Apmat).toFixed(2)}
+        </div>
+      </div>    
+      <br/>
         <div className='descripcion2'>
           <br/>
             Posteriormente, se deben calcular las líneas de código del proyecto, sin embargo, hay dos opciones: 
@@ -1004,11 +1029,14 @@ function CcPostArq(){
           )}
         </div>
       </div>
-      <Boton
+      <br/>
+      <center><Boton
         name='boton'
         funcion={calcularEsfuerzo}
         texto='Calcular Esfuerzo'
         onMouseOver={calculoPMnominal} />
+      </center>
+      <br/>
       <hr/>
       <br/>
       <div className='contenedor-resultado'>

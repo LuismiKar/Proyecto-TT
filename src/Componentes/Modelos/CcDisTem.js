@@ -597,7 +597,16 @@ function CcDisTemp(){
             </tbody>
           </table>
         </div>
-      </div>                
+      </div> 
+      <br/>
+      <div className='contenedor-diseñotemprano'>
+        <div className='descripcion2'>
+          Total Multiplicadores de esfuerzo: {(Arcpx * Aruse * Apdif * Apers * Aprex * Afcil * Asced).toFixed(2)}
+        </div>
+        <div className='descripcion2'>
+          Total Factores de escala: {(Aprec + Aflex + Aresl + Ateam + Apmat).toFixed(2)}
+        </div>
+      </div>               
       <div className='descripcion2'>
         <br/>
           Posteriormente, se deben calcular las líneas de código del proyecto, sin embargo, hay dos opciones: 
@@ -660,11 +669,12 @@ function CcDisTemp(){
           )}
         </div>
       </div>
-      <Boton
+      <center><Boton
         name='boton'
         funcion={calcularEsfuerzo}
         texto='Calcular Esfuerzo'
         onMouseOver={calculoPMnominal} />
+      </center>
       <hr/>
       <br/>
       <div className='contenedor-resultado'>

@@ -224,10 +224,11 @@ function PuntosCosmic(){
         </> 
       }
       <br/>
-      <Boton 
-            name='calcularUFP-boton' 
-            funcion={calcularEsfuerzo}
-            texto='Calcular Esfuerzo' />
+      <center><Boton 
+        name='calcularUFP-boton' 
+        funcion={calcularEsfuerzo}
+        texto='Calcular Esfuerzo' />
+      </center>
       <hr/>
       <br/>
       <div className='contenedor-resultado'>

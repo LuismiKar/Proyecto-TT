@@ -229,10 +229,12 @@ var FormularioCosmic = function( props ){
                   /></td>
             </tr>
           </table>
-        <Boton 
-          name='formularioCosmic-boton' 
-          texto='Agregar punto'
-          onMouseOver={sumarMovimientos} />             
+          <center>
+          <Boton 
+            name='formularioCosmic-boton' 
+            texto='Agregar punto'
+            onMouseOver={sumarMovimientos} />  
+          </center>           
       </form>
     </div>
   );

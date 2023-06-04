@@ -229,18 +229,21 @@ var PuntosObjeto = function({ cambiarPtsObj }){
             </tr>
           </tbody>
         </table>
-        <Boton
+        <center><Boton
           name='boton-ptsobj'
           funcion={calcularPtsObj}
           texto='Calcular'
           onMouseOver={ejecutarFunciones}
           onBlur={enviarDatos(totalPtsObj)} />
+        </center>
+        <div className='descripcion2'>
         {totalPtsObj!== 0 &&
           <>
-            <h3>Puntos objeto:</h3>
+            <b>Puntos objeto:</b>
             {totalPtsObj}
           </>
         }
+        </div>
       </div>
       <div>
         
