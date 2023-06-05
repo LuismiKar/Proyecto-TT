@@ -2,6 +2,11 @@ import React from 'react';
 import '../Hojas-de-estilo/GuiaUsuario.css'
 import CA1 from '../Imagenes/compapp1.png';
 import CA2 from '../Imagenes/compapp2.png';
+import DT1 from '../Imagenes/DT1.png';
+import DT2 from '../Imagenes/DT2.png';
+import DT3 from '../Imagenes/DT3.png';
+import PA1 from '../Imagenes/PA1.png';
+import C1 from '../Imagenes/C1.png';
 
 //Selector para elegir el metodo con el cual se va a trabajar
 function GuiaUsuario() {
@@ -88,18 +93,59 @@ function GuiaUsuario() {
           </p>
         </div><br/>
   
-          <h4>Diseño temprano</h4>
-          <p className='componente3'>
-            Se utiliza en las primeras etapas del desarrollo en las cuales se evalúan las alternativas de hardware 
-            y software de un proyecto, es decir, no se tiene mucha información del proyecto
-          </p><br/>
-          <h4>Post arquitectura</h4>
-          <p className='componente3'>
-            Se aplica en la etapa de desarrollo, después de definir la arquitectura del sistema, y en la etapa 
-            de mantenimiento.
+      <h4>Diseño temprano</h4>
+        <p className='componente3'>
+        <img src={DT1} width='290px'/>
+        <br/>
+        <img src={DT2} width='240px'/>
+        <br/>
+        <img src={DT3} width='220px'/>
+        </p><br/>
+        <div className='lista'>
+          <p>
+            <b>-KSLOC:</b> Es el tamaño del software a desarrollar expresado en miles de líneas de código.
           </p>
-        
-      
+          <p>
+            <b>-A:</b> Es una constante que captura los efectos lineales sobre el esfuerzo de acuerdo a la variación del tamaño (Su valor es de 2.94).
+          </p>
+          <p>
+            <b>-B:</b> Es el factor exponencial, emplea características relacionadas con el incremento en el tamaño del software.
+          </p>
+          <p>
+            <b>-EMi </b>(Multiplicadores de Esfuerzo): Se refiere a los factores de costo que tienen un efecto multiplicativo sobre el esfuerzo. 
+          </p>
+          <p>
+            <b>-Wj </b>(Factores de escala): Factores que influyen en la productividad y esfuerzo del proyecto.
+          </p>
+        </div><br/>
+
+      <h4>Post arquitectura</h4>
+      <p className='componente3'>
+          <img src={PA1} width='300px'/>
+          <br/>
+          </p><br/>
+      <div className='lista'>
+        <p>
+          La fórmula utilizada en este modelo es igual a diseño temprano, sin embargo, en esta fórmula se consideran 
+          17 Multiplicadores de esfuerzo
+        </p>    
+      </div>
+      <br/>
+
+      <h4>COSMIC</h4>
+      <p className='componente3'>
+          <img src={C1} width='350px'/>
+          <br/>
+          </p><br/>
+      <div className='lista'>
+        <p>
+          <b>-Tamaño:</b> Es el tamaño del software a desarrollar, sumando los puntos de función COSMIC, los cuales
+          consideran entradas, salidas, lecturas y escrituras al software.
+        </p>
+        <p>
+          <b>-Tasa de entrega:</b> Valor de ajuste para los puntos de función COSMIC.
+        </p>   
+      </div>
     </div>
   );
 }
