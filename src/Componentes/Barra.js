@@ -2,7 +2,6 @@ import React , { useState } from 'react';
 import { BrowserRouter as Router, Link, Route, Routes} from 'react-router-dom';
 import '../Hojas-de-estilo/Barra.css';
 import InicioSesion from './InicioSesion';
-import Registro from './Registro';
 import CcCompAp from './Modelos/CcCompAp';
 import CcDisTem from './Modelos/CcDisTem';
 import CcPostArq from './Modelos/CcPostArq';
@@ -15,7 +14,6 @@ import { FiPlusCircle, FiList, FiHelpCircle } from "react-icons/fi";
 import { Sidebar, Menu, MenuItem, SubMenu, useProSidebar } from "react-pro-sidebar";
 import Modal from './Modal';
 import { useModal } from '../Componentes/Hooks/useModal';
-import Boton from './Boton';
 import ListaUsuarios from './ListaUsuarios';
 
 function Barra(){

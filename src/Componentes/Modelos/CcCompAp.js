@@ -135,6 +135,10 @@ function CcCompAp(){
     console.log('Esfuerzo: ' + pmEst );
   }
 
+  function generarPdf(){
+
+  }
+
   return(
     <div className='contenedor-principal' >
       <div className='titulo'>
@@ -274,6 +278,10 @@ function CcCompAp(){
         {isHovering4 && (
           <CuadroInfo texto={'Representa los meses de trabajo de una persona fulltime, requeridos para desarrollar el proyecto'}/>
         )}
+        {pmEst!==0 && <Boton
+          name='boton-pdf'
+          funcion={ generarPdf }
+          texto='Generar PDF'/>}
       </div>
     </div>
   );

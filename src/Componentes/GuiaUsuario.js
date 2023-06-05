@@ -1,5 +1,7 @@
 import React from 'react';
 import '../Hojas-de-estilo/GuiaUsuario.css'
+import CA1 from '../Imagenes/compapp1.png';
+import CA2 from '../Imagenes/compapp2.png';
 
 //Selector para elegir el metodo con el cual se va a trabajar
 function GuiaUsuario() {
@@ -10,7 +12,10 @@ function GuiaUsuario() {
         Esta aplicación se ha creado para los estudiantes de ESCOM, con el fin de hacer más comprensibles los modelos de estimación
         COCOMO II y COSMIC, y así poder facilitarles el cálculo del esfuerzo de sus proyectos de software. 
       </p>
-      <h3>Definiciones</h3><br/>
+      <br/>
+
+      {/* DEFINICIONES */}
+      <h2>Definiciones</h2><br/>
       <h4>Estimación de costos</h4>
       <p className='componente'>
         Consiste en estimar el tamaño, el esfuerzo, la complejidad y el costo del proyecto de software para poder encontrar 
@@ -52,55 +57,49 @@ function GuiaUsuario() {
       Es un modelo de estimación de costos que permite realizar estimaciones en función del tamaño del software, y 
       de un conjunto de factores de coste y de escala.
       </p><br/>
-      <h3>Funcionamiento</h3><br/>
-      Selección de nivel en multiplicadores de esfuerzo y factor complejidad<br/><br/>
-      <div className='tabla-niveles'>  
-        <table border='1' cellSpacing='0' cellPadding='10' align='center'>
-          <thead>
-            <tr>
-              <td>Nivel</td>
-              <td>Definición</td>
-              <td>Traducción</td>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>xlo</td>
-              <td>Extra low</td>
-              <td>Extra bajo</td>
-            </tr>
-            <tr>
-              <td>vlo</td>
-              <td>Very low</td>
-              <td>Muy bajo</td>
-            </tr><tr>
-              <td>lo</td>
-              <td>Low</td>
-              <td>Bajo</td>
-            </tr>
-            <tr>
-              <td>nom</td>
-              <td>Nominal</td>
-              <td>Nominal (normal)</td>
-            </tr>
-            <tr>
-              <td>hi</td>
-              <td>High</td>
-              <td>Alto</td>
-            </tr>
-            <tr>
-              <td>vhi</td>
-              <td>Very high</td>
-              <td>Muy alto</td>
-            </tr>
-            <tr>
-              <td>xhi</td>
-              <td>Extra high</td>
-              <td>Extra alto</td>
-            </tr>
-          </tbody>
-        </table>
+
+      {/* FORMULAS */}
+      <h2>Fórmulas</h2>
+      <div className='descripcion'>
+        A continuación se muestran las fórmulas implementadas para cada modelo considerado en la aplicación
       </div>
+      <br/>
+      <h4>Composición de aplicación</h4>
+        <p className='componente3'>
+          <img src={CA1} width='170px'/>
+          <br/>
+          <img src={CA2} width='250px'/>
+        </p><br/>
+        <div className='lista'>
+          <p>
+            <b>-PM:</b> Es el esfuerzo estimado, representado en personas-meses.
+          </p>
+          <p>
+            <b>-NOP</b> (Nuevos Puntos Objeto): Es el tamaño del nuevo software a desarrollar expresado en Puntos Objeto.
+          </p>
+          <p>
+            <b>-OP</b> (Puntos Objeto): Se refiere al tamaño del software a desarrollar expresado en Puntos Objeto.
+          </p>
+          <p>
+            <b>-%reuso:</b> Porcentaje de reuso que se espera lograr en el proyecto.
+          </p>
+          <p>
+            <b>-PROD:</b> Es la productividad promedio, considerando los aspectos "Experiencia y capacidad de los desarrolladores" y "Madurez y capacidad del ICASE".
+          </p>
+        </div><br/>
+  
+          <h4>Diseño temprano</h4>
+          <p className='componente3'>
+            Se utiliza en las primeras etapas del desarrollo en las cuales se evalúan las alternativas de hardware 
+            y software de un proyecto, es decir, no se tiene mucha información del proyecto
+          </p><br/>
+          <h4>Post arquitectura</h4>
+          <p className='componente3'>
+            Se aplica en la etapa de desarrollo, después de definir la arquitectura del sistema, y en la etapa 
+            de mantenimiento.
+          </p>
+        
+      
     </div>
   );
 }

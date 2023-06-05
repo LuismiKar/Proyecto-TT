@@ -152,7 +152,7 @@ function PuntosFuncion( props ){
   }
 
   return(
-    <div>
+    <div className='contenedor-principalPF'>
       <div className='titulo'>
         <h2>
           Puntos de función

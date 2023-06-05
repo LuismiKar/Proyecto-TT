@@ -15,11 +15,15 @@ h1{
     margin-left: 250px;
 }
 
+.componente3{
+    margin-left: 100px;
+}
+
 .extension{
     margin-left: 100px;
 }
 
-h3{
+h2{
     text-align: center;
 }
 
@@ -31,3 +35,16 @@ tr, td{
     padding: 5px;
     text-align: center;
 }
+
+.descripcion{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+    width: 100%;
+  }
+
+.lista{
+    margin-left: 100px;
+    margin-right: 200px;
+}
+

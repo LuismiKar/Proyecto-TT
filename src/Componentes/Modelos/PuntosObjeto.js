@@ -239,7 +239,7 @@ var PuntosObjeto = function({ cambiarPtsObj }){
         <div className='descripcion2'>
         {totalPtsObj!== 0 &&
           <>
-            <b>Puntos objeto:</b>
+            <b>Puntos objeto: </b>
             {totalPtsObj}
           </>
         }

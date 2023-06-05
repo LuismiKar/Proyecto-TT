@@ -423,6 +423,10 @@ function CcDisTemp(){
     console.log('pmEst: ' + pmEst);
   }
 
+  function generarPdf(){
+
+  }
+
   return(
     <div className='contenedor-principal'>
       <div className='titulo'>
@@ -616,9 +620,9 @@ function CcDisTemp(){
           2.- Contar con las funcionalidades del proyecto (Puntos de función).   
         
       </div>
-      <div className='contenedor-diseñotemprano'>
+
         <div className='contenedor-Metrica'>
-          <div className='descripcion2'>
+          <div className='descripcion-metrica'>
             Si no cuentas con la cantidad de líneas de código, selecciona <b>Puntos de función</b>
             <Select options={ [ { label:"Puntos de función", value:'PF' },
                                 { label:"Líneas de código", value:'KSLOC' }] } 
@@ -662,19 +666,21 @@ function CcDisTemp(){
             </tbody>
           </table>
         </div>
+        <br/>
         <div className='contenedor-ksloc'>
           <FiHelpCircle onMouseOver={handleMouseOver13} onMouseOut={handleMouseOut13} color='#146C94'/> KSLOC: {Ksloc}
           {isHovering13 && (
             <CuadroInfo texto={'Miles de líneas de código del software a desarrollar'} valor='corto'/>
           )}
         </div>
-      </div>
+        <br/>
       <center><Boton
         name='boton'
         funcion={calcularEsfuerzo}
         texto='Calcular Esfuerzo'
         onMouseOver={calculoPMnominal} />
       </center>
+      <br/>
       <hr/>
       <br/>
       <div className='contenedor-resultado'>
@@ -682,8 +688,12 @@ function CcDisTemp(){
         Esfuerzo: 
         <div className='resultado'>{pmEst}</div>
         {isHovering14 && (
-        <CuadroInfo texto={'Representa los meses de trabajo de una persona fulltime, requeridos para desarrollar el proyecto'}/>
-      )}
+        <CuadroInfo texto={'Representa los meses de trabajo de una persona fulltime, requeridos para desarrollar el proyecto'}
+        />)}
+        {pmEst!==0 && <Boton
+          name='boton-pdf'
+          funcion={ generarPdf }
+          texto='Generar PDF'/>}
       </div>
     </div>
   );

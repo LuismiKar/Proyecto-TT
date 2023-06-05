@@ -667,6 +667,10 @@ function CcPostArq(){
     //console.log('Entra a calcularEstimacion');
   }
 
+  function generarPdf(){
+
+  }
+
   return(
     <div className='contenedor-principal'>
       <div className='titulo'>
@@ -974,61 +978,58 @@ function CcPostArq(){
           <br/> 
             2.- Contar con las funcionalidades del proyecto (Puntos de función).   
         </div>
-      <div className='contenedor-postarquitectura'>
-        <div className='contenedor-metrica'>
-          <div className='descripcion2'>
+        <div className='contenedor-Metrica'>
+          <div className='descripcion-metrica'>
             Si no cuentas con la cantidad de líneas de código, selecciona <b>Puntos de función</b>
             <Select options={ [ { label:"Puntos de función", value:'PF' },
                                 { label:"Líneas de código", value:'KSLOC' }] } 
                     placeholder= 'Selecciona la métrica'
                     onChange={ handleSelectChangeMetrica } />
           </div>
-            <table>
-              <tbody>
-                <tr>
-                  {metrica==='KSLOC' && <><td>
-                    Ingresa la cantidad de <b>miles</b> de líneas de código: 
-                  </td>
-                  <td>
-                    <Input
+          <table>
+            <tbody>
+              <tr>
+                {metrica==='KSLOC' && <><td>
+                  Ingresa la cantidad de <b>miles</b> de líneas de código: 
+                </td>
+                <td>
+                  <Input
                       attribute={{
                         id: 'ksloc',
                         name: 'ksloc',
                         type: 'number'
                       }}
                       handleChange={handleChange}
-                    />
-                  </td>
-                  </>}
-                  {metrica==='PF' && <><td>
-                    <center><Boton 
-                      name='boton-Modal'
-                      funcion={openModal}
-                      texto='Puntos de funcion'/>
-                    </center>
-                    <Modal isOpen={isOpenModal} closeModal={closeModal}>
-                      <PuntosFuncion enviarSloc={enviarSloc} />
-                    </Modal>
-                  </td>
-                  </>}
-                </tr>
-                {metrica==='KSLOC' && 
+                  />
+                </td></>}
+                {metrica==='PF' && <><td>
+                  <Boton 
+                    name='boton-Modal'
+                    funcion={openModal}
+                    texto='Puntos de funcion'/>
+                  <Modal isOpen={isOpenModal} closeModal={closeModal}>
+                    <PuntosFuncion enviarSloc={enviarSloc} />
+                  </Modal>
+                </td>
+                </>}
+              </tr>
+              {metrica==='KSLOC' && 
                 <tr>
                   <td colSpan='2'>
                     (1 KSLOC = 1000 SLOC)<br/>
                     *SLOC: Líneas de código
                   </td>
                 </tr>}
-              </tbody>
-            </table>
+            </tbody>
+          </table>
         </div>
+        <br/>
         <div className='contenedor-ksloc'>
-          <FiHelpCircle onMouseOver={handleMouseOver24} onMouseOut={handleMouseOut24} color='#146C94'/> KSLOC: {Ksloc}
-          {isHovering24 && (
+          <FiHelpCircle onMouseOver={handleMouseOver13} onMouseOut={handleMouseOut13} color='#146C94'/> KSLOC: {Ksloc}
+          {isHovering13 && (
             <CuadroInfo texto={'Miles de líneas de código del software a desarrollar'} valor='corto'/>
           )}
         </div>
-      </div>
       <br/>
       <center><Boton
         name='boton'
@@ -1046,6 +1047,10 @@ function CcPostArq(){
         {isHovering23 && (
         <CuadroInfo texto={'Representa los meses de trabajo de una persona fulltime, requeridos para desarrollar el proyecto'}/>
         )}
+        {pmEst!==0 && <Boton
+          name='boton-pdf'
+          funcion={ generarPdf }
+          texto='Generar PDF'/>}
       </div>
     </div>
   );

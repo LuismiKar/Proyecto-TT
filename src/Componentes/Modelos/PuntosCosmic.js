@@ -111,6 +111,10 @@ function PuntosCosmic(){
     setPmEst((tasaEntrega.campo * totalPfC).toFixed(3));
   }
 
+  function generarPdf(){
+
+  }
+
   return(
     <div className='contenedor-principal'>
       <div className='titulo'>
@@ -232,6 +236,10 @@ function PuntosCosmic(){
         {isHovering2 && (
         <CuadroInfo texto={'Representa los meses de trabajo de una persona fulltime, requeridos para desarrollar el proyecto'}/>
       )}
+      {pmEst!==0 && <Boton
+          name='boton-pdf'
+          funcion={ generarPdf }
+          texto='Generar PDF'/>}
       </div>
     </div>
   );

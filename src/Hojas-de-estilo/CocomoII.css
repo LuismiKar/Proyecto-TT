@@ -4,6 +4,11 @@
   
 }
 
+.contenedor-principalPF{
+  padding: 50px;
+  width: 100%;
+}
+
 .contenedor-postarquitectura{
   flex-direction: row;
   display: flex;
@@ -105,7 +110,7 @@ h3{
 }
 
 .contenedor-ksloc{
-  margin-top: 50px;
+  text-align: center;
 }
 
 .contenedor-Metrica{
@@ -146,6 +151,16 @@ tr{
   width: 300px;
 }
 
+.descripcion-metrica{
+  margin-top: 10px;
+  margin-left: 25%;
+  margin-bottom: 10px;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+}
+
 .tabla{
   margin-top: 20px;
   margin-left: 50px;
@@ -159,6 +174,10 @@ tr{
 
 thead{
   font-weight: bold;
+}
+
+h3{
+  text-align: center;
 }
 
 .puro-texto{
@@ -187,6 +206,8 @@ thead{
   margin-left: 20px;
   width: 200px;
   height: 25px;
+  text-align: center;
+  margin-right: 30px;
 }
 
 .tasa-entrega h4{
@@ -200,3 +221,5 @@ thead{
 .Cosmic-formulario button{
   text-align: center;
 }
+
+
