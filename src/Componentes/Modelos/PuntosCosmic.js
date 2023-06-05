@@ -107,18 +107,6 @@ function PuntosCosmic(){
     setIsHovering6(false);
   };
 
-  //Función para ver los cambios del campo de texto
-  function handleChange(name,value) {
-    switch(name){
-      case 'tasaEntrega':
-        setTasaentrega(value);
-        console.log(value);
-        break;
-      default:
-        break;
-    }
-  };
-
   function calcularEsfuerzo(){
     setPmEst((tasaEntrega.campo * totalPfC).toFixed(3));
   }
@@ -182,16 +170,22 @@ function PuntosCosmic(){
               nombreMostrado={false}
             />
           </div>
+            
         </div>
       </div>
+      
       {pfcs.length!==0 &&<>
+        <br/>
+        <div className='descripcion2'>
+          Total Puntos de función Cosmic: {totalPfC}
+        </div>
         <div className='descripcion2'>
           <b>
             <FiHelpCircle onMouseOver={handleMouseOver3} onMouseOut={handleMouseOut3} color='#000'/>
             Tabla de puntos de función
           </b>
           {isHovering3 && (
-            <CuadroInfo texto={'La tabla se irá actualizando cada que se agreguen funcionalidades nuevas'} valor='corto'/>
+            <CuadroInfo texto={'La tabla se irá actualizando cada que se agreguen funcionalidades nuevas'} />
           )}
         </div>
         <table cellPadding='10' className='tabla' border='1' cellSpacing='0'  align='center'>
