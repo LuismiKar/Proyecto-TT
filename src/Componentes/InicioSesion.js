@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import '../Hojas-de-estilo/Registro.css'
 import { Link } from 'react-router-dom';
 import { Formulario , ContenedorBotonCentrado , Boton, MensajeError, MensajeExito } from '../Elementos/UsuarioElementos';
@@ -54,8 +54,7 @@ function InicioSesion( props ){
 
     axios.get(direccion+'/user/'+email.campo)
     .then(response =>{
-      console.log('Ya los tienes: ',response.data);
-      console.log(formData);
+      console.log('Ya los tienes: ',response.data[0].email);
     })
     .catch(error=>{
       console.log(error);
@@ -108,8 +107,9 @@ function InicioSesion( props ){
         console.log(formData);
 
         axios.post(direccion+'/user', formData)
-
         //Aqui termina la funcion para registrar usuarios
+
+
 
     } else {
       setFormularioValido(false);
@@ -231,8 +231,8 @@ function InicioSesion( props ){
           <>
             <h2>Iniciar Sesión</h2>
             <Formulario onSubmit={onSubmitInicioSesion}>
-              <div>
-                <ComponenteInput
+              <div id='login-email'>
+                <ComponenteInput 
                     attribute={{
                       id: 'login-email',
                       name: 'email',

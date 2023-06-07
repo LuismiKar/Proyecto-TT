@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useModal } from './Hooks/useModal';
 import '../Hojas-de-estilo/ListaUsuarios.css'
 import Proyecto from './Proyecto';
@@ -6,6 +6,9 @@ import ComponenteInput from './ComponenteInput';
 import { FiPlusSquare } from "react-icons/fi";
 import Modal from './Modal';
 import Boton from './Boton';
+import {Link, Route, Routes} from 'react-router-dom';
+import axios from 'axios';
+
 
 //Tipos de proyecto
 //COCOMO II Composición de Aplicación
@@ -85,10 +88,34 @@ function ListaProyectos() {
     SetDb(proyectosActualizados);
   }
 
+  //Guardar proyecto
+  const [posts, setposts] = useState([]);
+
+    useEffect(()=> {
+        axios.get('http://localhost:2000/proyectos')
+        .then(res =>{
+            console.log(res)
+            setposts(res.data)
+        })
+        .catch(err =>{
+            console.log(err)
+        })
+    },[])
+
+    //Obtener proyectos
+    useEffect(()=> {
+      axios.get('http://localhost:2000/proyecto')
+      .then(res =>{
+          console.log(res)
+          setposts(res.data)
+      })
+      .catch(err =>{
+          console.log(err)
+      })
+  },[])
+
   return(
     <div>
-
-      {/*Tabla de usuarios*/}
       <div className='tabla-usuarios'>
         <h3>Proyectos registrados</h3>
         <table cellPadding='10' className='tabla' border='1' cellSpacing='0'  align='center'>
@@ -101,12 +128,13 @@ function ListaProyectos() {
             </tr>
           </thead>
           <tbody>
-            {db.length === 0 ? 
-            (
-              <tr><td colSpan='4'>Sin datos</td></tr>
-            ) : (
-              db.map(el => <Proyecto key={el.id} el={el} eliminarProyecto={eliminarProyecto} modificarProyecto={modificarProyecto}/>)
-            )}
+
+              /* Dar formato a los valores de esta tabla */
+                        {
+                          posts.map(post => <li key ={post.email}>
+                              {post.nombre_proyecto}{post.idtipoproyecto} {post.esfuerzo_calculado}
+                              </li>)
+                          }
           </tbody>
         </table>
       </div>
@@ -126,6 +154,7 @@ function ListaProyectos() {
                           type: 'text',
                           placeholder: 'Ingresa el nombre'
                         }}
+              
                         estado={nombre}
                         handleChange={setNombre}
                         expresionRegular={expresiones.nombre}
@@ -152,23 +181,15 @@ function ListaProyectos() {
                   </td>
                 </tr>
                 <tr>
-                  <td>Tipo de proyecto:</td>
-                  <td>
-                    <select value={tipo} onChange={handleSelectChange2} >
-                      <option value="COCOMO II Composición de Aplicación">COCOMO II Composición de Aplicación</option>
-                      <option value="COCOMO II Diseño Temprano" selected>COCOMO II Diseño Temprano</option>
-                      <option value="COCOMO II Post Arquitectura" selected>COCOMO II Post Arquitectura</option>
-                      <option value="COSMIC" selected>COSMIC</option>
-                    </select>
-                  </td>
-                </tr>
-                <tr>
                   <td colSpan='2'>
-                    <Boton
-                      name='modificar-proyecto'
-                      texto='Modificar Proyecto'
-                      funcion={()=>eliminarProyecto(id.campo)}
-                    />
+                    <div>
+                        <Link to="http://localhost:3000/cocomoii/composicionAplicacion">
+                        <Boton 
+                          name='modificar-proyecto'
+                          texto='Modificar Proyecto'
+                        />
+                      </Link>
+                  </div>
                   </td>
                 </tr>
               </tbody>

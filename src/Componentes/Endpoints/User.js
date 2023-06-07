@@ -6,7 +6,7 @@ function UserGetAll(){
     const [posts, setposts] = useState([]);
 
     useEffect(()=> {
-        axios.get('http://10.100.96.8:2000/user')
+        axios.get('http://localhost:2000/user')
         .then(res =>{
             console.log(res)
             setposts(res.data)

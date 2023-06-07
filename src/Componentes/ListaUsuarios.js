@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useModal } from './Hooks/useModal';
 import '../Hojas-de-estilo/ListaUsuarios.css'
 import Usuario from './Usuario';
@@ -6,6 +6,7 @@ import ComponenteInput from './ComponenteInput';
 import { FiPlusSquare } from "react-icons/fi";
 import Modal from './Modal';
 import Boton from './Boton';
+import axios from 'axios';
 
 //Considerando el id como email. Si se elimina un registro que tenga el mismo email que otro se eliminan los dos
 const usuarios = [
@@ -99,6 +100,21 @@ function ListaUsuarios() {
     const usuariosActualizados = db.filter(usuario => usuario.email !== email);//Se genera una copia nueva del arreglo, sin incluir al que tiene id que se manda a esta funcion
     SetDb(usuariosActualizados);
   }
+
+  //Obtener usuarios
+
+  const [posts, setposts] = useState([]);
+
+  useEffect(()=> {
+    axios.get('http://localhost:2000/user')
+    .then(res =>{
+        console.log(res)
+        setposts(res.data)
+    })
+    .catch(err =>{
+        console.log(err)
+    })
+},[])
 
   return(
     <div>
@@ -202,12 +218,13 @@ function ListaUsuarios() {
             </tr>
           </thead>
           <tbody>
-            {db.length === 0 ? 
-            (
-              <tr><td colSpan='4'>Sin datos</td></tr>
-            ) : (
-              db.map(el => <Usuario key={el.email} el={el} eliminarUsuario={eliminarUsuario} modificarUsuario={modificarUsuario}/>)
-            )}
+
+                        /* Dar formato a esta tabla */
+                  {
+                    posts.map(post => <li key ={post.email}>
+                        {post.nombreusuario} | {post.email} | {post.idtipousuario}
+                        </li>)
+                      }
           </tbody>
         </table>
       </div>

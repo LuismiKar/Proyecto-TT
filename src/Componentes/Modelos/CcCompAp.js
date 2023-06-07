@@ -8,6 +8,7 @@ import { FiHelpCircle } from "react-icons/fi";
 import CuadroInfo from '../CuadroInfo';
 import ComponenteInput from '../ComponenteInput';
 import TablaValores from '../TablaValores';
+import axios from 'axios';
 
 function CcCompAp(){
 
@@ -136,6 +137,26 @@ function CcCompAp(){
   }
 
   function generarPdf(){
+    console.log('Test Genera');
+  }
+
+  //Esta funcion obtiene todos los datos ingresados y los guarda en la base de datos
+  function guardarProyecto(){
+    
+    const NombreProyecto = document.getElementById("nombreProyecto");
+
+    //Guarda el main del proyecto
+    axios.post('http://localhost:2000/proyecto',{
+      nombre_proyecto: NombreProyecto.value,
+      pdf_proyecto: "PDF Prueba",
+      esfuerzo_calculado: pmEst,
+      pf: ptsObj,
+      usuario_email: "aldo.ibanez21@gmail.com",
+      idtipoproyecto: "1"
+  })
+
+  //Guarda datos secundarios del proyecto
+
 
   }
 
@@ -274,14 +295,20 @@ function CcCompAp(){
       <div className='contenedor-resultado'>
         <FiHelpCircle onMouseOver={handleMouseOver4} onMouseOut={handleMouseOut4} color='#146C94'/>          
         Esfuerzo: 
-        <div className='resultado'>{pmEst}</div>
+        <div className='resultado' id='Resultadofinal'>{pmEst}</div>
         {isHovering4 && (
           <CuadroInfo texto={'Representa los meses de trabajo de una persona fulltime, requeridos para desarrollar el proyecto'}/>
         )}
-        {pmEst!==0 && <Boton
+        {pmEst!=0 && <Boton
           name='boton-pdf'
           funcion={ generarPdf }
           texto='Generar PDF'/>}
+
+      <Boton
+        name='guardar-proyecto'
+        texto='Guardar proyecto'
+        funcion={guardarProyecto}
+      />
       </div>
     </div>
   );
