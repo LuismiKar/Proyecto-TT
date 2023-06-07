@@ -218,12 +218,10 @@ function ListaUsuarios() {
             </tr>
           </thead>
           <tbody>
-
-                        /* Dar formato a esta tabla */
                   {
-                    posts.map(post => <li key ={post.email}>
-                        {post.nombreusuario} | {post.email} | {post.idtipousuario}
-                        </li>)
+                    posts.map(post => <tr key ={post.email}>
+                        <th>{post.nombreusuario}</th><th>{post.email}</th><th>{post.idtipousuario}</th>   
+                        </tr>)
                       }
           </tbody>
         </table>

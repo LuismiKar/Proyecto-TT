@@ -128,12 +128,10 @@ function ListaProyectos() {
             </tr>
           </thead>
           <tbody>
-
-              /* Dar formato a los valores de esta tabla */
                         {
-                          posts.map(post => <li key ={post.email}>
-                              {post.nombre_proyecto}{post.idtipoproyecto} {post.esfuerzo_calculado}
-                              </li>)
+                          posts.map(post => <tr key ={post.email}>
+                              <th>{post.nombre_proyecto}</th><th>{post.idtipoproyecto}</th> <th>{post.esfuerzo_calculado}</th>
+                              </tr>)
                           }
           </tbody>
         </table>
