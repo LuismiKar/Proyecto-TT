@@ -116,6 +116,22 @@ function ListaUsuarios() {
     })
 },[])
 
+//Función para agregar usuarios
+function agregarUsuarios(){
+  axios.post('http://localhost:2000/user',{
+    email:email.campo,
+    nombreusuario: username.campo,
+    contraseña:password.campo,
+    idtipousuario: "estudiante"
+  });
+}
+
+//funcion para eliminar usuarios
+
+function eliminarUsuarios(){
+  axios.delete('http://localhost:2000/user/divier@gmail.com');
+}
+
   return(
     <div>
       {/*Formulario para agregar usuarios*/}
@@ -196,6 +212,7 @@ function ListaUsuarios() {
                     <Boton 
                       name='agregar-usuario'
                       texto='Agregar usuario'
+                      funcion={agregarUsuarios}
                     />
                   </td>
                 </tr>
@@ -220,7 +237,13 @@ function ListaUsuarios() {
           <tbody>
                   {
                     posts.map(post => <tr key ={post.email}>
-                        <th>{post.nombreusuario}</th><th>{post.email}</th><th>{post.idtipousuario}</th>   
+                          <th>{post.nombreusuario}</th>
+                          <th id='nombreUsuarios'>{post.email}</th>
+                          <th>{post.idtipousuario}</th>
+                          <Boton
+                            name='eliminar-usuario'
+                            texto='Eliminar Usuario'
+                            funcion={eliminarUsuarios}/>
                         </tr>)
                       }
           </tbody>

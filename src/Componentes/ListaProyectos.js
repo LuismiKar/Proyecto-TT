@@ -92,18 +92,6 @@ function ListaProyectos() {
   const [posts, setposts] = useState([]);
 
     useEffect(()=> {
-        axios.get('http://localhost:2000/proyectos')
-        .then(res =>{
-            console.log(res)
-            setposts(res.data)
-        })
-        .catch(err =>{
-            console.log(err)
-        })
-    },[])
-
-    //Obtener proyectos
-    useEffect(()=> {
       axios.get('http://localhost:2000/proyecto')
       .then(res =>{
           console.log(res)
@@ -113,6 +101,10 @@ function ListaProyectos() {
           console.log(err)
       })
   },[])
+
+  function eliminarProyectos(){
+    axios.delete('http://localhost:2000/proyecto/1');
+  } 
 
   return(
     <div>
@@ -130,7 +122,14 @@ function ListaProyectos() {
           <tbody>
                         {
                           posts.map(post => <tr key ={post.email}>
-                              <th>{post.nombre_proyecto}</th><th>{post.idtipoproyecto}</th> <th>{post.esfuerzo_calculado}</th>
+                              <th>{post.nombre_proyecto}</th><
+                                th>{post.idtipoproyecto}</th>
+                                <th>{post.esfuerzo_calculado}</th>
+                                <Boton
+                                  name='eliminar-usuario'
+                                  texto='Eliminar Proyecto'
+                                  funcion={eliminarProyectos}
+                                />
                               </tr>)
                           }
           </tbody>
