@@ -103,7 +103,7 @@ function ListaProyectos() {
   },[])
 
   function eliminarProyectos(){
-    axios.delete('http://localhost:2000/proyecto/1');
+    axios.delete('http://localhost:2000/proyecto/');
   } 
 
   return(
@@ -130,6 +130,14 @@ function ListaProyectos() {
                                   texto='Eliminar Proyecto'
                                   funcion={eliminarProyectos}
                                 />
+                                <div>
+                                  <Link to="http://localhost:3000/cocomoii/composicionAplicacion">
+                                  <Boton 
+                                    name='modificar-proyecto'
+                                    texto='Modificar Proyecto'
+                                  />
+                                   </Link>
+                                </div>
                               </tr>)
                           }
           </tbody>

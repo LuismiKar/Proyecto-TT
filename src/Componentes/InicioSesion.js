@@ -15,7 +15,7 @@ function InicioSesion( props ){
   const [password,setPassword] = useState({campo:'', valido: null});
   const [password2,setPassword2] = useState({campo:'', valido: null});
   const [email,setEmail] = useState({campo:'', valido: null});
-  const [formularioValido,setFormularioValido] = useState(null);
+  const [formularioValido,setFormularioValido] = useState(true);
   const [valor,setValor] = useState('iniciarSesion');
   const [aux,setAux] = useState(null);
 
@@ -267,14 +267,14 @@ function InicioSesion( props ){
                   <FiAlertCircle/>
                   <b>Error: </b>Usuario o contraseña inválidos.
                 </p>
-              </MensajeError>}
+                  </MensajeError>}
               <ContenedorBotonCentrado>
                 <Boton>
                   Iniciar Sesión
                 </Boton>
                 {formularioValido === true &&
                   <MensajeExito><b>Usuario registrado</b></MensajeExito>
-                }
+              }
               </ContenedorBotonCentrado>
             </Formulario>
           </>

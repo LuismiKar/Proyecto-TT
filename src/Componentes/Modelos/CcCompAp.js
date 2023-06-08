@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import '../../Hojas-de-estilo/CocomoII.css';
 import Select from 'react-select';
 import Input from '../Input';
@@ -9,6 +9,9 @@ import CuadroInfo from '../CuadroInfo';
 import ComponenteInput from '../ComponenteInput';
 import TablaValores from '../TablaValores';
 import axios from 'axios';
+import ReactToPrint from 'react-to-print';
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
 
 function CcCompAp(){
 
@@ -136,8 +139,17 @@ function CcCompAp(){
     console.log('Esfuerzo: ' + pmEst );
   }
 
-  function generarPdf(){
-    console.log('Test Genera');
+function generarPdf(){
+      const contentHTML = document.getElementById("contenedor-principal");
+      html2canvas(contentHTML)
+      .then((canvas)=>{
+        let imgWidth = 595;
+        let imgHeight = 842;
+        const imgData = canvas.toDataURL('img/png');
+        var doc=new jsPDF ('portrait', 'px', 'a2', 'false');    
+        doc.addImage(imgData,'PNG',0,0,imgHeight,imgWidth);
+        doc.save('CCCompApp.pdf');
+    })
   }
 
   //Esta funcion obtiene todos los datos ingresados y los guarda en la base de datos
@@ -161,7 +173,7 @@ function CcCompAp(){
   }
 
   return(
-    <div className='contenedor-principal' >
+    <div className='contenedor-principal' id='contenedor-principal'>
       <div className='titulo'>
         <h2>
           <FiHelpCircle onMouseOver={handleMouseOverTitulo} onMouseOut={handleMouseOutTitulo} color='#000'/>

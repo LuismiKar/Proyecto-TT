@@ -36,7 +36,7 @@ function Barra(){
   }
 
   var recibirUsuario = function(nombreUsuario){ 
-    setUsername(nombreUsuario); 
+    setUsername('Karen'); 
     closeModal();
     setValor(usuarios[nombreUsuario]);
   }

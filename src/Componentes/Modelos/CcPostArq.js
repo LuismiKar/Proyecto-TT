@@ -10,6 +10,9 @@ import { FiHelpCircle } from "react-icons/fi";
 import CuadroInfo from '../CuadroInfo';
 import ComponenteInput from '../ComponenteInput';
 import TablaValores from '../TablaValores';
+import axios from 'axios';
+import html2canvas from 'html2canvas';
+import jsPDF from 'jspdf';
 
 function CcPostArq(){
 
@@ -668,8 +671,32 @@ function CcPostArq(){
   }
 
   function generarPdf(){
-
+    const contentHTML = document.getElementById("contenedor-principal");
+    html2canvas(contentHTML)
+    .then((canvas)=>{
+      let imgWidth = 595;
+      let imgHeight = 842;
+      const imgData = canvas.toDataURL('img/png');
+      var doc=new jsPDF ('portrait', 'px', 'a2', 'false');    
+      doc.addImage(imgData,'PNG',0,0,imgHeight,imgWidth);
+      doc.save('CCPostArq.pdf');
+  })
   }
+
+  function guardarProyecto(){
+    
+    const NombreProyecto = document.getElementById("nombreProyecto");
+
+    //Guarda el main del proyecto
+    axios.post('http://localhost:2000/proyecto',{
+      nombre_proyecto: NombreProyecto.value,
+      pdf_proyecto: "PDF Prueba",
+      esfuerzo_calculado: pmEst,
+      pf: 21,
+      usuario_email: "aldo.ibanez21@gmail.com",
+      idtipoproyecto: "1"
+  })
+}
 
   return(
     <div className='contenedor-principal'>
@@ -1051,6 +1078,12 @@ function CcPostArq(){
           name='boton-pdf'
           funcion={ generarPdf }
           texto='Generar PDF'/>}
+
+        <Boton
+        name='guardar-proyecto'
+        texto='Guardar proyecto'
+        funcion={guardarProyecto}
+      />
       </div>
     </div>
   );

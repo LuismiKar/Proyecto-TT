@@ -11,6 +11,9 @@ import CuadroInfo from '../CuadroInfo';
 import ComponenteInput from '../ComponenteInput';
 import TablaValores from '../TablaValores';
 import { LeyendaError } from '../../Elementos/UsuarioElementos';
+import html2canvas from 'html2canvas';
+import jsPDF from 'jspdf';
+import axios from 'axios';
 
 function CcDisTemp(){
 
@@ -424,11 +427,35 @@ function CcDisTemp(){
   }
 
   function generarPdf(){
-
+    const contentHTML = document.getElementById("contenedor-principal");
+      html2canvas(contentHTML)
+      .then((canvas)=>{
+        let imgWidth = 595;
+        let imgHeight = 842;
+        const imgData = canvas.toDataURL('img/png');
+        var doc=new jsPDF ('portrait', 'px', 'a2', 'false');    
+        doc.addImage(imgData,'PNG',0,0,imgHeight,imgWidth);
+        doc.save('CCDisTemp.pdf');
+    })
   }
 
+  function guardarProyecto(){
+    
+    const NombreProyecto = document.getElementById("nombreProyecto");
+
+    //Guarda el main del proyecto
+    axios.post('http://localhost:2000/proyecto',{
+      nombre_proyecto: NombreProyecto.value,
+      pdf_proyecto: "PDF Prueba",
+      esfuerzo_calculado: pmEst,
+      pf: '21',
+      usuario_email: "aldo.ibanez21@gmail.com",
+      idtipoproyecto: "1"
+  })
+}
+
   return(
-    <div className='contenedor-principal'>
+    <div className='contenedor-principal' id='contenedor-principal'>
       <div className='titulo'>
         <h2>
           <FiHelpCircle onMouseOver={handleMouseOverTitulo} onMouseOut={handleMouseOutTitulo} color='#000'/>
@@ -693,7 +720,13 @@ function CcDisTemp(){
         {pmEst!==0 && <Boton
           name='boton-pdf'
           funcion={ generarPdf }
-          texto='Generar PDF'/>}
+          texto='Generar PDF'/>
+          }
+
+        <Boton
+          name='boton-pdf'
+          funcion={ guardarProyecto }
+          texto='Guardar proyecto'/>
       </div>
     </div>
   );
